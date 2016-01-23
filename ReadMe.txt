@@ -1,0 +1,1 @@
+This repository is for the Web Development course CS5610 under Professor Jose Annunziato.
