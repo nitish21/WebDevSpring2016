@@ -7,7 +7,6 @@
 
         $scope.update = update;
 
-
         //if($scope.newUser) {
         //    search($scope.newUser);
         //}
@@ -17,6 +16,8 @@
             console.log("hello from profile controller");
 
             var loggedInUser = $rootScope.user;
+
+            console.log("logged in user : " + loggedInUser);
 
             UserService.updateUser(
                 loggedInUser._id,

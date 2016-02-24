@@ -3,7 +3,7 @@
         .module("FormBuilderApp")
         .factory("UserService", UserService);
 
-    function UserService($http) {
+    function UserService() {
 
         var api = {
             findUserByCredentials: findUserByCredentials,
@@ -68,7 +68,7 @@
 
             var newUserRoles = [];
 
-            if(!user.roles) {
+            if(user.roles) {
                 for (var i = 0; i < user.roles.length; i++) {
 
                     newUserRoles.push(user.roles[i]);
@@ -86,6 +86,7 @@
 
             usersArray.push(newUser);
 
+            callback(newUser);
         }
 
         function deleteUserById(userId, callback) {

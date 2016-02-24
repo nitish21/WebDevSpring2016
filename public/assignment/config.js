@@ -15,10 +15,11 @@
                 templateUrl: "views/home/home.view.html"
             })
             .when("/forms", {
-                templateUrl: "views/home/forms.view.html"
+                templateUrl: "views/forms/forms.view.html"
             })
             .when("/login", {
-                templateUrl: "views/users/login.view.html"
+                templateUrl: "views/users/login.view.html",
+                controller : "LoginController"
             })
             .when("/profile", {
                 templateUrl: "views/users/profile.view.html",
