@@ -9,16 +9,30 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
 
-    <!--<link href="css/styles.css" rel="stylesheet">-->
+    <!--importing all controllers-->
     <script src="app.js"></script>
     <script src="config.js"></script>
+    <script src="services/user.service.client.js"></script>
+    <script src="views/main/main.controller.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/sidebar/sidebar.controller.js"></script>
+    <script src="views/users/profile.controller.js"></script>
+    <script src="views/users/register.controller.js"></script>
+
+
+
+
+    <link href="css/dashboard.css" rel="stylesheet">
+
 
 </head>
 
-<body>
+<body ng-controller="MainController">
     <div ng-include="'views/header/header.view.html'"></div>
     <br>
     <div ng-include="'views/sidebar/sidebar.view.html'"></div>
+
+    <div ng-view></div>
 
 
 </body>

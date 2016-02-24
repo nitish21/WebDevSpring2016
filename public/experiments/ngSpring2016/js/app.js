@@ -58,8 +58,7 @@
                 title : movie.title,
                 year : movie.year
             }
-
-
+            
         }
 
         function updateMovie(movie){

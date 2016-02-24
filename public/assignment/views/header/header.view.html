@@ -11,10 +11,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/register">Register</a></li>
-                <li><a href="#/login">Login</a></li>
-                <li><a href="#/home">Home</a></li>
-                <li><a href="../users/login.view.html">Logout</a></li>
+                <li ng-class="{'active' : $location.url().indexOf('register') > 0}"><a href="#/register">Register</a></li>
+                <li ng-class="{'active' : $location.url().indexOf('login') > 0}"><a href="#/login">Login</a></li>
+                <li ng-class="{'active' : $location.url().indexOf('profile') > 0}"><a href="#/profile">UserName</a></li>
+                <li ng-class="{'active' : $location.url().indexOf('admin') > 0}"><a href="#/admin">UserNameAdmin</a></li>
+                <li ng-class="{'active' : $location.url().indexOf('home') > 0}"><a href="#/home">Logout</a></li>
             </ul>
         </div>
     </div>

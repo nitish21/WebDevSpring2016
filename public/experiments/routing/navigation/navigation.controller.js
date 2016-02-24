@@ -1,10 +1,9 @@
 (function(){
     angular
-        .module("FormBuilderApp")
-        .controller("MainController", mainController);
+        .module("MovieApp")
+        .controller("NavController", navController);
 
-    function mainController($scope, $location) {
+    function navController($scope, $location) {
         $scope.$location = $location;
     }
-
 })();
