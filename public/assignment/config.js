@@ -15,7 +15,8 @@
                 templateUrl: "views/home/home.view.html"
             })
             .when("/forms", {
-                templateUrl: "views/forms/forms.view.html"
+                templateUrl: "views/forms/forms.view.html",
+                controller : "FormController"
             })
             .when("/login", {
                 templateUrl: "views/users/login.view.html",

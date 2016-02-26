@@ -93,7 +93,7 @@
 
                 var updatedForm = formsArray[i];
 
-                if(updatedForm._id == userId){
+                if(updatedForm._id == formId){
 
                     updatedForm = {
                         "_id":newForm._id,
