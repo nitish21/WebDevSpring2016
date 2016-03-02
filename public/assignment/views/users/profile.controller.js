@@ -3,13 +3,10 @@
         .module("FormBuilderApp")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($scope,$rootScope , UserService) {
+    function ProfileController($scope,$rootScope , $location, UserService) {
 
         $scope.update = update;
 
-        //if($scope.newUser) {
-        //    search($scope.newUser);
-        //}
 
         function update(userToBeUpdated) {
 
@@ -23,9 +20,11 @@
                 loggedInUser._id,
                 userToBeUpdated,
                 function(response){
+                    $rootScope.user=response;
                     console.log(response);
-                    //$scope.data = response;
                 });
+
+            $location.path('/profile');
         }
 
     }

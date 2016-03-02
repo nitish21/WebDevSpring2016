@@ -3,7 +3,7 @@
         .module("FormBuilderApp")
         .controller("LoginController", LoginController);
 
-    function LoginController($scope, $rootScope , UserService) {
+    function LoginController($scope, $rootScope ,$location, UserService) {
 
         $scope.login = login;
 
@@ -17,12 +17,20 @@
                 credentials.username,
                 credentials.password,
                 function(response){
-                    console.log(response);
-                    $rootScope.user=response;
+
+                    if(response){
+                        console.log(response);
+                        $rootScope.user = response;
+                        $location.path('/profile');
+                    }
+                    else{
+                        console.log("login failed..redirecting to /login");
+                        $location.path('/login');
+
+                    }
                 }
             );
 
-            $location.path('/profile');
 
         }
 

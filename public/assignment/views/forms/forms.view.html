@@ -1,10 +1,10 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main table-responsive">
     <h1 class="page-header">Forms</h1>
     <div>
-        <!--<ul class="nav nav-tabs" role="tablist">-->
-        <!--<li role="presenation" class="active"><a href="#forms" aria-controls="forms" role="tab" data-toggle="tab">Forms</a></li>-->
-        <!--&lt;!&ndash;<li role="presenation"> <a href="fields.view.html" aria-controls="forms" role="tab">Fields</a></li>&ndash;&gt;-->
-        <!--</ul>-->
+        <ul class="nav nav-tabs" role="tablist">
+        <li role="presenation" class="active"><a href="#forms" aria-controls="forms" role="tab" data-toggle="tab">Forms</a></li>
+        <li role="presenation"> <a href="#fields" aria-controls="forms" role="tab">Fields</a></li>
+        </ul>
 
         <div class="tab-content">
 
@@ -19,28 +19,25 @@
                         <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
                         Action
                     </td>
-
                 </tr>
 
 
                 <tr>
-                    <td><input ng-model="newForm.name"  type="text" class="form-control" id="name" placeholder="Name"></td>
+                    <td><input ng-model="form.title"  type="text" class="form-control" id="name" placeholder="Name"></td>
                     <td>
-                        <a ng-click="addForm(newForm)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-plus"></span></a>
-                        <a ng-click="updateForm(newForm)" class="btn btn-small"><span class="glyphicon glyphicon-ok"></span></a>
+                        <a ng-click="addForm(form)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-plus"></span></a>
+                        <a ng-click="updateForm(form)" class="btn btn-small"><span class="glyphicon glyphicon-ok"></span></a>
                     </td>
                 </tr>
 
                 </thead>
 
                 <tbody>
-                <tr ng-repeat="myform in forms">
-                    <td>{{myform.name}}</td>
+                <tr ng-repeat="form in forms">
+                    <td>{{form.title}}</td>
                     <td class="nowrap">
-                        <!--<button ng-click="removeMovie(movie)" class="btn btn-danger">Delete</button>-->
-                        <!--<button ng-click="selectMovie(movie)" class="btn btn-info">select</button>-->
-                        <a ng-click="deleteForm($index)" href="#" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-remove"></span></a>
-                        <a ng-click="selectForm($index)" href="#" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-pencil"></span></a>
+                        <a ng-click="deleteForm($index)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-remove"></span></a>
+                        <a ng-click="selectForm($index)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-pencil"></span></a>
                     </td>
                 </tr>
                 </tbody>

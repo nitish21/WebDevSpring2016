@@ -31,8 +31,8 @@
 
             var newForm = {
                 "_id":(new Date).getTime(),
-                "title":user.title,
-                "userId":user.lastName
+                "title":form.title,
+                "userId":userId
             };
 
             formsArray.push(newForm);
@@ -106,8 +106,6 @@
                 }
 
             }
-
-            callback(null);
 
 
         }

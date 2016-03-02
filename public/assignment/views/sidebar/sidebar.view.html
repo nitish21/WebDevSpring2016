@@ -6,10 +6,21 @@
         <!--<li><a href="#/admin">Admin</a></li>-->
         <!--<li><a href="#/forms">Forms</a></li>-->
 
-        <li ng-class="{'active': $location.url() == '/home'}"><a href="#/home">Home</a></li>
-        <li ng-class="{'active': $location.url() == '/profile'}"><a href="#/profile">Profile</a></li>
-        <li ng-class="{'active': $location.url() == '/admin'}"><a href="#/admin">Admin</a></li>
-        <li ng-class="{'active': $location.url() == '/forms'}"><a href="#/forms">Forms</a></li>
+        <li ng-class="{'active': $location.url() == '/home'}">
+            <a href="#/home">Home</a>
+        </li>
+
+        <li ng-class="{'active': $location.url() == '/profile'}">
+            <a ng-show="user" href="#/profile">Profile</a>
+        </li>
+
+        <li ng-class="{'active': $location.url() == '/admin'}">
+            <a ng-show="user && user.roles.indexOf('admin')>=0" href="#/admin">Admin</a>
+        </li>
+
+        <li ng-class="{'active': $location.url() == '/forms'}">
+            <a ng-show="user" href="#/forms">Forms</a>
+        </li>
 
     </ul>
 </div>

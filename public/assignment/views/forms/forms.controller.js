@@ -3,13 +3,28 @@
         .module("FormBuilderApp")
         .controller("FormController", FormController);
 
-    function FormController($scope, $rootScope , FormService) {
+    function FormController($scope, $rootScope, $location, FormService) {
 
         $scope.addForm = addForm;
         $scope.updateForm = updateForm;
         $scope.deleteForm = deleteForm;
         $scope.selectForm = selectForm;
-        $scope.forms=FormService.formsArray;
+        $scope.forms=[];
+
+
+        initialDisplayOfForms();
+
+
+        function initialDisplayOfForms(){
+
+            FormService.findAllFormsForUser(
+                    $rootScope.user._id,
+                    function (response) {
+                        angular.copy(response, $scope.forms);
+                    });
+
+        }
+
 
         function addForm(newForm){
 
@@ -19,63 +34,64 @@
 
             console.log("logged in user : " + loggedInUser);
 
+
+
             FormService.createFormForUser(
                 loggedInUser._id,
                 newForm,
                 function(response){
                     console.log(response);
-                    //$scope.data = response;
+                    $scope.forms.push(response);
+
+                    $scope.form = {};
+                    $scope.selectedIndex = null;
+
                 });
 
         }
 
-        function deleteForm(formToBeDeleted){
+        function deleteForm(index){
 
             console.log("hello from delete form controller");
+
+            var formToBeDeleted = $scope.forms[index];
 
             var loggedInUser = $rootScope.user;
 
             console.log("logged in user : " + loggedInUser);
 
-            FormService.createFormForUser(
-                loggedInUser._id,
-                newForm,
+            FormService.deleteFormById(
+                formToBeDeleted._id,
                 function(response){
-                    console.log(response);
-                    //$scope.data = response;
+                    $scope.forms = response;
+
                 });
 
         }
 
         function selectForm(index){
 
-            console.log("hello from select form controller");
+            $scope.selectedIndex = index;
+            console.log(index);
 
-            var loggedInUser = $rootScope.user;
+            $scope.form = {
+                "_id": $scope.forms[index]._id,
+                "title": $scope.forms[index].title,
+                "userId": $scope.forms[index].userId
+            };
 
-            console.log("logged in user : " + loggedInUser);
-
-            FormService.createFormForUser(
-                loggedInUser._id,
-                newForm,
-                function(response){
-                    console.log(response);
-                });
         }
 
         function updateForm(formToBeUpdated) {
 
-            console.log("hello from form controller");
-
-            var loggedInUser = $rootScope.user;
-
-            console.log("logged in user : " + loggedInUser);
+            console.log("hello from update Form controller");
 
             FormService.updateFormById(
                 formToBeUpdated._id,
                 formToBeUpdated,
                 function(response){
                     console.log(response);
+                    $scope.forms[$scope.selectedIndex] = response;
                 });
         }
 

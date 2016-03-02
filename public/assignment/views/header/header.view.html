@@ -11,11 +11,21 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li ng-class="{'active' : $location.url().indexOf('register') > 0}"><a href="#/register">Register</a></li>
-                <li ng-class="{'active' : $location.url().indexOf('login') > 0}"><a href="#/login">Login</a></li>
-                <li ng-class="{'active' : $location.url().indexOf('profile') > 0}"><a href="#/profile">UserName</a></li>
-                <li ng-class="{'active' : $location.url().indexOf('admin') > 0}"><a href="#/admin">Admin</a></li>
-                <li ng-class="{'active' : $location.url().indexOf('home') > 0}"><a href="#/home">Logout</a></li>
+                <li ng-class="{'active' : $location.url().indexOf('register') > 0}">
+                    <a ng-show="!user" href="#/register">Register</a>
+                </li>
+                <li ng-class="{'active' : $location.url().indexOf('login') > 0}">
+                    <a ng-show="!user"  href="#/login">Login</a>
+                </li>
+                <li ng-class="{'active' : $location.url().indexOf('profile') > 0}">
+                    <a ng-show="user"  href="#/profile">{{user.username}}</a>
+                </li>
+                <li ng-class="{'active' : $location.url().indexOf('admin') > 0}">
+                    <a ng-show="user && user.roles.indexOf('admin')>=0" href="#/admin">Admin</a>
+                </li>
+                <li ng-class="{'active' : $location.url().indexOf('home') > 0}">
+                    <a ng-click="logout(user)" ng-show="user" href="#/home">Logout</a>
+                </li>
             </ul>
         </div>
     </div>
