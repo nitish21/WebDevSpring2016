@@ -1,0 +1,38 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="SearchController">
+
+    <h2>Search</h2>
+
+    <input  ng-model="searchString"
+            class="form-control" placeholder="e.g. Apple"/>
+    <button ng-click="search(searchString)"
+            class="btn btn-primary btn-block">
+        Search
+    </button>
+
+    <h3>Search Results</h3>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Stock Symbol</th>
+                <th>Stock Name</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr ng-repeat="stock in stocks">
+            <!--<td><img height="100px" ng-src="{{stock.Poster}}"/></td>-->
+            <td>
+            <a href="#/detail/{{stock.Symbol}}">
+            {{stock.Symbol}}
+            </a>
+            </td>
+            <td>{{stock.Name}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

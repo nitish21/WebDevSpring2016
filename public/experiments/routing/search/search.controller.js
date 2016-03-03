@@ -25,6 +25,5 @@
                     $scope.data = response;
                 });
         }
-
     }
 })();
