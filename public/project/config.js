@@ -9,13 +9,13 @@
         $routeProvider
             .when("/register", {
                 templateUrl: "views/users/register.view.html",
-                //controller : "RegisterController"
+                controller : "RegisterController"
             })
             .when("/home", {
                 templateUrl: "views/home/home.view.html"
             })
             .when("/search", {
-                templateUrl: "views/search/search.view.html",
+                templateUrl: "views/Search/search.view.html",
                 controller : "SearchController"
             })
             //.when("/forms", {
@@ -28,11 +28,11 @@
             //})
             .when("/login", {
                 templateUrl: "views/users/login.view.html",
-                //controller : "LoginController"
+                controller : "LoginController"
             })
             .when("/profile", {
                 templateUrl: "views/users/profile.view.html",
-                //controller : "ProfileController"
+                controller : "ProfileController"
             })
             .when("/admin", {
                 templateUrl: "views/admin/admin.view.html"
