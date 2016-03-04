@@ -38,8 +38,16 @@
                 templateUrl: "views/admin/admin.view.html"
             })
             .when("/detail/:Symbol", {
-                templateUrl: "views/search/detail.view.html",
+                templateUrl: "views/Search/detail.view.html",
                 controller: "DetailController"
+            })
+            .when("/portfolio", {
+                templateUrl: "views/portfolio/portfolio.view.html",
+                controller: "PortfolioController"
+            })
+            .when("/watchlist", {
+                templateUrl: "views/watchlist/watchList.view.html",
+                controller: "WatchlistController"
             })
             .otherwise({
                 redirectTo: "/home"

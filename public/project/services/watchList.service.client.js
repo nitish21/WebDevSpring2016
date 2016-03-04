@@ -1,62 +1,35 @@
 (function(){
     angular
         .module("StockPortfolioApp")
-        .factory("APIStockService", apiStockService);
+        .factory("WatchListService", watchListService);
 
-    function apiStockService($http) {
-
-        var SEARCH_BASE_URL = 'http://dev.markitondemand.com/MODApis/Api/v2/Lookup/jsonp?input=';
-
-        var QUOTE_BASE_QUERY = 'http://dev.markitondemand.com/MODApis/Api/v2/Quote/jsonp?symbol=';
-
-        //var BASE_URL = "https://query.yahooapis.com/v1/public/yql?q=";
-        //var QUOTE_QUERY = "select * from yahoo.finance.quote where symbol=";
-        //var END_PART = "&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
+    function watchListService($http) {
 
 
         var stocksArray = [
-            {"_id": "000", "Symbol": "AAPL", "PricePurchased": 101.35, "Quantity": 10, "userId": 123},
-            {"_id": "010", "Symbol": "GOOG", "PricePurchased": 658.63, "Quantity": 20, "userId": 123},
-            {"_id": "020", "Symbol": "NTAP", "PricePurchased": 26.08, "Quantity": 30, "userId": 234}
+            {"_id": "1111", "Symbol": "NFLX","userId": 123},
+            {"_id": "2222", "Symbol": "MSFT","userId": 123},
+            {"_id": "3333", "Symbol": "TSLA","userId": 234}
         ];
 
 
         var api = {
-            findStockBySymbol: findStockBySymbol,
-            searchStockBySearchString: searchStockBySearchString,
-            createStockForUser : createStockForUser,
-            findAllStocksForUser :findAllStocksForUser,
-            deleteStockById : deleteStockById,
-            updateStockById : updateStockById
+
+            createWatchlistStockForUser : createWatchlistStockForUser,
+            findAllWatchlistStocksForUser :findAllWatchlistStocksForUser,
+            deleteWatchlistStockById : deleteWatchlistStockById,
+            updateWatchlistStockById : updateWatchlistStockById
 
         };
+
         return api;
 
-        function findStockBySymbol(symbol, callback) {
-
-            var encodedSearchString = encodeURI(QUOTE_BASE_QUERY + symbol + "&callback=JSON_CALLBACK");
-
-            console.log(encodedSearchString);
-
-            $http.jsonp(encodedSearchString)
-                .success(callback);
-        }
-
-        function searchStockBySearchString(searchString, callback) {
-
-
-            var encodedSearchString = encodeURI(SEARCH_BASE_URL + searchString + "&callback=JSON_CALLBACK");
-
-            $http.jsonp(encodedSearchString)
-                .success(callback);
-
-        }
 
         /////////////////////////////////////////////////////
         // Non API service methods
         /////////////////////////////////////////////////////
 
-        function createStockForUser(userId, stock, callback){
+        function createWatchlistStockForUser(userId, stock, callback){
             //Accepts parameters user id, stock object, and callback function
             //Adds property called _id with unique id. You can use (new Date).getTime() to create a unique number
             //Adds property called userId equal to user id parameter
@@ -66,8 +39,8 @@
             var newStock = {
                 "_id":(new Date).getTime(),
                 "Symbol":stock.Symbol,
-                "PricePurchased":stock.PricePurchased,
-                "Quantity": stock.Quantity,
+                //"PricePurchased":stock.PricePurchased,
+                //"Quantity": stock.Quantity,
                 "userId":userId
             };
 
@@ -76,7 +49,7 @@
             callback(newStock);
         }
 
-        function findAllStocksForUser(userId, callback){
+        function findAllWatchlistStocksForUser(userId, callback){
             //Accepts parameter user id, and callback function
             //Iterates over the array of current stocks looking for stocks whose user id is parameter user id
             //Calls back with found stocks for user id parameter, empty array otherwise
@@ -98,7 +71,7 @@
 
         }
 
-        function deleteStockById(stockId, callback){
+        function deleteWatchlistStockById(stockId, callback){
             //Accepts parameter stock id and callback function
             //Iterates over array of stocks looking for stock whose id is stock id parameter
             //If found, removes stock from current array of stocks
@@ -119,7 +92,7 @@
 
         }
 
-        function  updateStockById(stockId, newStock, callback){
+        function  updateWatchlistStockById(stockId, newStock, callback){
             //Accepts parameter stock id, new stock object, and callback function
             //Iterates over array of stocks looking for stock whose id is stock id parameter
             //If found, updates stock object with new stock values
@@ -134,8 +107,8 @@
                     updatedStock = {
                         "_id":newStock._id,
                         "Symbol":newStock.Symbol,
-                        "PricePurchased":newStock.PricePurchased,
-                        "Quantity":newStock.Quantity,
+                        //"PricePurchased":newStock.PricePurchased,
+                        //"Quantity":newStock.Quantity,
                         "userId":newStock.userId
 
                     };

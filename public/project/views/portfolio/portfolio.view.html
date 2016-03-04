@@ -1,0 +1,68 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main table-responsive">
+    <h1 class="page-header">Portfolio</h1>
+    <div>
+        <!--<ul class="nav nav-tabs" role="tablist">-->
+            <!--<li role="presenation" class="active"><a href="#forms" aria-controls="forms" role="tab" data-toggle="tab">Forms</a></li>-->
+            <!--<li role="presenation"> <a href="#fields" aria-controls="forms" role="tab">Fields</a></li>-->
+        <!--</ul>-->
+
+        <div class="tab-content">
+
+            <table class="table table-striped table-bordered" ng-controller="PortfolioController">
+                <thead>
+                <tr>
+                    <td>
+                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
+                        Company
+                    </td>
+
+                    <td>
+                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
+                        Price Purchased
+                    </td>
+
+                    <td>
+                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
+                        Quantity
+                    </td>
+
+                    <td>
+                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
+                        Action
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td><input ng-model="stock.Symbol"  type="text" class="form-control" id="symbolCode" placeholder="Name"></td>
+                    <td><input ng-model="stock.PricePurchased"  type="text" class="form-control" id="pricePurchased" placeholder="Price Purchased"></td>
+                    <td><input ng-model="stock.Quantity"  type="text" class="form-control" id="quantity" placeholder="No. of stocks"></td>
+                    <td>
+                        <a ng-click="addStock(stock)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-plus"></span></a>
+                        <a ng-click="updateStock(stock)" class="btn btn-small"><span class="glyphicon glyphicon-ok"></span></a>
+                    </td>
+                </tr>
+
+                </thead>
+
+                <tbody>
+                <tr ng-repeat="stock in stocks">
+                    <td>{{stock.Symbol}}</td>
+                    <td>{{stock.PricePurchased}}</td>
+                    <td>{{stock.Quantity}}</td>
+                    <td class="nowrap">
+                        <a ng-click="deleteStock($index)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-remove"></span></a>
+                        <a ng-click="selectStock($index)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-pencil"></span></a>
+                    </td>
+                </tr>
+                </tbody>
+
+
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
