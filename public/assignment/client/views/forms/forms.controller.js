@@ -17,11 +17,10 @@
 
         function initialDisplayOfForms(){
 
-            FormService.findAllFormsForUser(
-                    $rootScope.user._id,
-                    function (response) {
-                        angular.copy(response, $scope.forms);
-                    });
+            FormService.findAllFormsForUser($rootScope.user._id)
+                .then(function (response) {
+                    angular.copy(response.data, $scope.forms);
+                });
 
         }
 
@@ -38,15 +37,16 @@
 
             FormService.createFormForUser(
                 loggedInUser._id,
-                newForm,
-                function(response){
-                    console.log(response);
-                    $scope.forms.push(response);
+                newForm)
+                .then(function(response){
+                    console.log(response.data);
+                    $scope.forms.push(response.data);
 
                     $scope.form = {};
                     $scope.selectedIndex = null;
 
                 });
+
 
         }
 
@@ -60,12 +60,22 @@
 
             console.log("logged in user : " + loggedInUser);
 
+            console.log("form to be deleted ID : " + formToBeDeleted._id);
             FormService.deleteFormById(
-                formToBeDeleted._id,
-                function(response){
-                    $scope.forms = response;
+                formToBeDeleted._id)
+                .then(function(response){
+
+                    var formsOfUser = [];
+
+                    getFormsForUser(response.data, loggedInUser._id, formsOfUser);
+
+                    console.log(formsOfUser);
+
+                    $scope.forms = formsOfUser;
+
 
                 });
+
 
         }
 
@@ -88,12 +98,30 @@
 
             FormService.updateFormById(
                 formToBeUpdated._id,
-                formToBeUpdated,
-                function(response){
-                    console.log(response);
-                    $scope.forms[$scope.selectedIndex] = response;
+                formToBeUpdated)
+                .then(function(response){
+                    console.log(response.data);
+                    $scope.forms[$scope.selectedIndex] = response.data;
                 });
+
         }
+
+
+        function getFormsForUser(allForms, userId, formsOfUser) {
+
+            for (var i = 0; i < allForms.length; i++) {
+
+                var form = allForms[i];
+
+                if(form.userId == userId){
+
+                    formsOfUser.push(form);
+
+                }
+            }
+
+        }
+
 
     }
 })();

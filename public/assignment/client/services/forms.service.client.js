@@ -3,7 +3,7 @@
         .module("FormBuilderApp")
         .factory("FormService", FormService);
 
-    function FormService() {
+    function FormService($http) {
 
         var api = {
             createFormForUser: createFormForUser,
@@ -13,31 +13,14 @@
 
         };
 
-        var formsArray = [
-            {"_id": "000", "title": "Contacts", "userId": 123},
-            {"_id": "010", "title": "ToDo",     "userId": 123},
-            {"_id": "020", "title": "CDs",      "userId": 234},
-        ];
 
         return api;
 
 
         function createFormForUser(userId, form, callback){
-            //Accepts parameters user id, form object, and callback function
-            //Adds property called _id with unique id. You can use (new Date).getTime() to create a unique number
-            //Adds property called userId equal to user id parameter
-            //Adds new form to local array of forms
-            //Calls back with new form
 
-            var newForm = {
-                "_id":(new Date).getTime(),
-                "title":form.title,
-                "userId":userId
-            };
+            return $http.post("/api/assignment/user/"+userId+"/form", form);
 
-            formsArray.push(newForm);
-
-            callback(newForm);
         }
 
         function findAllFormsForUser(userId, callback){
@@ -45,20 +28,7 @@
             //Iterates over the array of current forms looking for forms whose user id is parameter user id
             //Calls back with found forms for user id parameter, empty array otherwise
 
-            var formsMatchingUserId = [];
-
-            for (var i = 0; i < formsArray.length; i++) {
-
-                var form = formsArray[i];
-
-                if(form.userId == userId){
-
-                    formsMatchingUserId.push(form);
-
-                }
-            }
-
-            callback(formsMatchingUserId);
+            return $http.get("/api/assignment/user/"+userId+"/form");
 
         }
 
@@ -68,18 +38,7 @@
             //If found, removes form from current array of forms
             //Calls back with remaining array of forms
 
-            for (var i = 0; i < formsArray.length; i++) {
-
-                var form = formsArray[i];
-
-                if(form._id == formId){
-
-                    formsArray.splice(i, 1);
-
-                }
-            }
-
-            callback(formsArray);
+            return $http.delete("/api/assignment/form/"+formId);
 
         }
 
@@ -89,23 +48,7 @@
             //If found, updates form object with new form values
             //Calls back with update form
 
-            for (var i = 0; i < formsArray.length; i++) {
-
-                var updatedForm = formsArray[i];
-
-                if(updatedForm._id == formId){
-
-                    updatedForm = {
-                        "_id":newForm._id,
-                        "title":newForm.title,
-                        "userId":newForm.userId
-                    };
-
-                    callback(updatedForm);
-
-                }
-
-            }
+            return $http.put("/api/assignment/form/"+formId, newForm);
 
 
         }
