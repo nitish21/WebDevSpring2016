@@ -16,13 +16,12 @@
 
             console.log("logged in user : " + loggedInUser);
 
-            UserService.updateUser(
-                loggedInUser._id,
-                userToBeUpdated,
-                function(response){
-                    $rootScope.user=response;
-                    console.log(response);
+            UserService.updateUser(loggedInUser._id, userToBeUpdated)
+                .then(function(response){
+                    $rootScope.user=response.data;
+                    console.log(response.data);
                 });
+
 
             $location.path('/profile');
         }
