@@ -17,35 +17,36 @@
 
         function initialDisplayOfStocks(){
 
-            WatchListService.findAllWatchlistStocksForUser(
-                $rootScope.user._id,
-                function (response) {
-                    angular.copy(response, $scope.stocks);
+            console.log("inside initialDisplayOfStocks in watchlist controller...");
+
+            WatchListService.findAllWatchlistStocksForUser($rootScope.user._id)
+                .then(function (response) {
+                    angular.copy(response.data, $scope.stocks);
                 });
+
 
         }
 
 
         function addStock(newStock){
 
-            console.log("hello from create stoc iin portfolio controller");
+            console.log("hello from create stock iin portfolio controller");
 
             var loggedInUser = $rootScope.user;
 
             console.log("logged in user : " + loggedInUser);
 
 
-            WatchListService.createWatchlistStockForUser(
-                loggedInUser._id,
-                newStock,
-                function(response){
-                    console.log(response);
-                    $scope.stocks.push(response);
+            WatchListService.createWatchlistStockForUser(loggedInUser._id, newStock)
+                .then(function(response){
+                    console.log(response.data);
+                    $scope.stocks.push(response.data);
 
                     $scope.stock = {};
                     $scope.selectedIndex = null;
 
                 });
+
 
         }
 
@@ -59,16 +60,15 @@
 
             console.log("logged in user : " + loggedInUser);
 
-            WatchListService.deleteWatchlistStockById(
-                stockToBeDeleted._id,
-                function(responseAllStocks){
+            WatchListService.deleteWatchlistStockById(stockToBeDeleted._id)
+                .then(function(responseAllStocks){
                     //$scope.stocks = response;
 
-                    console.log(responseAllStocks);
+                    console.log(responseAllStocks.data);
 
                     var stocksOfUser = [];
 
-                    getStocksForUser(responseAllStocks, loggedInUser._id, stocksOfUser);
+                    getStocksForUser(responseAllStocks.data, loggedInUser._id, stocksOfUser);
 
                     console.log(stocksOfUser);
 
@@ -99,13 +99,12 @@
 
             console.log("hello from update stock in portfolio controller");
 
-            WatchListService.updateWatchlistStockById(
-                stockToBeUpdated._id,
-                stockToBeUpdated,
-                function(response){
-                    console.log(response);
-                    $scope.stocks[$scope.selectedIndex] = response;
+            WatchListService.updateWatchlistStockById(stockToBeUpdated._id, stockToBeUpdated)
+                .then(function(response) {
+                    console.log(response.data);
+                    $scope.stocks[$scope.selectedIndex] = response.data;
                 });
+
         }
 
         function getStocksForUser(allStocks, userId, stocksOfUser) {

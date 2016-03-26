@@ -2,64 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e27d175-8559-4412-9d5b-cb580a6739a1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/client/services/comments.service.client.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/client/services/portfolio.service.client.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/client/services/user.service.client.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/client/views/Search/detail.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/client/views/Search/detail.view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/client/views/home/home.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/client/views/users/profile.view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/models/comment.mock.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/models/comment.model.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/models/portfolio.mock.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/models/portfolio.model.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/models/user.mock.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/models/user.model.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/services/comment.service.server.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/services/portfolio.service.server.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/services/user.service.server.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/project/services/comments.service.client.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/project/services/user.service.client.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/project/views/Search/detail.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/project/views/Search/detail.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/project/views/home/home.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/project/views/users/profile.view.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/app.js" afterPath="$PROJECT_DIR$/public/project/client/app.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/config.js" afterPath="$PROJECT_DIR$/public/project/client/config.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/css/dashboard.css" afterPath="$PROJECT_DIR$/public/project/client/css/dashboard.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/css/styles.css" afterPath="$PROJECT_DIR$/public/project/client/css/styles.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/background.jpg" afterPath="$PROJECT_DIR$/public/project/client/views/home/images/background.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/sampleDOW.JPG" afterPath="$PROJECT_DIR$/public/project/client/views/home/images/sampleDOW.JPG" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/images/sampleNYSE.JPG" afterPath="$PROJECT_DIR$/public/project/client/views/home/images/sampleNYSE.JPG" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/index.html" afterPath="$PROJECT_DIR$/public/project/client/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/services/APIstock.service.client.js" afterPath="$PROJECT_DIR$/public/project/client/services/APIstock.service.client.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/services/watchList.service.client.js" afterPath="$PROJECT_DIR$/public/project/client/services/watchList.service.client.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/Search/search.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/Search/search.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/Search/search.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/Search/search.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/header/header.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/header/header.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/header/header.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/header/header.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/home/home.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/home/home.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/home/images/background.jpg" afterPath="$PROJECT_DIR$/public/project/client/images/background.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/home/images/sampleDOW.JPG" afterPath="$PROJECT_DIR$/public/project/client/images/sampleDOW.JPG" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/home/images/sampleNYSE.JPG" afterPath="$PROJECT_DIR$/public/project/client/images/sampleNYSE.JPG" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/home/images/sampleNYSE.png" afterPath="$PROJECT_DIR$/public/project/client/views/home/images/sampleNYSE.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/main/main.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/main/main.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/portfolio/portfolio.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/portfolio/portfolio.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/portfolio/portfolio.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/portfolio/portfolio.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/sidebar/sidebar.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/sidebar/sidebar.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/sidebar/sidebar.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/sidebar/sidebar.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/users/login.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/users/login.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/users/login.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/users/login.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/users/profile.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/users/profile.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/users/register.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/users/register.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/users/register.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/users/register.view.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/watchlist/watchList.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/watchlist/watchList.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/project/views/watchlist/watchList.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/watchlist/watchList.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/models/watchlist.mock.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/models/watchlist.model.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/project/server/services/watchlist.service.server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/client/css/dashboard.css" afterPath="$PROJECT_DIR$/public/assignment/client/css/dashboard.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/server/models/form.model.js" afterPath="$PROJECT_DIR$/public/assignment/server/models/form.model.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/services/watchList.service.client.js" afterPath="$PROJECT_DIR$/public/project/client/services/watchList.service.client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/Search/detail.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/Search/detail.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/watchlist/watchList.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/watchlist/watchList.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/watchlist/watchList.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/watchlist/watchList.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/app.js" afterPath="$PROJECT_DIR$/public/project/server/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
     </list>
     <ignored path="webdev.iws" />
@@ -81,21 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="profile.view.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/client/views/users/profile.view.html">
+      <file leaf-file-name="watchList.view.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/client/views/watchlist/watchList.view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.6764705">
-              <caret line="5" column="86" selection-start-line="5" selection-start-column="86" selection-end-line="5" selection-end-column="86" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/client/views/users/profile.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state vertical-scroll-proportion="-0.7352941">
+              <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -105,17 +46,47 @@
         <entry file="file://$PROJECT_DIR$/public/project/client/views/watchlist/watchList.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="watchList.service.client.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="watchList.service.client.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/project/client/services/watchList.service.client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5957121">
-              <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="45" column="53" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="watchlist.service.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/server/services/watchlist.service.server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="watchlist.model.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/server/models/watchlist.model.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="13" column="15" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detail.view.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/project/client/views/Search/detail.view.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.08885299">
+              <caret line="68" column="24" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -139,11 +110,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/assignment/server/models/user.model.js" />
-        <option value="$PROJECT_DIR$/public/project/services/user.service.client.js" />
-        <option value="$PROJECT_DIR$/public/assignment/server/models/user.mock.json" />
-        <option value="$PROJECT_DIR$/public/assignment/client/views/users/login.controller.js" />
-        <option value="$PROJECT_DIR$/public/assignment/client/views/users/profile.controller.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/views/users/register.controller.js" />
         <option value="$PROJECT_DIR$/public/assignment/server/services/user.service.server.js" />
         <option value="$PROJECT_DIR$/public/assignment/server/models/form.mock.json" />
@@ -175,12 +141,9 @@
         <option value="$PROJECT_DIR$/public/project/server/models/portfolio.model.js" />
         <option value="$PROJECT_DIR$/public/assignment/server/models/form.model.js" />
         <option value="$PROJECT_DIR$/public/project/server/models/comment.mock.json" />
-        <option value="$PROJECT_DIR$/public/project/server/app.js" />
         <option value="$PROJECT_DIR$/public/project/client/services/portfolio.service.client.js" />
         <option value="$PROJECT_DIR$/public/project/client/index.html" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/public/project/client/services/APIstock.service.client.js" />
-        <option value="$PROJECT_DIR$/public/project/client/views/Search/detail.view.html" />
         <option value="$PROJECT_DIR$/public/project/client/services/comments.service.client.js" />
         <option value="$PROJECT_DIR$/public/project/client/views/Search/detail.controller.js" />
         <option value="$PROJECT_DIR$/public/project/server/services/comment.service.server.js" />
@@ -189,7 +152,15 @@
         <option value="$PROJECT_DIR$/public/project/server/services/user.service.server.js" />
         <option value="$PROJECT_DIR$/public/project/client/views/users/profile.view.html" />
         <option value="$PROJECT_DIR$/public/project/client/views/users/profile.controller.js" />
+        <option value="$PROJECT_DIR$/public/project/server/models/watchlist.mock.json" />
+        <option value="$PROJECT_DIR$/public/project/server/models/watchlist.model.js" />
+        <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/public/project/server/app.js" />
+        <option value="$PROJECT_DIR$/public/project/server/services/watchlist.service.server.js" />
+        <option value="$PROJECT_DIR$/public/project/client/views/watchlist/watchList.controller.js" />
+        <option value="$PROJECT_DIR$/public/project/client/views/watchlist/watchList.view.html" />
         <option value="$PROJECT_DIR$/public/project/client/services/watchList.service.client.js" />
+        <option value="$PROJECT_DIR$/public/project/client/views/Search/detail.view.html" />
       </list>
     </option>
   </component>
@@ -328,8 +299,34 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="watchlist" />
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Search" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -355,7 +352,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -389,7 +386,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="SearchEverywhereHistoryKey" value="profi&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/users/profile.controller.js&#10;comm&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/services/comments.service.client.js&#10;detail&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/Search/detail.view.html&#10;comment&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/server/services/comment.service.server.js&#10;eta&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/Search/detail.controller.js&#10;port&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/portfolio/portfolio.controller.js&#10;fiel&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/forms/field.view.html" />
+    <property name="SearchEverywhereHistoryKey" value="watch&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/watchlist/watchList.view.html&#10;watc&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/services/watchList.service.client.js&#10;port&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/services/portfolio.service.client.js&#10;profi&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/users/profile.controller.js&#10;comm&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/services/comments.service.client.js&#10;detail&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/Search/detail.view.html&#10;comment&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/server/services/comment.service.server.js&#10;eta&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/Search/detail.controller.js&#10;fiel&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/forms/field.view.html" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -480,7 +477,7 @@
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26232114" sideWeight="0.54157305" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26232114" sideWeight="0.54157305" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298122" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -497,6 +494,24 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298122" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928312" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1891892" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26232114" sideWeight="0.54157305" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2172761" sideWeight="0.45842695" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -516,34 +531,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/assignment/client/testfile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="35.882355">
-          <caret line="90" column="24" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/client/views/users/login.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.617647">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/server/services/field.service.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/server/models/form.mock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assignment/client/views/forms/field.view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.0373333">
@@ -713,14 +700,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/server/models/portfolio.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5616798">
-          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assignment/server/models/form.model.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -729,26 +708,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/server/services/portfolio.service.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.823529">
           <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/server/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14814815">
-          <caret line="4" column="52" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -777,26 +740,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/views/users/login.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="47" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/services/portfolio.service.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.95712095">
-          <caret line="25" column="74" selection-start-line="25" selection-start-column="74" selection-end-line="25" selection-end-column="74" />
           <folding />
         </state>
       </provider>
@@ -813,14 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.040387724">
           <caret line="1" column="57" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/views/Search/detail.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7657512">
-          <caret line="76" column="46" selection-start-line="76" selection-start-column="46" selection-end-line="76" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -897,18 +836,98 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/models/watchlist.mock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.9411764">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/services/portfolio.service.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19142419">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/models/watchlist.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="15" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/services/portfolio.service.client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="50" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="71" selection-start-line="4" selection-start-column="71" selection-end-line="4" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/models/portfolio.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26799387">
+          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/server/services/watchlist.service.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/views/watchlist/watchList.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.7352941">
+          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/views/watchlist/watchList.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/services/watchList.service.client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5957121">
-          <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="53" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/views/Search/detail.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08885299">
+          <caret line="68" column="24" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
           <folding />
         </state>
       </provider>
