@@ -1,0 +1,92 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="DetailController">
+
+    <div class="container">
+        <h2>{{stock.Name}}</h2>
+
+        <!--<img ng-src="{{movie.Poster}}" height="300px" class="pull-left"/>-->
+
+        <p>
+            {{stock.LastPrice}} <br>
+            Change  -> {{stock.Change}} <br>
+
+            % Change -> {{stock.ChangePercent}}
+        </p>
+
+        <!--<h3>Actors</h3>-->
+
+        <!--<ul>-->
+            <!--<li ng-repeat="actorName in movie.Actors.split(',')">-->
+                <!--{{actorName}}-->
+            <!--</li>-->
+        <!--</ul>-->
+
+        <!--{{stock}}-->
+
+    </div>
+
+
+    <div class="container">
+        <h2>Comments on this stock : </h2>
+
+        <div class="tab-content">
+
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <td>
+                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
+                        User
+                    </td>
+
+                    <td>
+                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
+                        Comment
+                    </td>
+
+                    <!--<td>-->
+                        <!--<a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>-->
+                        <!--Quantity-->
+                    <!--</td>-->
+
+                    <td>
+                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
+                        Action
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <!--<td><input ng-model="comment.userId"  type="text" class="form-control" id="userId" placeholder="Name"></td>-->
+                    <td>{{user.username}}</td>
+                    <td><input ng-model="comment.Comment"  type="text" class="form-control" id="commentText" placeholder="Comment text"></td>
+                    <!--<td><input ng-model="comment.Quantity"  type="text" class="form-control" id="quantity" placeholder="No. of stocks"></td>-->
+                    <td>
+                        <a ng-click="addComment(comment)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-plus"></span></a>
+                        <a ng-click="updateComment(comment)" class="btn btn-small"><span class="glyphicon glyphicon-ok"></span></a>
+                    </td>
+                </tr>
+
+                </thead>
+
+                <tbody>
+                <tr ng-repeat="comment in CommentsForStock">
+                    <td>{{comment.userId}} (This will be replaced by username later)</td>
+                    <td>{{comment.Comment}}</td>
+                    <!--<td>{{stock.Quantity}}</td>-->
+                    <td class="nowrap">
+                        <a ng-click="deleteComment($index)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-remove"></span></a>
+                        <a ng-click="selectComment($index)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-pencil"></span></a>
+                        <p>need to add buttons here</p>
+                    </td>
+                </tr>
+                </tbody>
+
+
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

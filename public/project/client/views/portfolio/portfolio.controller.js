@@ -3,7 +3,7 @@
         .module("StockPortfolioApp")
         .controller("PortfolioController", PortfolioController);
 
-    function PortfolioController($scope, $rootScope, $location, APIStockService) {
+    function PortfolioController($scope, $rootScope, $location, PortfolioService) {
 
         $scope.addStock = addStock;
         $scope.updateStock = updateStock;
@@ -17,10 +17,9 @@
 
         function initialDisplayOfStocks(){
 
-            APIStockService.findAllStocksForUser(
-                $rootScope.user._id,
-                function (response) {
-                    angular.copy(response, $scope.stocks);
+            PortfolioService.findAllStocksForUser($rootScope.user._id)
+                .then(function (response) {
+                    angular.copy(response.data, $scope.stocks);
                 });
 
         }
@@ -36,17 +35,16 @@
 
 
 
-            APIStockService.createStockForUser(
-                loggedInUser._id,
-                newStock,
-                function(response){
-                    console.log(response);
-                    $scope.stocks.push(response);
+            PortfolioService.createStockForUser(loggedInUser._id, newStock)
+                .then(function(response){
 
+                    console.log(response.data);
+                    $scope.stocks.push(response.data);
                     $scope.stock = {};
                     $scope.selectedIndex = null;
 
                 });
+
 
         }
 
@@ -60,16 +58,15 @@
 
             console.log("logged in user : " + loggedInUser);
 
-            APIStockService.deleteStockById(
-                stockToBeDeleted._id,
-                function(responseAllStocks){
+            PortfolioService.deleteStockById(stockToBeDeleted._id)
+                .then(function(responseAllStocks){
                     //$scope.stocks = response;
 
-                    console.log(responseAllStocks);
+                    console.log(responseAllStocks.data);
 
                     var stocksOfUser = [];
 
-                    getStocksForUser(responseAllStocks, loggedInUser._id, stocksOfUser);
+                    getStocksForUser(responseAllStocks.data, loggedInUser._id, stocksOfUser);
 
                     console.log(stocksOfUser);
 
@@ -77,6 +74,7 @@
 
 
                 });
+
 
         }
 
@@ -100,13 +98,12 @@
 
             console.log("hello from update stock in portfolio controller");
 
-            APIStockService.updateStockById(
-                stockToBeUpdated._id,
-                stockToBeUpdated,
-                function(response){
-                    console.log(response);
-                    $scope.stocks[$scope.selectedIndex] = response;
+            PortfolioService.updateStockById(stockToBeUpdated._id, stockToBeUpdated)
+                .then(function(response){
+                    console.log(response.data);
+                    $scope.stocks[$scope.selectedIndex] = response.data;
                 });
+
         }
 
         function getStocksForUser(allStocks, userId, stocksOfUser) {

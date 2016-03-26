@@ -16,4 +16,10 @@ require("./public/assignment/server/services/forms.service.server.js")(app);
 require("./public/assignment/server/services/field.service.server.js")(app);
 require("./public/assignment/server/app.js")(app);
 
+
+require("./public/project/server/services/user.service.server.js")(app);
+require("./public/project/server/services/portfolio.service.server.js")(app);
+require("./public/project/server/services/comment.service.server.js")(app);
+require("./public/project/server/app.js")(app);
+
 app.listen(port, ipaddress);

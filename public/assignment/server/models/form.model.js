@@ -97,7 +97,7 @@ module.exports = function(){
 
             if(updatedForm._id == formId){
 
-                updatedForm = {
+                forms[i] = {
                     "_id":newForm._id,
                     "title":newForm.title,
                     "userId":newForm.userId

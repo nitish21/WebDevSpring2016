@@ -1,0 +1,5 @@
+[
+  {"_id": "000", "Symbol": "AAPL", "PricePurchased": 101.35, "Quantity": 10, "userId": 123},
+{"_id": "010", "Symbol": "GOOG", "PricePurchased": 658.63, "Quantity": 20, "userId": 123},
+{"_id": "020", "Symbol": "NTAP", "PricePurchased": 26.08, "Quantity": 30, "userId": 234}
+]
