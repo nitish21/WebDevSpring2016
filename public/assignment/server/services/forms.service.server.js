@@ -1,6 +1,4 @@
-var formModel = require("./../models/form.model.js")();
-
-module.exports = function(app){
+module.exports = function(app, formModel){
 
     app.get("/api/assignment/user/:userId/form",getFormsForUser);
     app.get("/api/assignment/form/:formId", getFormById);
@@ -11,7 +9,7 @@ module.exports = function(app){
 
     function getFormsForUser (req, res) {
 
-        console.log("inside  getFormsForUser of forms server service ");
+        console.log("inside getFormsForUser of forms server service ");
 
         var userId = req.params.userId;
 

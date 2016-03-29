@@ -1,6 +1,6 @@
-var formModel = require("./../models/form.model.js")();
+//var formModel = require("./../models/form.model.js")();
 
-module.exports = function(app){
+module.exports = function(app, formModel){
 
     app.get("/api/assignment/form/:formId/field",getFieldsForForm);//returns an array of fields belonging to a form object based on formId
     app.get("/api/assignment/form/:formId/field/:fieldId", getFieldForForm);//return field object from formId and fieldId

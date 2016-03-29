@@ -1,5 +1,9 @@
 var express = require('express');
 var app = express();
+
+var mongoose = require("mongoose");
+var db = mongoose.connect('mongodb://localhost/form-maker');
+
 var bodyParser    = require('body-parser');
 var multer        = require('multer');
 
@@ -9,18 +13,21 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
+
 app.use(express.static(__dirname + '/public'));
 
-require("./public/assignment/server/services/user.service.server.js")(app);
-require("./public/assignment/server/services/forms.service.server.js")(app);
-require("./public/assignment/server/services/field.service.server.js")(app);
-require("./public/assignment/server/app.js")(app);
+require ("./public/assignment/server/app.js")(app, db);
 
-
-require("./public/project/server/services/user.service.server.js")(app);
-require("./public/project/server/services/portfolio.service.server.js")(app);
-require("./public/project/server/services/watchlist.service.server.js")(app);
-require("./public/project/server/services/comment.service.server.js")(app);
-require("./public/project/server/app.js")(app);
+//require("./public/assignment/server/services/user.service.server.js")(app);
+//require("./public/assignment/server/services/forms.service.server.js")(app);
+//require("./public/assignment/server/services/field.service.server.js")(app);
+//require("./public/assignment/server/app.js")(app);
+//
+//
+//require("./public/project/server/services/user.service.server.js")(app);
+//require("./public/project/server/services/portfolio.service.server.js")(app);
+//require("./public/project/server/services/watchlist.service.server.js")(app);
+//require("./public/project/server/services/comment.service.server.js")(app);
+//require("./public/project/server/app.js")(app);
 
 app.listen(port, ipaddress);
