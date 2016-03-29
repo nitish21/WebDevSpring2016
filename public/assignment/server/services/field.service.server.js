@@ -9,15 +9,28 @@ module.exports = function(app, formModel){
     app.delete("/api/assignment/form/:formId/field/:fieldId",deleteFieldFromForm);//deleting a field given fieldId, formId
 
 
+    var fieldModel = require("./../models/field.model.server.js")(formModel);
+
     function getFieldsForForm (req, res) {
 
         console.log("inside getFieldsOfForm of fields server service");
 
         var formId = req.params.formId;
 
-        var fields = formModel.getFieldsOfForm(formId);
+        //var fields = fieldModel.getFieldsOfForm(formId);
 
-        res.json(fields);
+        fieldModel.getFieldsOfForm(formId)
+            .then(function(form) {
+                console.log("inside then() of getFieldsOfForm in server servic : e");
+                    console.log(form);
+                    console.log("*************");
+                    res.json(form.fields);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                });
+
+        //res.json(fields);
 
     }
 
@@ -30,9 +43,19 @@ module.exports = function(app, formModel){
 
         var formId = req.params.formId;
 
-        var field = formModel.createFieldForForm(formId,newField);
+        //var field = fieldModel.createFieldForForm(formId,newField);
 
-        res.json(field);
+        fieldModel.createFieldForForm(formId,newField)
+            .then(function (field) {
+                    console.log(field);
+                    res.json (field);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
+
+
+        //res.json(field);
 
     }
 
@@ -41,9 +64,17 @@ module.exports = function(app, formModel){
 
         console.log("inside  getFormById of forms server service ");
 
-        var field = formModel.findFieldByIds(req.params.formId,req.params.fieldId);
+        //var field = fieldModel.findFieldByIds(req.params.formId,req.params.fieldId);
 
-        res.json(field);
+        fieldModel.findFieldByIds(req.params.formId,req.params.fieldId)
+            .then(function (field) {
+                    res.json (field);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
+
+        //res.json(field);
 
     }
 
@@ -53,7 +84,18 @@ module.exports = function(app, formModel){
 
         var newField = req.body;
 
-        var field = formModel.updateFieldByIds(req.params.formId, req.params.fieldId, newField);
+        var field = fieldModel.updateFieldByIds(req.params.formId, req.params.fieldId, newField);
+
+        fieldModel.updateFieldByIds(req.params.formId, req.params.fieldId, newField)
+            .then(function (stats) {
+                    //res.json (field);
+
+                    deferred.resolve();
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
+
 
         console.log("updated field : ");
         console.log(field);
@@ -66,7 +108,7 @@ module.exports = function(app, formModel){
 
         console.log("inside deleteField of fields server service ");
 
-        var fields = formModel.deleteFieldByIds(req.params.formId,req.params.fieldId);
+        var fields = fieldModel.deleteFieldByIds(req.params.formId,req.params.fieldId);
 
         res.json(fields);
 

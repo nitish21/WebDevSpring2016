@@ -38,8 +38,9 @@
             //If found, removes form from current array of forms
             //Calls back with remaining array of forms
 
-            return $http.delete("/api/assignment/form/"+formId);
-
+            var allForms =  $http.delete("/api/assignment/form/"+formId);
+            console.log(allForms);
+            return allForms;
         }
 
         function  updateFormById(formId, newForm, callback){

@@ -67,7 +67,39 @@ module.exports = function () {
 
 
     function deleteFormById(formId) {
-        return Form.remove().where("_id").equals(formId);
+
+        var deferred = q.defer();
+
+        Form
+            .remove (
+                {_id: formId},
+                function (err, stats) {
+                    if (!err) {
+                        //deferred.resolve(stats);
+
+                        Form.find(function (err, forms) {
+                            if (!err) {
+                                //deferred.resolve(stats);
+                                console.log("inside find() of deleteFormById");
+                                console.log(forms);
+                                deferred.resolve (forms);
+
+
+                            } else {
+                                deferred.reject(err);
+                            }
+                        })
+
+
+                    } else {
+                        deferred.reject(err);
+                    }
+                }
+            );
+
+        return deferred.promise;
+
+
     }
 
 
@@ -75,14 +107,18 @@ module.exports = function () {
 
         var deferred = q.defer();
 
-        User
+        Form
             .update (
                 {_id: formId},
                 {$set: form},
                 function (err, stats) {
                     if (!err) {
                         console.log(stats);
-                        deferred.resolve(stats);
+                        //deferred.resolve(stats);
+
+                        deferred.resolve(findFormById(formId));
+
+
                     } else {
                         deferred.reject(err);
                     }

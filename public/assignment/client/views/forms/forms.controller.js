@@ -65,6 +65,10 @@
                 formToBeDeleted._id)
                 .then(function(response){
 
+                    console.log("inside then() of deleteFormById:");
+                    console.log(response);
+                    console.log(response.data);
+
                     var formsOfUser = [];
 
                     getFormsForUser(response.data, loggedInUser._id, formsOfUser);

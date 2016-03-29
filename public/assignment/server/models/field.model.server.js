@@ -10,7 +10,6 @@ module.exports = function(formModel) {
         createFieldForForm : createFieldForForm,
         updateFieldByIds : updateFieldByIds
 
-
     };
 
     return api;
@@ -19,6 +18,7 @@ module.exports = function(formModel) {
     function getFieldsOfForm(formId) {
         // use select() to retrieve a particular field
         return Form.findById(formId).select("fields");
+
     }
 
 

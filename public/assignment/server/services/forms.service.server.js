@@ -13,9 +13,15 @@ module.exports = function(app, formModel){
 
         var userId = req.params.userId;
 
-        var forms = formModel.findAllFormsForUser(userId);
+        formModel.findAllFormsForUser(userId)
+            .then(function(forms) {
+                    res.json(forms);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                });
 
-        res.json(forms);
+        //res.json(forms);
     }
 
 
@@ -27,9 +33,14 @@ module.exports = function(app, formModel){
 
         var userId = req.params.userId;
 
-        var form = formModel.createFormForUser(userId,newForm);
+        formModel.createFormForUser(userId,newForm)
+            .then(function (form) {
+                    res.json (form);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
 
-        res.json(form);
     }
 
 
@@ -37,9 +48,13 @@ module.exports = function(app, formModel){
 
         console.log("inside  getFormById of forms server service ");
 
-        var form = formModel.findFormById(req.params.formId);
-
-        res.json(form);
+        formModel.findFormById(req.params.formId).
+            then(function (form) {
+                res.json (form);
+            },
+            function (err) {
+                res.status(400).send(err);
+            });
 
     }
 
@@ -49,12 +64,18 @@ module.exports = function(app, formModel){
 
         var newForm = req.body;
 
-        var form = formModel.updateFormById(req.params.formId, newForm);
+        formModel.updateFormById(req.params.formId, newForm)
+            .then(function (forms) {
+                    res.json (forms);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
 
-        console.log("updated form : ");
-        console.log(form);
-
-        res.json(form);
+        //console.log("updated form : ");
+        //console.log(form);
+        //
+        //res.json(form);
 
     }
 
@@ -64,16 +85,20 @@ module.exports = function(app, formModel){
 
         var formId = req.params.formId;
 
-        var forms = formModel.deleteFormById(req.params.formId);
+        console.log("form id is" +formId);
 
+        formModel.deleteFormById(req.params.formId)
+            .then(function (forms) {
+                    console.log("formModel.deleteFormById returns ");
+                    //console.log(response.result);
+                    //res.send(200);
+                    return res.json(forms);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
 
-        console.log("qwertyuiuytrewertyu");
-        for(var i=0;i<forms.length;i++){
-            console.log("qwertyuiuytrewertyu");
-            console.log(forms[i]._id);
-        }
-
-        res.json(forms);
+        //res.json(forms);
 
     }
 }
