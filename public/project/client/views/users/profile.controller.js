@@ -34,21 +34,11 @@
 
             var loggedInUser = $rootScope.user;
 
-            var newUser = {};
-            newUser.username = userToBeUpdated.username;
-            newUser.password = userToBeUpdated.password;
-            newUser.firstName = userToBeUpdated.firstName;
-            newUser.lastName = userToBeUpdated.lastName;
-            newUser.emails = userToBeUpdated.emails;
-            newUser.phones = userToBeUpdated.phones;
-
             console.log("logged in user : " + loggedInUser);
-
-            //console.log(userToBeUpdated);
 
             UserService.updateUser(
                 loggedInUser._id,
-                newUser,
+                userToBeUpdated,
                 function(response){
                     $rootScope.user=response.data;
                     console.log(response.data);
