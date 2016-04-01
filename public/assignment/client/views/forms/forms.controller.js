@@ -100,9 +100,17 @@
 
             console.log("hello from update Form controller");
 
+            var newForm = {};
+            newForm.userId = formToBeUpdated.userId;
+            newForm.title = formToBeUpdated.title;
+            newForm.fields = formToBeUpdated.fields;
+            newForm.created = formToBeUpdated.created;
+            newForm.updated = formToBeUpdated.updated;
+
+
             FormService.updateFormById(
                 formToBeUpdated._id,
-                formToBeUpdated)
+                newForm)
                 .then(function(response){
                     console.log(response.data);
                     $scope.forms[$scope.selectedIndex] = response.data;
