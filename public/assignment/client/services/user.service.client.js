@@ -79,6 +79,13 @@
 
         function updateUser(userId,newUser){
 
+            console.log("user Id is : ");
+            console.log("new state of user should be : ");
+
+            console.log(newUser);
+
+            console.log("sending request to server ......");
+
             return $http.put("/api/assignment/user/"+userId, newUser);
 
         }
