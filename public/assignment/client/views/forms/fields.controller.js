@@ -31,7 +31,7 @@
                     function (response) {
                         $scope.fields = response.data;
                         console.log("meow");
-                        console.log($scope.fields);
+                        //console.log($scope.fields);
                     }
                 )
         }
@@ -121,7 +121,7 @@
                 .then(
                     function (response) {
                         console.log(response.data);
-                        $scope.fields = response.data;
+                        //$scope.fields = response.data;
                         getFieldsForForm(formId);
                     }
                 )
@@ -175,6 +175,8 @@
 
 
         $scope.$watch('fields', function (newValue, oldValue) {
+
+            console.log("meowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
 
                FieldService.reorderFields(formId,newValue)
                    .then(function (response) {

@@ -138,6 +138,8 @@ module.exports = function(app, formModel){
 
         //res.json(fieldModel.ReorderFormFields(req.params["formId"],req.body));
 
+        console.log("***********************************************************************************");
+
         fieldModel.ReorderFormFields(req.params.formId, req.body)
             .then(function (form) {
 

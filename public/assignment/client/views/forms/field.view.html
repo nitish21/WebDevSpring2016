@@ -97,7 +97,7 @@
             <!--////////////////////////from here starts the main display code/////////////////////////-->
 
             <!--<form>-->
-                <div ui-sortable ng-model="fields">
+            <div ui-sortable ng-model="fields">
 
                 <div class="form-group" ng-repeat="field in fields" ng-switch on="field.type">
 
@@ -171,26 +171,26 @@
                     </div>
                 </div>
 
-                </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="addField">Add New Field</label>
-                    <div class="form-horizontal row">
-                        <div class="col-xs-8">
-                            <select ng-model="fieldType" class="form-control" id="addField">
-                                <option value="singleLineText">Single Line Text</option>
-                                <option value="date">Date</option>
-                                <option value="dropdown">Dropdown</option>
-                                <option value="checkbox">Checkboxes</option>
-                                <option value="radioButtons">Radio buttons</option>
-                                <option value="paragraphTextField">Paragraph Text Field</option>
-                            </select>
-                        </div>
-                        <div class="formIcons">
-                            <a ng-click="addField(fieldType)" class="btn btn-small"><span class="glyphicon glyphicon-plus"></span></a>
-                        </div>
+            <div class="form-group">
+                <label for="addField">Add New Field</label>
+                <div class="form-horizontal row">
+                    <div class="col-xs-8">
+                        <select ng-model="fieldType" class="form-control" id="addField">
+                            <option value="singleLineText">Single Line Text</option>
+                            <option value="date">Date</option>
+                            <option value="dropdown">Dropdown</option>
+                            <option value="checkbox">Checkboxes</option>
+                            <option value="radioButtons">Radio buttons</option>
+                            <option value="paragraphTextField">Paragraph Text Field</option>
+                        </select>
+                    </div>
+                    <div class="formIcons">
+                        <a ng-click="addField(fieldType)" class="btn btn-small"><span class="glyphicon glyphicon-plus"></span></a>
                     </div>
                 </div>
+            </div>
 
 
             <!--</form>-->
