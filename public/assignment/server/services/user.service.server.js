@@ -95,12 +95,11 @@ module.exports = function(app, userModel){
 
     function updateUserById(req, res){
 
-        //var newuser = req.body;
+        console.log("inside updateUserById of users server service : ");
 
-        //var users = userModel.updateUserById(req.params.id, newuser);
+        var newUser = req.body;
 
-
-        userModel.updateUserById(req.params.id, newuser)
+        userModel.updateUserById(req.params.id, newUser)
             .then(function (users) {
                 console.log(users);
                 res.json (users);

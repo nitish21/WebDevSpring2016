@@ -82,7 +82,7 @@ module.exports = function (db) {
                     if (!err) {
                         //deferred.resolve(stats);
 
-                        Form.find(function (err, users) {
+                        User.find(function (err, users) {
                             if (!err) {
                                 //deferred.resolve(stats);
                                 console.log("inside find() of deleteUserById");
@@ -105,33 +105,11 @@ module.exports = function (db) {
         return deferred.promise;
 
 
-
-
-
-
-
-
-
-
-
-        //var deferred = q.defer();
-        //
-        //User
-        //    .remove (
-        //        {_id: userId},
-        //        function (err, stats) {
-        //            if (!err) {
-        //                deferred.resolve(stats);
-        //            } else {
-        //                deferred.reject(err);
-        //            }
-        //        }
-        //    );
-        //
-        //return deferred.promise;
     }
 
     function updateUserById (userId, user) {
+
+        var deferred = q.defer();
 
         User
             .update (
@@ -150,6 +128,8 @@ module.exports = function (db) {
                     }
                 }
             );
+
+        return deferred.promise;
 
     }
 

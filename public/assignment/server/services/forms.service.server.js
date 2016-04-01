@@ -5,7 +5,6 @@ module.exports = function(app, formModel){
     app.post("/api/assignment/user/:userId/form",createFormForUser);
     app.put("/api/assignment/form/:formId", updateForm);
     app.delete("/api/assignment/form/:formId",deleteForm);
-    //app.put("/api/assignment/form/:formId/field", ReorderFormFields);
 
     function getFormsForUser (req, res) {
 
@@ -102,10 +101,6 @@ module.exports = function(app, formModel){
 
     }
 
-    //function ReorderFormFields(req,res){
-    //
-    //    res.json(fieldModel.ReorderFormFields(req.params["formId"],req.body));
-    //}
 
 
 }
