@@ -120,17 +120,15 @@ module.exports = function (db) {
                         console.log(stats);
                         //deferred.resolve(stats);
 
-                        User
-                            .findOne (
-                                {_id: userId},
-                                function (err, currentuser) {
-                                    if (!err) {
-                                        deferred.resolve(currentuser);
-                                    } else {
-                                        deferred.reject(err);
-                                    }
+                        User.findById(userId,
+                            function (err, currentUser) {
+                                if(err) {
+                                    deferred.reject(err);
                                 }
-                            );
+                                else {
+                                    deferred.resolve(currentUser);
+                                }
+                            });
 
 
                     } else {
