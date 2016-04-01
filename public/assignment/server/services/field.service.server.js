@@ -7,7 +7,7 @@ module.exports = function(app, formModel){
     app.post("/api/assignment/form/:formId/field",createFieldForForm);// creating a new field for a form
     app.put("/api/assignment/form/:formId/field/:fieldId", updateField);//updating a field given fieldId, formId and details in request body
     app.delete("/api/assignment/form/:formId/field/:fieldId",deleteFieldFromForm);//deleting a field given fieldId, formId
-
+    app.put("/api/assignment/form/:formId/field", ReorderFormFields);
 
     var fieldModel = require("./../models/field.model.server.js")(formModel);
 
@@ -80,27 +80,34 @@ module.exports = function(app, formModel){
 
     function updateField (req, res) {
 
-        console.log("inside updateForm of forms server service ");
+        console.log("inside updateForm of fields server service ");
 
         var newField = req.body;
 
-        var field = fieldModel.updateFieldByIds(req.params.formId, req.params.fieldId, newField);
+        //var field = fieldModel.updateFieldByIds(req.params.formId, req.params.fieldId, newField);
+
+        console.log(newField);
+
+        console.log(req.params.formId);
+        console.log(req.params.fieldId);
 
         fieldModel.updateFieldByIds(req.params.formId, req.params.fieldId, newField)
-            .then(function (stats) {
+            .then(function (form) {
                     //res.json (field);
+                console.log("inside then() of updateField of field server service : ");
+                    console.log(form.fields.id(req.params.fieldId));
 
-                    deferred.resolve();
+                    res.json(form.fields.id(req.params.fieldId));
                 },
                 function (err) {
                     res.status(400).send(err);
                 });
 
 
-        console.log("updated field : ");
-        console.log(field);
-
-        res.json(field);
+        //console.log("updated field : ");
+        //console.log(field);
+        //
+        //res.json(field);
 
     }
 
@@ -108,9 +115,46 @@ module.exports = function(app, formModel){
 
         console.log("inside deleteField of fields server service ");
 
-        var fields = fieldModel.deleteFieldByIds(req.params.formId,req.params.fieldId);
+        //var fields = fieldModel.deleteFieldByIds(req.params.formId,req.params.fieldId);
 
-        res.json(fields);
+
+        fieldModel.deleteFieldByIds(req.params.formId, req.params.fieldId)
+            .then(function (form) {
+
+                    console.log("inside then() of deleteField of field server service : ");
+
+                    res.json(form.fields);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
+
+
+        //res.json(fields);
 
     }
+
+    function ReorderFormFields(req,res){
+
+        //res.json(fieldModel.ReorderFormFields(req.params["formId"],req.body));
+
+        fieldModel.ReorderFormFields(req.params.formId, req.body)
+            .then(function (form) {
+
+                    console.log("inside then() of ReorderFormFields of field server service : ");
+
+                    console.log(form);
+
+                    res.json(form.fields);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
+
+
+
+
+    }
+
+
 }

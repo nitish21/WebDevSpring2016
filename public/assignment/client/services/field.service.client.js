@@ -10,7 +10,8 @@
             getFieldsForForm: getFieldsForForm,
             getFieldForForm: getFieldForForm,
             deleteFieldFromForm: deleteFieldFromForm,
-            updateField: updateField
+            updateField: updateField,
+            reorderFields: reorderFields
         };
 
         return api;
@@ -41,5 +42,21 @@
 
             return $http.put(" /api/assignment/form/"+formId+"/field/"+fieldId, newField);
         }
+
+
+        function reorderFields(formId,fields){
+
+            var url = "/api/assignment/form/" + formId + "/field";
+            return $http.put(url,fields);
+
+
+           // var url = "/api/assignment/form/" + formId + "/field";
+           //$http.put(url, fields).success(function (response) {
+           //         defer.resolve(response);
+           //     });
+           // return defer.promise;
+
+       }
+
     }
 })();

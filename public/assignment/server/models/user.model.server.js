@@ -72,6 +72,7 @@ module.exports = function (db) {
 
     function deleteUserById (userId) {
 
+
         var deferred = q.defer();
 
         User
@@ -79,7 +80,22 @@ module.exports = function (db) {
                 {_id: userId},
                 function (err, stats) {
                     if (!err) {
-                        deferred.resolve(stats);
+                        //deferred.resolve(stats);
+
+                        Form.find(function (err, users) {
+                            if (!err) {
+                                //deferred.resolve(stats);
+                                console.log("inside find() of deleteUserById");
+                                console.log(users);
+                                deferred.resolve (users);
+
+
+                            } else {
+                                deferred.reject(err);
+                            }
+                        })
+
+
                     } else {
                         deferred.reject(err);
                     }
@@ -87,11 +103,35 @@ module.exports = function (db) {
             );
 
         return deferred.promise;
+
+
+
+
+
+
+
+
+
+
+
+        //var deferred = q.defer();
+        //
+        //User
+        //    .remove (
+        //        {_id: userId},
+        //        function (err, stats) {
+        //            if (!err) {
+        //                deferred.resolve(stats);
+        //            } else {
+        //                deferred.reject(err);
+        //            }
+        //        }
+        //    );
+        //
+        //return deferred.promise;
     }
 
     function updateUserById (userId, user) {
-
-        var deferred = q.defer();
 
         User
             .update (
@@ -99,14 +139,18 @@ module.exports = function (db) {
                 {$set: user},
                 function (err, stats) {
                     if (!err) {
-                        deferred.resolve(stats);
+                        console.log(stats);
+                        //deferred.resolve(stats);
+
+                        deferred.resolve(findUserById(userId));
+
+
                     } else {
                         deferred.reject(err);
                     }
                 }
             );
 
-        return deferred.promise;
     }
 
 
