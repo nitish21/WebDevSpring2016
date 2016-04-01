@@ -38,6 +38,8 @@
 
             console.log("logged in user : " + loggedInUser);
 
+            console.log(userToBeUpdated);
+
             UserService.updateUser(
                 loggedInUser._id,
                 userToBeUpdated,
