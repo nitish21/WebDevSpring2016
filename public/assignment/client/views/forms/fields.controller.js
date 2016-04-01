@@ -153,10 +153,16 @@
                 newField.options = JSON.parse(newField.options);
             }
 
-            FieldService.updateField(formId,newField._id,newField)
+            var myField = {};
+            myField.label = newField.label;
+            myField.type = newField.type;
+            myField.placeholder = newField.placeholder;
+            myField.options = newField.options;
+
+            FieldService.updateField(formId,newField._id,myField)
                 .then(
                     function (response) {
-                        console.log("inside changefield :");
+                        console.log("inside updateField :");
                         console.log(response.data);
                         $scope.myModalField = response.data;
                         getFieldsForForm(formId);
