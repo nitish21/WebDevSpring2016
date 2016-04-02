@@ -16,6 +16,7 @@
             .when("/home", {
                 templateUrl: "views/home/home.view.html"
             })
+
             .when("/forms", {
                 templateUrl: "views/forms/forms.view.html",
                 controller : "FormController",
