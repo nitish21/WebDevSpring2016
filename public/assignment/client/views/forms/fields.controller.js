@@ -191,10 +191,12 @@
 
             if(newValue.length == oldValue.length) {
 
-                FieldService.reorderFields(formId, newValue)
-                    .then(function (response) {
-                        vm.fields = response.data;
-                    });
+                if(newValue.length != 0) {
+                    FieldService.reorderFields(formId, newValue)
+                        .then(function (response) {
+                            vm.fields = response.data;
+                        });
+                }
             }
 
 
