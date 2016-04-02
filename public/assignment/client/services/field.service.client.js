@@ -47,6 +47,9 @@
         function reorderFields(formId,fields){
 
             console.log("inside reorder fields...........");
+            console.log("fields contains : ");
+            console.log(fields);
+
             var url = "/api/assignment/form/" + formId + "/field";
             return $http.put(url,fields);
 

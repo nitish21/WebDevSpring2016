@@ -9,30 +9,37 @@
         $routeProvider
             .when("/register", {
                 templateUrl: "views/users/register.view.html",
-                controller : "RegisterController"
+                controller : "RegisterController",
+                controllerAs : "model"
+
             })
             .when("/home", {
                 templateUrl: "views/home/home.view.html"
             })
             .when("/forms", {
                 templateUrl: "views/forms/forms.view.html",
-                controller : "FormController"
+                controller : "FormController",
+                controllerAs : "model"
             })
             .when("/fields", {
                 templateUrl: "views/forms/field.view.html",
-                controller : "FieldController"
+                controller : "FieldController",
+                controllerAs : "model"
             })
             .when("/form/:formId/fields", {
                 templateUrl: "views/forms/field.view.html",
-                controller : "FieldController"
+                controller : "FieldController",
+                controllerAs : "model"
             })
             .when("/login", {
                 templateUrl: "views/users/login.view.html",
-                controller : "LoginController"
+                controller : "LoginController",
+                controllerAs : "model"
             })
             .when("/profile", {
                 templateUrl: "views/users/profile.view.html",
-                controller : "ProfileController"
+                controller : "ProfileController",
+                controllerAs : "model"
             })
             .when("/admin", {
                 templateUrl: "views/admin/admin.view.html"

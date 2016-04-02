@@ -7,6 +7,9 @@
 
         $scope.login = login;
 
+        var vm = this;
+        vm.login = login;
+
         function login(credentials) {
 
             console.log("hello from login controller");

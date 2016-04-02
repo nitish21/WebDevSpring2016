@@ -5,7 +5,9 @@
 
     function RegisterController($scope, $rootScope, $location, UserService) {
 
-        $scope.register=register;
+        //$scope.register=register;
+        var vm = this;
+        vm.register = register;
 
 
         function register(user){

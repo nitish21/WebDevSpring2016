@@ -18,7 +18,7 @@
                     <div class="modal-content">
 
                         <div class="modal-header">
-                            <h4 class="modal-title text-center" id="modalLabel">{{myModalField.label}}</h4>
+                            <h4 class="modal-title text-center" id="modalLabel">{{model.myModalField.label}}</h4>
                         </div>
 
                         <div class="modal-body">
@@ -26,32 +26,32 @@
                                 <div class="form-group">
                                     <label for="label" class="col-sm-2 control-label">Label: </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="label" ng-model="myModalField.label">
+                                        <input type="text" class="form-control" id="label" ng-model="model.myModalField.label">
                                     </div>
                                 </div>
 
-                                <div class="form-group" ng-switch on="myModalField.type">
+                                <div class="form-group" ng-switch on="model.myModalField.type">
 
                                     <div ng-switch-when="TEXT">
                                         <label for="placeholder" class="col-sm-2 control-label">Placeholder: </label>
                                         <div class="col-sm-10">
                                             <input type="text"
                                                    class="form-control" id="placeholder"
-                                                   ng-model="myModalField.placeholder">
+                                                   ng-model="model.myModalField.placeholder">
                                         </div>
                                     </div>
 
                                     <div ng-switch-when="EMAIL">
                                         <label for="placeholder2" class="col-sm-2 control-label">Placeholder: </label>
                                         <input type="text" class="form-control"
-                                               id="placeholder2" ng-model="myModalField.placeholder">
+                                               id="placeholder2" ng-model="model.myModalField.placeholder">
                                     </div>
 
                                     <div ng-switch-when="TEXTAREA">
                                         <label for="placeholder3" class="col-sm-2 control-label">Placeholder: </label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" id="placeholder3"
-                                                   ng-model="myModalField.placeholder">
+                                                   ng-model="model.myModalField.placeholder">
                                         </div>
                                     </div>
 
@@ -59,7 +59,7 @@
                                         <label for="options1" class="col-sm-2 control-label">Options: </label>
                                         <div class="col-sm-10">
                                                             <textarea class="form-control" id="options1"
-                                                                      ng-model="myModalField.options">
+                                                                      ng-model="model.myModalField.options">
                                                             </textarea>
                                         </div>
                                     </div>
@@ -68,7 +68,7 @@
                                         <label for="options2" class="col-sm-2 control-label">Options: </label>
                                         <div class="col-sm-10">
                                                             <textarea class="form-control" id="options2"
-                                                                      ng-model="myModalField.options"></textarea>
+                                                                      ng-model="model.myModalField.options"></textarea>
                                         </div>
                                     </div>
 
@@ -76,7 +76,7 @@
                                         <label for="options3" class="col-sm-2 control-label">Options: </label>
                                         <div class="col-sm-10">
                                                             <textarea class="form-control" id="options3"
-                                                                      ng-model="myModalField.options"></textarea>
+                                                                      ng-model="model.myModalField.options"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="updateField(myModalField)">Ok</button>
+                                <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="model.updateField(model.myModalField)">Ok</button>
                             </div>
 
                         </div>
@@ -97,9 +97,9 @@
             <!--////////////////////////from here starts the main display code/////////////////////////-->
 
             <!--<form>-->
-            <div ui-sortable ng-model="fields">
+            <div ui-sortable ng-model="model.fields">
 
-                <div class="form-group" ng-repeat="field in fields" ng-switch on="field.type">
+                <div class="form-group" ng-repeat="field in model.fields" ng-switch on="field.type">
 
                     <label for="{{field._id}}">{{field.label}}</label>
 
@@ -161,9 +161,9 @@
 
 
                         <div class="formIcons">
-                            <a class="btn btn-small"  ng-click="editField(field._id)" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a class="btn btn-small"  ng-click="model.editField(field._id)" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pencil"></span></a>
                             <a class="btn btn-small"> <span class="glyphicon glyphicon-plus"></span></a>
-                            <a class="btn btn-small" ng-click="removeField(field._id)"> <span class="glyphicon glyphicon-remove"></span></a>
+                            <a class="btn btn-small" ng-click="model.removeField(field._id)"> <span class="glyphicon glyphicon-remove"></span></a>
                             <a class="btn btn-small"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
                         </div>
 
@@ -187,7 +187,7 @@
                         </select>
                     </div>
                     <div class="formIcons">
-                        <a ng-click="addField(fieldType)" class="btn btn-small"><span class="glyphicon glyphicon-plus"></span></a>
+                        <a ng-click="model.addField(fieldType)" class="btn btn-small"><span class="glyphicon glyphicon-plus"></span></a>
                     </div>
                 </div>
             </div>

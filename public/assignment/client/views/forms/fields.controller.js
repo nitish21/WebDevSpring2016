@@ -4,15 +4,15 @@
         .controller("FieldController",FieldController);
 
     function FieldController($routeParams, $scope, $rootScope, FieldService){
-        //var vm = this;
+        var vm = this;
 
         var formId = $routeParams.formId;
 
-        $scope.addField = addField;
-        $scope.updateField = updateField;
-        $scope.removeField = deleteField;
-        $scope.editField = editField;
-        $scope.fields=[];
+        vm.addField = addField;
+        vm.updateField = updateField;
+        vm.removeField = deleteField;
+        vm.editField = editField;
+        vm.fields=[];
 
 
         initialDisplayOfForms();
@@ -21,6 +21,7 @@
         function initialDisplayOfForms(){
             console.log(formId);
             getFieldsForForm(formId);
+
         }
 
 
@@ -29,8 +30,10 @@
             FieldService.getFieldsForForm(formId)
                 .then(
                     function (response) {
-                        $scope.fields = response.data;
+                        vm.fields = response.data;
                         console.log("meow");
+                        console.log(response.data);
+                        console.log("moewwww");
                         //console.log($scope.fields);
                     }
                 )
@@ -140,9 +143,9 @@
                     function (response) {
                         console.log("inside then() of editField");
                         console.log(response.data);
-                        $scope.myModalField = response.data;///////
-                        console.log($scope.myModalField);
-                        $scope.myModalField.options = JSON.stringify($scope.myModalField.options);///////////
+                        vm.myModalField = response.data;///////
+                        console.log(vm.myModalField);
+                        vm.myModalField.options = JSON.stringify(vm.myModalField.options);///////////
                     }
                 );
 
@@ -164,7 +167,7 @@
                     function (response) {
                         console.log("inside updateField :");
                         console.log(response.data);
-                        $scope.myModalField = response.data;
+                        vm.myModalField = response.data;
                         getFieldsForForm(formId);
                     }
                 );
@@ -174,22 +177,29 @@
             FieldService.deleteFieldFromForm(formId,fieldId)
                 .then(
                     function (response) {
-                        $scope.fields = response.data;
+                        vm.fields = response.data;
                     }
                 );
         }
 
+        $scope.$watch('model.fields', function (newValue, oldValue) {
 
-        $scope.$watch('fields', function (newValue, oldValue) {
+            console.log("meowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
 
-            console.log("meowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
+            console.log(newValue);
+            console.log(oldValue);
 
-               FieldService.reorderFields(formId,newValue)
-                   .then(function (response) {
-                                $scope.fields = response.data;
-                   });
+            if(newValue.length == oldValue.length) {
+
+                FieldService.reorderFields(formId, newValue)
+                    .then(function (response) {
+                        vm.fields = response.data;
+                    });
+            }
+
 
         }, true);
+
 
 
     }

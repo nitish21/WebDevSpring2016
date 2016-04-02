@@ -5,7 +5,10 @@
 
     function ProfileController($scope,$rootScope , $location, UserService) {
 
-        $scope.update = update;
+        //$scope.update = update;
+        var vm = this;
+        vm.update = update;
+        vm.user=$rootScope.user;
 
 
         function update(userToBeUpdated) {
