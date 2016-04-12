@@ -8,12 +8,13 @@
         var api = {
 
             findUserByUsername: findUserByUsername,
-            findUserByCredentials: findUserByCredentials,
+            login : login,
             findAllUsers: findAllUsers,
-            createUser: createUser,
+            register: register,
             deleteUserById: deleteUserById,
             updateUser: updateUser,
             findUserById: findUserById,
+            logout : logout
 
         };
 
@@ -30,9 +31,15 @@
 
             return $http.get(url);
 
-
         }
 
+        function login(user){
+            return $http.post("/api/assignment/login", user);
+        }
+
+        function logout() {
+            return $http.post("/api/assignment/logout");
+        }
 
         function findUserByUsername(username){
 
@@ -63,10 +70,10 @@
 
 
 
-        function createUser(user){
+        function register(user){
 
-            return $http.post("/api/assignment/user",user);
-
+            //return $http.post("/api/assignment/user",user);
+            return $http.post("/api/assignment/register",user);
         }
 
 

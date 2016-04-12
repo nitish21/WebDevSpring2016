@@ -5,12 +5,27 @@
 
         <!--<img ng-src="{{movie.Poster}}" height="300px" class="pull-left"/>-->
 
-        <p>
-            {{stock.LastPrice}} <br>
-            Change  -> {{stock.Change}} <br>
+        <div class="row">
 
-            % Change -> {{stock.ChangePercent}}
-        </p>
+            <div class="container">
+                <p>
+                    {{stock.LastPrice}} <br>
+                    Change  -> {{stock.Change}} <br>
+
+                    % Change -> {{stock.ChangePercent}}
+                </p>
+            </div>
+
+            <div class="container">
+                <a ng-click="addStockToPortfolio()" class="btn btn-primary">Add to Portfolio</a>
+            </div>
+
+        </div>
+
+        <div id="chartSpace"> Place holder for charts </div>
+
+        <a ng-click="showOneYearChart()" class="btn btn-default">1 Year </a>
+        <a ng-click="showOneMonthChart()" class="btn btn-default">1 Month</a>
 
         <!--<h3>Actors</h3>-->
 

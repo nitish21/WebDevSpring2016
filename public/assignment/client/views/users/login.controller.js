@@ -10,13 +10,15 @@
         var vm = this;
         vm.login = login;
 
-        function login(credentials) {
+        function login(user) {
 
             console.log("hello from login controller");
 
-            console.log("credentials : " + credentials);
+            console.log("credentials : " + user);
 
-            UserService.findUserByCredentials(credentials.username, credentials.password)
+            UserService
+                //.findUserByCredentials(credentials.username, credentials.password)
+                .login(user)
                 .then(function(response){
 
 
@@ -31,6 +33,10 @@
                         console.log("login failed..redirecting to /login");
                         $location.path('/login');
 
+                    }
+                },function (err) {
+                    if(err.data == "Unauthorized") {
+                        vm.error = "username/password does not exist";
                     }
                 });
 

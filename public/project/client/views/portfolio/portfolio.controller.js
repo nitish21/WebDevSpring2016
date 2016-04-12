@@ -3,7 +3,7 @@
         .module("StockPortfolioApp")
         .controller("PortfolioController", PortfolioController);
 
-    function PortfolioController($scope, $rootScope, $location, PortfolioService) {
+    function PortfolioController($scope, $rootScope, $location, PortfolioService, APIStockService) {
 
         $scope.addStock = addStock;
         $scope.updateStock = updateStock;
@@ -17,13 +17,65 @@
 
         function initialDisplayOfStocks(){
 
+            var currentUserStocks = [];
+
+            //PortfolioService.findAllStocksForUser($rootScope.user._id)
+            //    .then(function (response) {
+            //        angular.copy(response.data, $scope.stocks);
+            //    });
+
             PortfolioService.findAllStocksForUser($rootScope.user._id)
                 .then(function (response) {
-                    angular.copy(response.data, $scope.stocks);
+                    angular.copy(response.data, currentUserStocks);
+
+                    refreshPortfolioTable(currentUserStocks,true);
+
+                    //APIStockService.findLivePricesOfStocks(currentUserStocks,
+                    //    function(response){
+                    //        console.log(response.query.results.quote);
+                    //
+                    //        //for(var i=0;i<response.query.results.quote.length;i++){
+                    //        //    currentUserStocks[i]['livePrice'] = (response.query.results.quote[i].LastTradePriceOnly);
+                    //        //    currentUserStocks[i]['change'] = response.query.results.quote[i].Change;
+                    //        //    currentUserStocks[i]['overallGain'] = ((currentUserStocks[i].livePrice * currentUserStocks[i].Quantity) - (currentUserStocks[i].PricePurchased * currentUserStocks[i].Quantity)).toFixed(1);
+                    //        //    currentUserStocks[i]['overallGainPercent'] = ((currentUserStocks[i]['overallGain'] / (currentUserStocks[i].PricePurchased * currentUserStocks[i].Quantity)) * 100).toFixed(1);
+                    //        //    currentUserStocks[i]['latestValue'] = (currentUserStocks[i].livePrice * currentUserStocks[i].Quantity).toFixed(1);
+                    //        //}
+                    //        //
+                    //        //angular.copy(currentUserStocks,$scope.stocks);
+                    //
+                    //    });
+
+                    //for(var i = 0;i<currentUserStocks.length;i++) {
+                    //    APIStockService.findLivePriceOfStock(currentUserStocks[i]);
+                    //}
+
                 });
+
 
         }
 
+
+        function refreshPortfolioTable(currentUserStocks,flag){
+
+            APIStockService.findLivePricesOfStocks(currentUserStocks,
+                function(response){
+                    console.log(response.query.results.quote);
+
+                    for(var i=0;i<response.query.results.quote.length;i++){
+                        currentUserStocks[i]['livePrice'] = (response.query.results.quote[i].LastTradePriceOnly);
+                        currentUserStocks[i]['change'] = response.query.results.quote[i].Change;
+                        currentUserStocks[i]['overallGain'] = ((currentUserStocks[i].livePrice * currentUserStocks[i].Quantity) - (currentUserStocks[i].PricePurchased * currentUserStocks[i].Quantity)).toFixed(1);
+                        currentUserStocks[i]['overallGainPercent'] = ((currentUserStocks[i]['overallGain'] / (currentUserStocks[i].PricePurchased * currentUserStocks[i].Quantity)) * 100).toFixed(1);
+                        currentUserStocks[i]['latestValue'] = (currentUserStocks[i].livePrice * currentUserStocks[i].Quantity).toFixed(1);
+                    }
+
+                    if(flag==true) {
+                        angular.copy(currentUserStocks, $scope.stocks);
+                    }
+                });
+
+        }
 
         function addStock(newStock){
 
@@ -40,6 +92,9 @@
 
                     console.log(response.data);
                     $scope.stocks.push(response.data);
+
+                    refreshPortfolioTable($scope.stocks,false);
+
                     $scope.stock = {};
                     $scope.selectedIndex = null;
 
@@ -68,9 +123,11 @@
 
                     getStocksForUser(responseAllStocks.data, loggedInUser._id, stocksOfUser);
 
+                    refreshPortfolioTable(stocksOfUser,true);
+
                     console.log(stocksOfUser);
 
-                    $scope.stocks = stocksOfUser;
+                    //$scope.stocks = stocksOfUser;
 
 
                 });

@@ -9,8 +9,11 @@
 
         var QUOTE_BASE_QUERY = 'http://dev.markitondemand.com/MODApis/Api/v2/Quote/jsonp?symbol=';
 
-        //var BASE_URL = "https://query.yahooapis.com/v1/public/yql?q=";
-        //var QUOTE_QUERY = "select * from yahoo.finance.quote where symbol=";
+        var YAHOO_BASE_URL = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quote%20where%20symbol%20in%20(";
+        var middleSet = "";
+        var END_PART = ")&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=JSON_CALLBACK";
+
+        //var YAHOO_QUOTE_QUERY = "select * from yahoo.finance.quote where symbol=";
         //var END_PART = "&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
 
 
@@ -27,10 +30,48 @@
             createStockForUser : createStockForUser,
             findAllStocksForUser :findAllStocksForUser,
             deleteStockById : deleteStockById,
-            updateStockById : updateStockById
+            updateStockById : updateStockById,
+            getChartInfo :getChartInfo,
+
+            findLivePricesOfStocks : findLivePricesOfStocks
 
         };
+
         return api;
+
+
+        function findLivePricesOfStocks(allStocks,callback){
+
+            for(var i=0; i< allStocks.length;i++) {
+
+                var stock = allStocks[i];
+
+                var symbol = stock.Symbol;
+
+                if(i==0){
+                    middleSet=middleSet + "'" + symbol + "'";
+                }
+                else{
+                    middleSet=middleSet+ "%2C" + "'" + symbol + "'"
+                }
+                //middleSet = "'YHOO'%2C'AAPL'%2C'GOOG'%2C'MSFT'";
+            }
+
+
+            console.log("misslde set is ");
+            console.log(middleSet);
+
+            var encodedUrl = YAHOO_BASE_URL + middleSet + END_PART;
+
+            console.log("inside findLivePricesOfStocks()");
+            console.log(encodedUrl);
+
+            middleSet = "";
+
+            $http.jsonp(encodedUrl)
+                .success(callback);
+
+        }
 
         function findStockBySymbol(symbol, callback) {
 
@@ -49,6 +90,32 @@
 
             $http.jsonp(encodedSearchString)
                 .success(callback);
+
+        }
+
+        function getChartInfo(NumberOfDays,DataPeriod,symbol, callback){
+
+            console.log("inside getChartInfo()..");
+
+            //var url = "http://dev.markitondemand.com/MODApis/Api/v2/InteractiveChart/json?parameters={'Normalized':false,'NumberOfDays':365,'DataPeriod':'Day','Elements':[{'Symbol':'AAPL','Type':'price','Params':['c']}]}";
+
+            //var url = "http://dev.markitondemand.com/MODApis/Api/v2/InteractiveChart/jsonp?parameters=%7B%22Normalized%22%3Afalse%2C%22NumberOfDays%22%3A365%2C%22DataPeriod%22%3A%22Month%22%2C%22Elements%22%3A%5B%7B%22Symbol%22%3A%22AAPL%22%2C%22Type%22%3A%22price%22%2C%22Params%22%3A%5B%22c%22%5D%7D%5D%7D&callback=JSON_CALLBACK";
+
+            var url_base = "http://dev.markitondemand.com/MODApis/Api/v2/InteractiveChart/jsonp?parameters=%7B%22Normalized%22%3Afalse%2C%22NumberOfDays%22%3A";
+
+            var url_base = url_base + NumberOfDays + "%2C%22DataPeriod%22%3A%22" + DataPeriod + "%22%2C%22Elements%22%3A%5B%7B%22Symbol%22%3A%22" + symbol + "%22%2C%22Type%22%3A%22price%22%2C%22Params%22%3A%5B%22c%22%5D%7D%5D%7D&callback=JSON_CALLBACK";
+
+
+            console.log("done wih url.. encode uri is next step...");
+
+            //var encodedSearchString = encodeURI(url + "&callback=JSON_CALLBACK");
+
+            console.log("encodedSearchString : ");
+            console.log(url_base);
+
+            $http.jsonp(url_base)
+                .success(callback);
+
 
         }
 

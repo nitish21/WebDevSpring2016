@@ -12,11 +12,12 @@
     <h3>Search Results</h3>
 
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table table-striped table-bordered">
             <thead>
             <tr>
                 <th>Stock Symbol</th>
                 <th>Stock Name</th>
+                <!--<th>Action</th>-->
             </tr>
             </thead>
 
@@ -29,6 +30,12 @@
             </a>
             </td>
             <td>{{stock.Name}}</td>
+
+                <!--<td>-->
+                    <!--<a class="btn btn-small"><span class="glyphicon glyphicon glyphicon-plus"></span></a>-->
+                    <!--&lt;!&ndash;<a ng-click="addStock(stock)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-plus"></span></a>&ndash;&gt;-->
+                <!--</td>-->
+
             </tr>
             </tbody>
         </table>

@@ -17,7 +17,7 @@
             console.log("User : " + user);
 
 
-            UserService.createUser(user)
+            UserService.register(user)
                 .then(function(response){
                     console.log(response.data);
                     $rootScope.user=response.data;
