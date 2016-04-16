@@ -3,10 +3,10 @@
         .module("StockPortfolioApp")
         .controller("WatchlistController", WatchlistController);
 
-    function WatchlistController($scope, $rootScope, $location, WatchListService) {
+    function WatchlistController($scope, $rootScope, $location, WatchListService, APIStockService) {
 
         $scope.addStock = addStock;
-        $scope.updateStock = updateStock;
+        //$scope.updateStock = updateStock;
         $scope.deleteStock = deleteStock;
         $scope.selectStock = selectStock;
         $scope.stocks=[];
@@ -17,15 +17,57 @@
 
         function initialDisplayOfStocks(){
 
+            var currentUserStocks = [];
+
             console.log("inside initialDisplayOfStocks in watchlist controller...");
 
             WatchListService.findAllWatchlistStocksForUser($rootScope.user._id)
                 .then(function (response) {
-                    angular.copy(response.data, $scope.stocks);
+                    angular.copy(response.data, currentUserStocks);
+
+                    refreshPortfolioTable(currentUserStocks,true);
+
                 });
 
 
         }
+
+
+
+        function refreshPortfolioTable(currentUserStocks,flag){
+
+            APIStockService.findLivePricesOfStocks(currentUserStocks,
+                function(response){
+                    console.log(response.query.results.quote);
+
+                    if(response.query.results.quote.length != undefined) {
+
+                        console.log("(((((((((((((((((((((((((((((((((((");
+
+                        for (var i = 0; i < response.query.results.quote.length; i++) {
+                            currentUserStocks[i]['livePrice'] = (response.query.results.quote[i].LastTradePriceOnly);
+                            currentUserStocks[i]['change'] = response.query.results.quote[i].Change;
+                            //currentUserStocks[i]['percentChange'] = response.query.results.quote[i].percentChange;
+
+                        }
+                    }
+                    else{
+
+                        console.log("(((((((((((going corrrect(((((((((((((");
+
+                        currentUserStocks[0]['livePrice'] = (response.query.results.quote.LastTradePriceOnly);
+                        currentUserStocks[0]['change'] = response.query.results.quote.Change;
+                        //currentUserStocks[0]['percentChange'] = response.query.results.quote.percentChange;
+
+                    }
+
+                    if(flag==true) {
+                        angular.copy(currentUserStocks, $scope.stocks);
+                    }
+                });
+
+        }
+
 
 
         function addStock(newStock){
@@ -72,7 +114,9 @@
 
                     console.log(stocksOfUser);
 
-                    $scope.stocks = stocksOfUser;
+                    refreshPortfolioTable(stocksOfUser,true);
+
+                    //$scope.stocks = stocksOfUser;
 
 
                 });
@@ -95,17 +139,17 @@
 
         }
 
-        function updateStock(stockToBeUpdated) {
-
-            console.log("hello from update stock in portfolio controller");
-
-            WatchListService.updateWatchlistStockById(stockToBeUpdated._id, stockToBeUpdated)
-                .then(function(response) {
-                    console.log(response.data);
-                    $scope.stocks[$scope.selectedIndex] = response.data;
-                });
-
-        }
+        //function updateStock(stockToBeUpdated) {
+        //
+        //    console.log("hello from update stock in portfolio controller");
+        //
+        //    WatchListService.updateWatchlistStockById(stockToBeUpdated._id, stockToBeUpdated)
+        //        .then(function(response) {
+        //            console.log(response.data);
+        //            $scope.stocks[$scope.selectedIndex] = response.data;
+        //        });
+        //
+        //}
 
         function getStocksForUser(allStocks, userId, stocksOfUser) {
 

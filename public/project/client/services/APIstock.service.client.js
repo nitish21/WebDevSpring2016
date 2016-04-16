@@ -9,6 +9,7 @@
 
         var QUOTE_BASE_QUERY = 'http://dev.markitondemand.com/MODApis/Api/v2/Quote/jsonp?symbol=';
 
+
         var YAHOO_BASE_URL = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quote%20where%20symbol%20in%20(";
         var middleSet = "";
         var END_PART = ")&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=JSON_CALLBACK";

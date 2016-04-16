@@ -15,13 +15,15 @@
             console.log("User : " + user);
 
 
-            UserService.createUser(user,
-                function(response){
+            UserService.createUser(user)
+                .then(function(response){
+                    console.log("inside response of create user:");
                     console.log(response);
-                    $rootScope.user=response;
+                    $rootScope.user=response.data;
                     console.log($rootScope.user);
-                }
-            )
+                });
+
+
 
             $location.path('/profile');
 

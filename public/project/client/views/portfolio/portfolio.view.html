@@ -1,4 +1,4 @@
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main table-responsive">
+<div class="col-sm-offset-1 main table-responsive"  ng-controller="PortfolioController">
     <h1 class="page-header">
         Portfolio
     </h1>
@@ -9,58 +9,62 @@
 
         <div class="tab-content">
 
-            <table class="table table-striped table-bordered" ng-controller="PortfolioController">
+            <a href="#/search" class="btn btn-primary">Add Stock</a>
+            <br>
+            <br>
+
+            <table class="table table-striped table-bordered">
                 <thead>
                 <tr>
                     <td>
-                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
-                        Company
+                        <!--<a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>-->
+                        <b>Company</b>
                     </td>
 
                     <td>
-                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
-                        Live Price
+                        <!--<a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>-->
+                        <b>Live Price</b>
                     </td>
 
                     <td>
-                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
-                        Change
+                        <!--<a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>-->
+                        <b>Change</b>
                     </td>
 
                     <td>
-                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
-                        Inv. Price
+                        <!--<a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>-->
+                        <b>Inv. Price</b>
                     </td>
 
                     <td>
-                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
-                        Quantity
+                        <!--<a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>-->
+                        <b>Quantity</b>
                     </td>
 
                     <td>
-                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
-                        Overall Gain
+                        <!--<a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>-->
+                        <b>Overall Gain</b>
                     </td>
 
                     <td>
-                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
-                        Overall Gain %
+                        <!--<a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>-->
+                        <b>Overall Gain %</b>
                     </td>
 
                     <td>
-                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
-                        Latest Value
+                        <!--<a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>-->
+                        <b>Latest Value</b>
                     </td>
 
                     <td>
-                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
-                        Action
+                        <!--<a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>-->
+                        <b>Action</b>
                     </td>
                 </tr>
 
 
-                <tr>
-                    <td><input ng-model="stock.Symbol"  type="text" class="form-control" id="symbolCode" placeholder="Name"></td>
+                <tr ng-show="stock">
+                    <td>{{stock.Symbol}}</td>
                     <td></td>
                     <td></td>
                     <td><input ng-model="stock.PricePurchased"  type="text" class="form-control" id="pricePurchased" placeholder="Price Purchased"></td>
@@ -70,7 +74,7 @@
                     <td></td>
 
                     <td>
-                        <a ng-click="addStock(stock)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-plus"></span></a>
+                        <!--<a ng-click="addStock(stock)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-plus"></span></a>-->
                         <a ng-click="updateStock(stock)" class="btn btn-small"><span class="glyphicon glyphicon-ok"></span></a>
                     </td>
                 </tr>

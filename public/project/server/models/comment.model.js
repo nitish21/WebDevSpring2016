@@ -8,7 +8,7 @@ module.exports = function(){
         deleteCommentById : deleteCommentById,
         updateCommentById : updateCommentById
 
-    }
+    };
 
     return api;
 
@@ -18,7 +18,8 @@ module.exports = function(){
             "_id":(new Date).getTime(),
             "Symbol": symbol,
             "userId":userId,
-            "Comment":comment.Comment
+            "Comment":comment.Comment,
+            "username":comment.username
         };
 
         commentsArray.push(newComment);
@@ -103,7 +104,9 @@ module.exports = function(){
                     "_id":newComment._id,
                     "Symbol":newComment.Symbol,
                     "userId":newComment.userId,
-                    "Comment":newComment.Comment
+                    "username":newComment.username,
+                    "Comment":newComment.Comment,
+                    "abuseFlag": newComment.abuseFlag
 
                 };
 

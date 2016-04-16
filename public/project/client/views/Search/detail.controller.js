@@ -3,9 +3,10 @@
         .module("StockPortfolioApp")
         .controller("DetailController", detailController);
 
-    function detailController($scope,$rootScope, $routeParams, APIStockService, CommentsService) {
+    function detailController($scope,$rootScope, $routeParams, $location, APIStockService, CommentsService, PortfolioService, WatchListService) {
 
         $scope.Symbol = $routeParams.Symbol;
+        //$scope.addStock = null;
         $scope.CommentsForStock = [];
 
         $scope.addComment = createComment;
@@ -14,13 +15,22 @@
         $scope.selectComment = selectComment;
         $scope.showOneYearChart = showOneYearChart;
         $scope.showOneMonthChart = showOneMonthChart;
+        $scope.addStockToPortfolio = addStockToPortfolio;
+        $scope.addStockToWatchlist = addStockToWatchlist;
 
+        $scope.setPortfolioFlagForAdding = setPortfolioFlagForAdding;
+        $scope.setWatchListFlagForAdding = setWatchListFlagForAdding;
+        $scope.reportComment = reportComment;
+        $scope.portfolioFlag = false;
+        $scope.watchlistFlag = true;
 
 
         APIStockService.findStockBySymbol(
             $scope.Symbol,
             function(response) {
                 $scope.stock = response;
+                $scope.stock['Change'] = $scope.stock['Change'].toFixed(2);
+                $scope.stock['ChangePercent'] = $scope.stock['ChangePercent'].toFixed(2);
                 console.log(response);
 
             }
@@ -29,6 +39,53 @@
 
         showOneMonthChart();
 
+
+        function addStockToPortfolio(addStock){
+
+            addStock['Symbol'] = $scope.Symbol;
+
+            console.log(addStock);
+
+            PortfolioService.createStockForUser($rootScope.user._id, addStock)
+                .then(function(response) {
+                        $location.path('/portfolio');
+                    }
+                );
+
+
+
+        }
+
+        function addStockToWatchlist(){
+
+            var addStock = {};
+
+            addStock['Symbol'] = $scope.Symbol;
+
+            console.log(addStock);
+
+            WatchListService.createWatchlistStockForUser($rootScope.user._id, addStock)
+                .then(function(response) {
+                        $location.path('/watchlist');
+                    }
+                );
+
+
+
+        }
+
+
+        function setPortfolioFlagForAdding(){
+            $scope.portfolioFlag = true;
+            console.log($scope.portfolioFlag);
+        }
+
+
+
+        function setWatchListFlagForAdding(){
+            $scope.watchlistFlag = true;
+            console.log($scope.watchlistFlag);
+        }
 
 
         function convertMonthDates(arr){
@@ -189,6 +246,10 @@
 
             console.log("hello from update stock in portfolio controller");
 
+            console.log(commentToBeUpdated);
+
+            commentToBeUpdated['username'] = $rootScope.user.username;
+
             CommentsService.updateCommentById(commentToBeUpdated._id, commentToBeUpdated)
                 .then(function(response){
                     console.log(response.data);
@@ -264,16 +325,33 @@
             console.log(comment);
             var currentUserId = $rootScope.user._id;
 
-
+            comment['username'] = $rootScope.user.username;
 
             CommentsService.createStockCommentForUser(currentUserId, $scope.Symbol,comment)
                 .then(function(response){
 
                     console.log(response.data);
 
+                    $scope.comment = {};
+
                     $scope.CommentsForStock.push(response.data);
                 });
 
+
+        }
+
+
+        function reportComment(commentToBeUpdated){
+
+            commentToBeUpdated['abuseFlag'] = true;
+
+            //updateComment(commentToBeUpdated);
+
+            CommentsService.updateCommentById(commentToBeUpdated._id, commentToBeUpdated)
+                .then(function(response){
+                    console.log(response.data);
+                    $scope.CommentsForStock[$scope.selectedIndex] = response.data;
+                });
 
         }
 

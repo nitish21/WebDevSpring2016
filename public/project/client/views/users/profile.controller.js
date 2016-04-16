@@ -6,7 +6,7 @@
     function ProfileController($scope,$rootScope , $location, UserService, APIStockService) {
 
         $scope.update = update;
-        $scope.stocks=[];
+        //$scope.stocks=[];
 
 
 
@@ -17,12 +17,13 @@
 
             console.log("rootscope user is : " + $rootScope.user);
 
-            APIStockService.findAllStocksForUser(
-                $rootScope.user._id,
-                function (response) {
-                    angular.copy(response, $scope.stocks);
-                });
-
+            if($rootScope.user) {
+                APIStockService.findAllStocksForUser(
+                    $rootScope.user._id,
+                    function (response) {
+                        angular.copy(response, $scope.stocks);
+                    });
+            }
 
 
         }

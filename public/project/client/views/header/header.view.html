@@ -12,6 +12,14 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
 
+                <li ng-class="{'active' : $location.url().indexOf('portfolio') > 0}">
+                    <a ng-show="user" href="#/portfolio">Portfolio</a>
+                </li>
+
+                <li ng-class="{'active' : $location.url().indexOf('watchlist') > 0}">
+                    <a ng-show="user" href="#/watchlist">Watchlist</a>
+                </li>
+
                 <li ng-class="{'active' : $location.url().indexOf('search') > 0}"><a href="#/search">Search</a></li>
                 <li ng-class="{'active' : $location.url().indexOf('register') > 0}"><a href="#/register">Register</a></li>
                 <li ng-class="{'active' : $location.url().indexOf('login') > 0}"><a href="#/login">Login</a></li>

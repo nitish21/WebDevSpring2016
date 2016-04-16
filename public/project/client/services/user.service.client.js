@@ -65,7 +65,10 @@
 
         function createUser(user){
 
-            return $http.post("/api/project/user",user);
+            var response = $http.post("/api/project/user",user);
+            console.log("//////////////");
+            console.log(response);
+            return response;
 
         }
 

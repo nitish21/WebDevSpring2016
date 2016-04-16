@@ -1,6 +1,7 @@
 [
-  {"_id": "444", "Symbol": "AAPL", "userId": 123,"Comment": "Apple is going up!!!!"},
-  {"_id": "666", "Symbol": "AAPL", "userId": 123,"Comment": "Comment 2 : Apple is going up again!!!!"},
-  {"_id": "555", "Symbol": "GOOG", "userId": 123,"Comment" : "Google is going up too!!!!"},
-  {"_id": "020", "Symbol": "NTAP", "userId": 234,"Comment" : "NetApp will do well soon!!!"}
+  {"_id": "444", "Symbol": "AAPL", "userId": 123,"username": "nits","Comment": "Apple is going up!!!!","abuseFlag": false},
+  {"_id": "666", "Symbol": "AAPL", "userId": 123,"username": "nits","Comment": "Comment 2 : Apple is going up again!!!!","abuseFlag": false},
+  {"_id": "555", "Symbol": "GOOG", "userId": 123,"username": "nits","Comment" : "Google is going up too!!!!","abuseFlag": false},
+  {"_id": "020", "Symbol": "NTAP", "userId": 234,"username": "bob","Comment" : "NetApp will do well soon!!!","abuseFlag": false},
+  {"_id": "777", "Symbol": "AAPL", "userId": 234,"username": "bob","Comment": "Comment by bob : Apple is going up again!!!!","abuseFlag": false}
 ]
