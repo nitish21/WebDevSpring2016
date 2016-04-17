@@ -4,17 +4,19 @@
     <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
     <div class="container">
-        <h2>{{stock.Name}}</h2>
+
 
         <!--<img ng-src="{{movie.Poster}}" height="300px" class="pull-left"/>-->
 
-        <div class="row">
+        <!--<div class="row">-->
 
-            <div class="container">
-                <h2>
-                        {{stock.LastPrice}} &nbsp
+            <!--<div class="container">-->
+                <h3>
+                        <!--{{stock.LastPrice}} &nbsp-->
                         <!--<font color="green">-->
                         <div ng-show="stock.Change >= 0">
+                            {{stock.Name}} :
+                            {{stock.LastPrice}} &nbsp
                             <font color="green">
                                 <span class="glyphicon glyphicon-arrow-up"></span>
                                 {{stock.Change}} &nbsp
@@ -23,6 +25,8 @@
                         </div>
 
                         <div ng-show="stock.Change < 0">
+                            {{stock.Name}} :
+                            {{stock.LastPrice}} &nbsp
                             <font color="red">
                                 <span class="glyphicon glyphicon-arrow-down"></span>
                                 {{stock.Change}} &nbsp
@@ -32,8 +36,10 @@
 
 
 
-                </h2>
-            </div>
+                </h3>
+            <!--</div>-->
+
+
 
             <div ng-show="user" class="container">
                 <a ng-show="!portfolioFlag" ng-click="setPortfolioFlagForAdding()" class="btn btn-primary">Add to Portfolio</a>
@@ -75,7 +81,7 @@
 
             </div>
 
-        </div>
+        <!--</div>-->
 
         <div id="chartSpace"> Place holder for charts </div>
 

@@ -104,6 +104,18 @@ body {
     border-radius: 50%;
 }
 
+.meraContainer {
+    height: 100%;
+    /*background: #f0e68c;*/
+}
+
+
+.lessPadding {
+    margin:0;
+    padding:0;
+    width:100%;
+}
+
 /*.table > tbody > tr > td {*/
      /*text-align: center;*/
 /*}*/

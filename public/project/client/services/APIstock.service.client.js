@@ -33,12 +33,44 @@
             deleteStockById : deleteStockById,
             updateStockById : updateStockById,
             getChartInfo :getChartInfo,
+            getHomeChartInfo :getHomeChartInfo,
 
             findLivePricesOfStocks : findLivePricesOfStocks
 
         };
 
         return api;
+
+
+
+
+        function getHomeChartInfo(callback){
+
+            //NumberOfDays,DataPeriod,symbol,
+
+            console.log("inside getHomeChartInfo()..");
+
+            var BASE_URL = "http://query.yahooapis.com/v1/public/yql?q=";
+
+            var yql_query = 'select Symbol, Date, Close from yahoo.finance.historicaldata where symbol IN ("^BSESN","^NYA") and startDate = "2016-04-01" and endDate = "2016-04-16"';
+
+            var yql_query_string = encodeURI(BASE_URL+yql_query);
+
+            var query_str_final = yql_query_string + "&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=JSON_CALLBACK";
+
+
+            console.log("done wih url.. encode uri is next step...");
+
+            console.log("encodedSearchString : ");
+            console.log(query_str_final);
+
+            $http.jsonp(query_str_final)
+                .success(callback);
+
+
+        }
+
+
 
 
         function findLivePricesOfStocks(allStocks,callback){
