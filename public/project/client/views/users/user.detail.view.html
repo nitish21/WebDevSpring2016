@@ -1,0 +1,92 @@
+<div class="col-sm-offset-1 main" ng-controller="UserDetailController">
+    <h1 class="page-header">{{Username}}'s Details: </h1>
+
+    <div ng-show="user" class="container">
+        <a ng-show="!isFollowing" ng-click="follow()" class="btn btn-primary">Follow</a>
+        <!--<button ng-click="follow()" class="btn btn-primary">Follow</button>-->
+        <a ng-show="isFollowing" ng-click="unFollow()" class="btn btn-primary">UnFollow</a>
+    </div>
+
+    <div class="container col-lg-12">
+        <div class="container col-lg-6">
+
+            <h1>{{Username}} is following : </h1>
+
+            <ul>
+                <h2>
+                    <li ng-show="xusername!=user.username" ng-repeat="xusername in toBeDisplayedUser.following">
+                        <a  href="#/userdetail/{{xusername}}">
+                            {{xusername}}
+                        </a>
+                    </li>
+                </h2>
+            </ul>
+
+        </div>
+
+        <div class="container col-lg-6">
+
+            <h1>{{Username}}'s Followers : </h1>
+
+            <ul>
+                <h2>
+                    <li ng-show="xusername!=user.username" ng-repeat="xusername in toBeDisplayedUser.followers">
+                        <a  href="#/userdetail/{{xusername}}">
+                            {{xusername}}
+                        </a>
+                    </li>
+                </h2>
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="container col-lg-12">
+        <br>
+    </div>
+
+
+    <div class="container col-lg-12">
+
+    <div class="container col-lg-6">
+
+    <h1>Stocks in {{Username}}'s Watchlist : </h1>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <td>
+                <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
+                Company
+            </td>
+
+
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="stock in stocks">
+            <td>{{stock.Name}}</td>
+            <!--<td>{{stock.PricePurchased}}</td>-->
+            <!--<td>{{stock.Quantity}}</td>-->
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+    <div class="container col-lg-6"></div>
+
+    </div>
+
+    <div class="col-lg-12">
+        <br>
+        <br>
+    </div>
+
+</div>

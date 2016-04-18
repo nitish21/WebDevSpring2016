@@ -1,12 +1,12 @@
 [
   {	"_id":123, "firstName":"Nitish",            "lastName":"Nadkarni",
-    "username":"nits",  "password":"nits",   "roles": ["Investor"]	, "following":[234,235]	},
+    "username":"nits",  "password":"nits",   "roles": ["Investor"]	, "following":["bob","charlie"],"followers" : ["dan","ed"]},
   {	"_id":234, "firstName":"Bob",              "lastName":"Hope",
-    "username":"bob",    "password":"bob",     "roles": ["admin"]	, "following":[123,345]	},
+    "username":"bob",    "password":"bob",     "roles": ["admin"]	, "following":["nits","charlie"],"followers" : ["dan","ed"]	},
   {	"_id":345, "firstName":"Charlie",          "lastName":"Brown",
-    "username":"charlie","password":"charlie", "roles": ["Investor"] ,"following":[123,234]	},
+    "username":"charlie","password":"charlie", "roles": ["Investor"] ,"following":["nits","bob"],"followers" : ["bob","dan","ed"]	},
   {	"_id":456, "firstName":"Dan",              "lastName":"Craig",
-    "username":"dan",    "password":"dan",     "roles": ["Investor", "admin"], "following":[123,234]},
+    "username":"dan",    "password":"dan",     "roles": ["Investor", "admin"], "following":["nits","bob"],"followers" : ["bob","charlie","ed"]},
   {	"_id":567, "firstName":"Edward",           "lastName":"Norton",
-    "username":"ed",     "password":"ed",      "roles": ["Investor"] ,"following":[123,234]	}
+    "username":"ed",     "password":"ed",      "roles": ["Investor"] ,"following":["nits","bob"],"followers" : ["bob","charlie","dan"]	}
 ]

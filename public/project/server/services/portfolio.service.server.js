@@ -1,6 +1,6 @@
-var portfolioModel = require("./../models/portfolio.model.js")();
+//var portfolioModel = require("./../models/portfolio.model.js")();
 
-module.exports = function(app){
+module.exports = function(app, portfolioModel){
 
     app.post("/api/project/user/:userId/stock",createStockForUser);//createStockForUser
 
@@ -19,9 +19,10 @@ module.exports = function(app){
 
         var userId = req.params.userId;
 
-        var stocks = portfolioModel.findAllStocksForUser(userId);
-
-        res.json(stocks);
+        portfolioModel.findAllStocksForUser(userId)
+            .then(function(stocks){
+                res.json(stocks);
+            });
 
     }
 
@@ -33,9 +34,12 @@ module.exports = function(app){
 
         var userId = req.params.userId;
 
-        var stock = portfolioModel.createStockForUser(userId,newStock);
+        portfolioModel.createStockForUser(userId,newStock)
+            .then(function (stock) {
+                res.json(stock);
+            });
 
-        res.json(stock);
+
     }
 
 
@@ -45,16 +49,13 @@ module.exports = function(app){
 
         var stockId = req.params.stockId;
 
-        var stocks = portfolioModel.deleteStockById(req.params.stockId);
+        var stocks = portfolioModel.deleteStockById(req.params.stockId)
+            .then(function(stocks){
+                res.json(stocks);
+            });
 
 
-        console.log("qwertyuiuytrewertyu");
-        for(var i=0;i<stocks.length;i++){
-            console.log("qwertyuiuytrewertyu");
-            console.log(stocks[i]._id);
-        }
-
-        res.json(stocks);
+        //res.json(stocks);
 
     }
 
@@ -65,12 +66,17 @@ module.exports = function(app){
 
         var newStock = req.body;
 
-        var stock = portfolioModel.updateStockById(req.params.stockId, newStock);
+        portfolioModel.updateStockById(req.params.stockId, newStock)
+            .then(function(stock){
+                console.log("updated stock : ");
+                console.log(stock);
+                res.json(stock);
+            });
 
-        console.log("updated stock : ");
-        console.log(stock);
-
-        res.json(stock);
+        //console.log("updated stock : ");
+        //console.log(stock);
+        //
+        //res.json(stock);
 
     }
 

@@ -11,7 +11,8 @@
             createStockForUser : createStockForUser,
             findAllStocksForUser :findAllStocksForUser,
             deleteStockById : deleteStockById,
-            updateStockById : updateStockById
+            updateStockById : updateStockById,
+            findAllStocksForUserWithUsername : findAllStocksForUserWithUsername
 
         };
 
@@ -20,6 +21,15 @@
         /////////////////////////////////////////////////////
         // Non API service methods
         /////////////////////////////////////////////////////
+
+
+        function findAllStocksForUserWithUsername(userName){
+
+            return $http.get("/api/project/user/"+userName+"/stock");
+
+        }
+
+
 
         function createStockForUser(userId, stock ){
 

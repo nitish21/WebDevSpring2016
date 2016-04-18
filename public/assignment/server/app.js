@@ -9,5 +9,5 @@ module.exports = function(app,db) {
 
     var fieldService = require("./services/field.service.server.js")(app, formModel);
 
-}
+};
 

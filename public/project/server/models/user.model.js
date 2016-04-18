@@ -8,9 +8,103 @@ module.exports = function() {
         deleteUserById: deleteUserById,
         updateUserById: updateUserById,
         findUserByUsername: findUserByUsername,
-        findUserById: findUserById
+        findUserById: findUserById,
+        follow : follow,
+        unfollow : unfollow
     };
     return api;
+
+
+    function unfollow(userId, unfollowJson) {
+
+
+        var whoWantsToUnFollow = unfollowJson.whoWantsToUnFollow;
+        var whom = unfollowJson.whom;
+
+        var respJson = {};
+
+        for (var i = 0; i < users.length; i++) {
+
+            var user = users[i];
+
+            if(user.username == whoWantsToUnFollow){
+
+                for(var j=0;j<user.following.length;j++){
+
+                    var temp = user.following[j];
+
+                    if(temp == whom){
+                        user.following.splice(j,1);
+                    }
+
+                }
+
+                respJson['whoUnFollowed'] = user;
+
+            }
+
+            if(user.username == whom){
+
+                for(var j=0;j<user.followers.length;j++){
+
+                    var temp = user.followers[j];
+
+                    if(temp == whoWantsToUnFollow){
+                        user.followers.splice(j,1);
+                    }
+
+                }
+
+                respJson['whom'] = user;
+
+            }
+
+        }
+
+        return respJson;
+
+
+    }
+
+
+
+
+    function follow(userId, followJson) {
+
+
+        var whoWantsToFollow = followJson.whoWantsToFollow;
+        var whom = followJson.whom;
+
+        var respJson = {};
+
+        for (var i = 0; i < users.length; i++) {
+
+            var user = users[i];
+
+            if(user.username == whoWantsToFollow){
+
+                user.following.push(whom);
+
+                respJson['whoFollowed'] = user;
+
+            }
+
+            if(user.username == whom){
+
+                user.followers.push(whoWantsToFollow);
+
+                respJson['whom'] = user;
+
+            }
+
+        }
+
+        return respJson;
+
+
+    }
+
+
 
     function findUserByCredentials(username, password) {
 

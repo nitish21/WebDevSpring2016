@@ -101,71 +101,112 @@
     </div>
 
 
-    <div class="container">
-        <h2>Comments on this stock : </h2>
+    <!--<div class="col-lg-12">-->
 
-        <div class="tab-content">
-
-            <table class="table table-striped table-bordered">
-                <thead>
-                <tr>
-                    <td>
-                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
-                        User
-                    </td>
-
-                    <td>
-                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
-                        Comment
-                    </td>
-
-                    <!--<td>-->
-                        <!--<a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>-->
-                        <!--Quantity-->
-                    <!--</td>-->
-
-                    <td ng-show="user">
-                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
-                        Action
-                    </td>
-                </tr>
+        <br>
+        <br>
+        <!--<div class="container col-lg-3">-->
+        <div ng-show="watchUsernames.length > 0" class="col-lg-6">
 
 
-                <tr ng-show="user">
-                    <!--<td><input ng-model="comment.userId"  type="text" class="form-control" id="userId" placeholder="Name"></td>-->
-                    <td>{{user.username}}</td>
-                    <td><input ng-model="comment.Comment"  type="text" class="form-control" id="commentText" placeholder="Comment text"></td>
-                    <!--<td><input ng-model="comment.Quantity"  type="text" class="form-control" id="quantity" placeholder="No. of stocks"></td>-->
-                    <td>
-                        <a ng-click="addComment(comment)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-plus"></span></a>
-                        <a ng-click="updateComment(comment)" class="btn btn-small"><span class="glyphicon glyphicon-ok"></span></a>
-                    </td>
-                </tr>
+            <div class="tab-content">
+                <h2>Users watching this stock : </h2>
+            <table class="table table-striped table-bordered col-lg-6">
+                <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+                            <!--&lt;!&ndash;<font color="aqua"><span class="glyphicon glyphicon glyphicon-sort"></span></font>&ndash;&gt;-->
+                            <!--<h2>Users watching this stock</h2>-->
+                        <!--</td>-->
 
-                </thead>
+                    <!--</tr>-->
+
+
+                <!--</thead>-->
 
                 <tbody>
-                <tr ng-repeat="comment in CommentsForStock">
-                    <td>{{comment.username}}</td>
-                    <td>{{comment.Comment}}</td>
-                    <!--<td>{{stock.Quantity}}</td>-->
-                    <td ng-show="user" class="nowrap">
-                        <a ng-show="user._id == comment.userId" ng-click="deleteComment($index)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-remove"></span></a>
-                        <a ng-show="user._id == comment.userId" ng-click="selectComment($index)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-pencil"></span></a>
 
-                        <a ng-show="user._id != comment.userId && comment.abuseFlag == false" ng-click="reportComment(comment)" class="btn btn-small"><span class="glyphicon glyphicon-flag"></span></a>
-                        <p ng-show="user._id != comment.userId && comment.abuseFlag == true">Abuse Reported</p>
-                        <!--<p>need to add buttons here</p>-->
-                    </td>
-                </tr>
+                    <tr ng-repeat="watchUsername in watchUsernames">
+                        <td>
+                            <a  href="#/userdetail/{{watchUsername.username}}">
+                                {{watchUsername.username}}
+                            </a>
+                        </td>
+                    </tr>
                 </tbody>
 
-
-
             </table>
+            </div>
+
 
         </div>
 
-    </div>
+        <div class="container col-lg-12">
+            <h2>Comments on this stock : </h2>
+
+            <div class="tab-content">
+
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <td>
+                            <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
+                            User
+                        </td>
+
+                        <td>
+                            <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
+                            Comment
+                        </td>
+
+                        <!--<td>-->
+                            <!--<a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>-->
+                            <!--Quantity-->
+                        <!--</td>-->
+
+                        <td ng-show="user">
+                            <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon glyphicon-sort"></span></a>
+                            Action
+                        </td>
+                    </tr>
+
+
+                    <tr ng-show="user">
+                        <!--<td><input ng-model="comment.userId"  type="text" class="form-control" id="userId" placeholder="Name"></td>-->
+                        <td>{{user.username}}</td>
+                        <td><input ng-model="comment.Comment"  type="text" class="form-control" id="commentText" placeholder="Comment text"></td>
+                        <!--<td><input ng-model="comment.Quantity"  type="text" class="form-control" id="quantity" placeholder="No. of stocks"></td>-->
+                        <td>
+                            <a ng-click="addComment(comment)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-plus"></span></a>
+                            <a ng-show="selectedIndex != -1" ng-click="updateComment(comment)" class="btn btn-small"><span class="glyphicon glyphicon-ok"></span></a>
+                        </td>
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+                    <tr ng-repeat="comment in CommentsForStock">
+                        <td>{{comment.username}}</td>
+                        <td>{{comment.Comment}}</td>
+                        <!--<td>{{stock.Quantity}}</td>-->
+                        <td ng-show="user" class="nowrap">
+                            <a ng-show="user._id == comment.userId" ng-click="deleteComment($index)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-remove"></span></a>
+                            <a ng-show="user._id == comment.userId" ng-click="selectComment($index)" class="btn btn-small"><span class="glyphicon glyphicon glyphicon-pencil"></span></a>
+
+                            <a ng-show="user._id != comment.userId && comment.abuseFlag == false" ng-click="reportComment(comment)" class="btn btn-small"><span class="glyphicon glyphicon-flag"></span></a>
+                            <p ng-show="user._id != comment.userId && comment.abuseFlag == true">Abuse Reported</p>
+                            <!--<p>need to add buttons here</p>-->
+                        </td>
+                    </tr>
+                    </tbody>
+
+
+
+                </table>
+
+            </div>
+
+        </div>
+    <!--</div>-->
 
 </div>

@@ -16,6 +16,9 @@ module.exports = function() {
     // Non API service methods
     /////////////////////////////////////////////////////
 
+
+
+
     function createStockForUser(userId, stock){
         //Accepts parameters user id, stock object, and callback function
         //Adds property called _id with unique id. You can use (new Date).getTime() to create a unique number
@@ -26,14 +29,16 @@ module.exports = function() {
         var newStock = {
             "_id":(new Date).getTime(),
             "Symbol":stock.Symbol,
+            "Name":stock.Name,
             "PricePurchased":stock.PricePurchased,
             "Quantity": stock.Quantity,
-            "userId":userId
+            "userId":userId,
+            "username":stock.username
         };
 
         stocksArray.push(newStock);
 
-        return newStock
+        return newStock;
     }
 
     function findAllStocksForUser(userId){

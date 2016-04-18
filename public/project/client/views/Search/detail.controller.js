@@ -8,6 +8,8 @@
         $scope.Symbol = $routeParams.Symbol;
         //$scope.addStock = null;
         $scope.CommentsForStock = [];
+        $scope.watchUsernames = [];
+        $scope.selectedIndex = -1;
 
         $scope.addComment = createComment;
         $scope.deleteComment = deleteComment;
@@ -40,9 +42,30 @@
         showOneMonthChart();
 
 
+        WatchListService.findAllUsernamesWithThisStock($scope.Symbol)
+            .then(function(response){
+                $scope.watchUsernames = response.data;
+                console.log("hello world from watherss!");
+                console.log(response.data);
+
+            });
+
+        CommentsService.findAllCommentsForStock($scope.Symbol)
+            .then(function(response) {
+                $scope.CommentsForStock = response.data;
+                console.log("hello world!");
+                console.log(response.data);
+            });
+
+
+
+
+
         function addStockToPortfolio(addStock){
 
             addStock['Symbol'] = $scope.Symbol;
+            addStock['Name'] = $scope.stock.Name;
+            addStock['username'] = $rootScope.user.username;
 
             console.log(addStock);
 
@@ -61,6 +84,9 @@
             var addStock = {};
 
             addStock['Symbol'] = $scope.Symbol;
+            addStock['Name'] = $scope.stock.Name;
+            addStock['username'] = $rootScope.user.username;
+
 
             console.log(addStock);
 
@@ -234,12 +260,7 @@
 
 
 
-        CommentsService.findAllCommentsForStock($scope.Symbol)
-            .then(function(response) {
-                $scope.CommentsForStock = response.data;
-                console.log("hello world!");
-                console.log(response.data);
-            });
+
 
 
         function updateComment(commentToBeUpdated) {
@@ -254,6 +275,8 @@
                 .then(function(response){
                     console.log(response.data);
                     $scope.CommentsForStock[$scope.selectedIndex] = response.data;
+                    $scope.selectedIndex = -1;
+                    $scope.comment = {};
                 });
 
         }
@@ -330,6 +353,7 @@
             CommentsService.createStockCommentForUser(currentUserId, $scope.Symbol,comment)
                 .then(function(response){
 
+                    console.log("inside createStockCommentForUser :----------------------");
                     console.log(response.data);
 
                     $scope.comment = {};
@@ -351,6 +375,8 @@
                 .then(function(response){
                     console.log(response.data);
                     $scope.CommentsForStock[$scope.selectedIndex] = response.data;
+
+
                 });
 
         }

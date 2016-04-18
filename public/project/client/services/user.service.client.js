@@ -14,12 +14,30 @@
             deleteUserById: deleteUserById,
             updateUser: updateUser,
             findUserById: findUserById,
+            follow : follow,
+            unfollow : unfollow
 
         };
 
 
         return api;
 
+        function unfollow(userId,unfollowJson){
+
+            var url = "/api/project/userUnfollow/"+userId;
+
+            return $http.put(url, unfollowJson);
+
+        }
+
+
+        function follow(userId,followJson){
+
+            var url = "/api/project/userfollow/"+userId;
+
+            return $http.put(url, followJson);
+
+        }
 
         function findUserByCredentials(username, password) {
 

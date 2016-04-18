@@ -23,10 +23,15 @@
 
             WatchListService.findAllWatchlistStocksForUser($rootScope.user._id)
                 .then(function (response) {
+
+                    console.log(response.data);
+
                     angular.copy(response.data, currentUserStocks);
 
-                    refreshPortfolioTable(currentUserStocks,true);
 
+                    if(response.data.length > 0) {
+                        refreshPortfolioTable(currentUserStocks, true);
+                    }
                 });
 
 
@@ -78,6 +83,7 @@
 
             console.log("logged in user : " + loggedInUser);
 
+            newStock["username"] = loggedInUser.username;
 
             WatchListService.createWatchlistStockForUser(loggedInUser._id, newStock)
                 .then(function(response){

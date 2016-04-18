@@ -63,7 +63,10 @@ module.exports = function (db) {
             if (err) {
                 deferred.reject (err);
             } else {
-                deferred.resolve (user);
+                //deferred.resolve (user);
+
+                deferred.resolve(findUserByUsername(user.username));
+
             }
         });
         return deferred.promise;

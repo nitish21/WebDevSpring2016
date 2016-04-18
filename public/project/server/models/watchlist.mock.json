@@ -1,5 +1,5 @@
 [
-  {"_id": "1111", "Symbol": "NFLX","userId": 123},
-  {"_id": "2222", "Symbol": "MSFT","userId": 123},
-  {"_id": "3333", "Symbol": "TSLA","userId": 234}
+  {"_id": "1111", "Symbol": "NFLX","Name": "Netflix Inc","userId": 123,"username" : "nits"},
+  {"_id": "2222", "Symbol": "MSFT","Name": "Microsoft Inc","userId": 123, "username" : "nits"},
+  {"_id": "3333", "Symbol": "TSLA","Name": "Tesla Motors","userId": 234, "username" : "bob"}
 ]

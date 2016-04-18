@@ -7,8 +7,9 @@ module.exports = function() {
         createWatchlistStockForUser : createWatchlistStockForUser,
         findAllWatchlistStocksForUser :findAllWatchlistStocksForUser,
         deleteWatchlistStockById : deleteWatchlistStockById,
-        updateWatchlistStockById : updateWatchlistStockById
-
+        updateWatchlistStockById : updateWatchlistStockById,
+        findAllWatchlistStocksForUserWithUsername : findAllWatchlistStocksForUserWithUsername,
+        findAllUsernamesWithThisStock : findAllUsernamesWithThisStock
     };
 
     return api;
@@ -17,6 +18,28 @@ module.exports = function() {
     /////////////////////////////////////////////////////
     // Non API service methods
     /////////////////////////////////////////////////////
+
+
+    function findAllUsernamesWithThisStock(Symbol){
+
+        var usernames = [];
+
+        for (var i = 0; i < stocksArray.length; i++) {
+
+            var stock = stocksArray[i];
+
+            if(stock.Symbol == Symbol){
+
+                usernames.push(stock.username);
+
+            }
+        }
+
+        return usernames;
+
+    }
+
+
 
     function createWatchlistStockForUser(userId, stock){
         //Accepts parameters user id, stock object, and callback function
@@ -30,13 +53,43 @@ module.exports = function() {
             "Symbol":stock.Symbol,
             //"PricePurchased":stock.PricePurchased,
             //"Quantity": stock.Quantity,
-            "userId":userId
+            "userId":userId,
+            "username":stock.username
         };
 
         stocksArray.push(newStock);
 
         return newStock;
     }
+
+
+    //findAllWatchlistStocksForUserWithUsername
+
+    function findAllWatchlistStocksForUserWithUsername(username){
+        //Accepts parameter user id, and callback function
+        //Iterates over the array of current stocks looking for stocks whose user id is parameter user id
+        //Calls back with found stocks for user id parameter, empty array otherwise
+
+        var stocksMatchingUsername = [];
+
+        for (var i = 0; i < stocksArray.length; i++) {
+
+            var stock = stocksArray[i];
+
+            if(stock.username == username){
+
+                stocksMatchingUsername.push(stock);
+
+            }
+        }
+
+        return stocksMatchingUsername;
+
+    }
+
+
+
+
 
     function findAllWatchlistStocksForUser(userId){
         //Accepts parameter user id, and callback function

@@ -1,6 +1,6 @@
-var commentModel = require("./../models/comment.model.js")();
+//var commentModel = require("./../models/comment.model.js")();
 
-module.exports = function(app){
+module.exports = function(app, commentModel){
 
     app.post("/api/project/user/:userId/:symbol/comment",createStockCommentForUser);//create Comment For User
 
@@ -23,11 +23,11 @@ module.exports = function(app){
 
         console.log("current symbol : " + symbol);
 
-        var comments = commentModel.findAllCommentsForStock(symbol);
+        var comments = commentModel.findAllCommentsForStock(symbol)
+            .then(function (comments) {
+                res.json(comments);
+            });
 
-        console.log(comments);
-
-        res.json(comments);
 
     }
 
@@ -38,9 +38,11 @@ module.exports = function(app){
 
         var userId = req.params.userId;
 
-        var comments = commentModel.findAllStockCommentsForUser(userId);
-
-        res.json(comments);
+        commentModel.findAllStockCommentsForUser(userId)
+            .then(function (comments) {
+            res.json(comments);
+        });
+        //res.json(comments);
 
     }
 
@@ -55,10 +57,15 @@ module.exports = function(app){
         var userId = req.params.userId;
         var symbol = req.params.symbol;
 
-        var comment = commentModel.createStockCommentForUser(userId,symbol,newComment);
+        commentModel.createStockCommentForUser(userId,symbol,newComment)
+            .then(function (comment) {
+                console.log("inside then() of createStockCommentForUser :::::::::::::::::::::::::::::");
+                console.log(comment);
+                res.json(comment);
+            });
 
-        console.log(comment);
-        res.json(comment);
+        //console.log(comment);
+        //res.json(comment);
     }
 
 
@@ -68,16 +75,11 @@ module.exports = function(app){
 
         var commentId = req.params.commentId;
 
-        var comments = commentModel.deleteCommentById(commentId);
+        commentModel.deleteCommentById(commentId)
+            .then(function (comments) {
+                res.json(comments);
+            });
 
-
-        //console.log("qwertyuiuytrewertyu");
-        //for(var i=0;i<stocks.length;i++){
-        //    console.log("qwertyuiuytrewertyu");
-        //    console.log(stocks[i]._id);
-        //}
-
-        res.json(comments);
 
     }
 
@@ -90,12 +92,15 @@ module.exports = function(app){
 
         console.log(newComment);
 
-        var comment = commentModel.updateCommentById(req.params.commentId, newComment);
+        commentModel.updateCommentById(req.params.commentId, newComment)
+            .then(function (comment) {
+                res.json(comment);
+            });
 
-        console.log("updated comment : ");
-        console.log(comment);
-
-        res.json(comment);
+        //console.log("updated comment : ");
+        //console.log(comment);
+        //
+        //res.json(comment);
 
     }
 

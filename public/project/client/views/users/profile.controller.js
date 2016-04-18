@@ -3,11 +3,11 @@
         .module("StockPortfolioApp")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($scope,$rootScope , $location, UserService, APIStockService) {
+    function ProfileController($scope,$rootScope , $location, UserService, PortfolioService,WatchListService) {
 
         $scope.update = update;
-        //$scope.stocks=[];
-
+        $scope.stocks = [];
+        $scope.watchListstocks = [];
 
 
         initialDisplayOfStocks();
@@ -18,11 +18,23 @@
             console.log("rootscope user is : " + $rootScope.user);
 
             if($rootScope.user) {
-                APIStockService.findAllStocksForUser(
-                    $rootScope.user._id,
-                    function (response) {
-                        angular.copy(response, $scope.stocks);
+                PortfolioService.findAllStocksForUser($rootScope.user._id)
+                    .then(function (response) {
+                        //console.log(response.data);
+                        angular.copy(response.data, $scope.stocks);
+                        //console.log($scope.stocks);
                     });
+
+            }
+
+            if($rootScope.user) {
+                WatchListService.findAllWatchlistStocksForUser($rootScope.user._id)
+                    .then(function (response) {
+                        //console.log(response.data);
+                        angular.copy(response.data, $scope.watchListstocks);
+                        //console.log($scope.watchListstocks);
+                    });
+
             }
 
 

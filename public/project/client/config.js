@@ -41,6 +41,10 @@
                 templateUrl: "views/Search/detail.view.html",
                 controller: "DetailController"
             })
+            .when("/userdetail/:Username", {
+                templateUrl: "views/users/user.detail.view.html",
+                controller: "UserDetailController"
+            })
             .when("/portfolio", {
                 templateUrl: "views/portfolio/portfolio.view.html",
                 controller: "PortfolioController"
