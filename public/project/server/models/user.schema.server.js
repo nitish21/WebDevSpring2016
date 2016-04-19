@@ -9,7 +9,8 @@ module.exports = function () {
         emails: String,
         following : [String],
         followers : [String],
-        roles: [String]
+        roles: [String],
+        type : String
     }, {collection: 'project.user'});
     return ProjectUserSchema;
 };

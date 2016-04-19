@@ -12,11 +12,77 @@ module.exports = function (db) {
         findAllStockCommentsForUser :findAllStockCommentsForUser,
         findAllCommentsForStock :findAllCommentsForStock,
         deleteCommentById : deleteCommentById,
-        updateCommentById : updateCommentById
+        updateCommentById : updateCommentById,
+        findAllFlaggedComments : findAllFlaggedComments,
+        deleteCommentByIdForAdmin : deleteCommentByIdForAdmin
 
     };
 
     return api;
+
+
+
+    function deleteCommentByIdForAdmin(commentId){
+
+
+            var deferred = q.defer();
+
+            Comment
+                .remove (
+                    {_id: commentId},
+                    function (err, stats) {
+                        if (!err) {
+                            //deferred.resolve(stats);
+
+                            Comment.find(
+                                {abuseFlag : true},
+                                function (err, comments) {
+                                if (!err) {
+                                    //deferred.resolve(stats);
+                                    console.log("inside find() of deleteUserById");
+                                    console.log(comments);
+                                    deferred.resolve (comments);
+
+
+                                } else {
+                                    deferred.reject(err);
+                                }
+                            })
+
+
+                        } else {
+                            deferred.reject(err);
+                        }
+                    }
+                );
+
+            return deferred.promise;
+
+
+
+    }
+
+
+
+    function findAllFlaggedComments(){
+
+        var deferred = q.defer ();
+
+        Comment.find (
+            {abuseFlag : true},
+            function (err, comments) {
+                if (!err) {
+                    deferred.resolve (comments);
+                } else {
+                    deferred.reject (err);
+                }
+            }
+        );
+
+        return deferred.promise;
+
+
+    }
 
 
     function updateCommentById(commentId, newComment) {

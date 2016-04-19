@@ -349,6 +349,7 @@
             var currentUserId = $rootScope.user._id;
 
             comment['username'] = $rootScope.user.username;
+            comment['abuseFlag'] = false;
 
             CommentsService.createStockCommentForUser(currentUserId, $scope.Symbol,comment)
                 .then(function(response){

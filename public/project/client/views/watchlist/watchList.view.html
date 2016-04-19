@@ -60,7 +60,11 @@
 
                 <tbody>
                 <tr ng-repeat="stock in stocks">
-                    <td>{{stock.Symbol}}</td>
+                    <td>
+                        <a href="#/detail/{{stock.Symbol}}">
+                            {{stock.Name}}
+                        </a>
+                    </td>
                     <td>{{stock.livePrice}}</td>
                     <td>{{stock.change}}</td>
                     <!--<td>{{stock.percentChange}}</td>-->

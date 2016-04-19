@@ -1,7 +1,20 @@
-//var userModel = require("./../models/user.model.js")();
+var passport         = require('passport');
+var LocalStrategy    = require('passport-local').Strategy;
+
 
 module.exports = function(app,projectUserModel){
 
+
+    passport.use('project',   new LocalStrategy(projectLocalStrategy));
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
+    app.post  ('/api/project/login',    passport.authenticate('project'), projectLogin);
+    app.post  ('/api/project/logout',   projectLogout);
+    app.get   ('/api/project/loggedin', projectLoggedin);
+    app.post  ('/api/project/register', projectRegister);
+
+    /////////////////////////////////////////////////////////////
 
     app.get("/api/project/user", findUsers);//finding single or all users
     app.get("/api/project/user/:id", findUserById);//get profile
@@ -12,6 +25,127 @@ module.exports = function(app,projectUserModel){
     app.put("/api/project/userfollow/:id",follow);//follow user
     app.put("/api/project/userUnfollow/:id",unfollow);//delete user
 
+
+    /////////////////////////////////////////////////////////////
+
+    function projectLocalStrategy(username, password, done) {
+
+        console.log("inside projectLocalStrategy ::::::::::::::::::");
+
+        projectUserModel
+            .findUserByCredentials(username, password)
+            .then(
+                function(user) {
+                    if (!user) {
+                        return done(null, false);
+                    }
+                    return done(null, user);
+                },
+                function(err) {
+                    if (err) {
+                        console.log(err);
+                        return done(err);
+                    }
+                }
+            );
+
+    }
+
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        if(user.type == 'project') {
+            projectUserModel
+                .findUserById(user._id)
+                .then(
+                    function(user){
+                        done(null, user);
+                    },
+                    function(err){
+                        done(err, null);
+                    }
+                );
+        }
+    }
+
+
+    function projectLogin(req, res){
+        var user = req.user;
+        res.json(user);
+    }
+
+    function projectLogout(req, res) {
+        req.logout();
+        res.send(200);
+    }
+
+    function projectLoggedin(req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    }
+
+
+    function isAdmin(user) {
+        if(user.roles.indexOf("admin") > 0) {
+            return true;
+        }
+        return false;
+    }
+
+
+    function projectRegister(req, res) {
+
+        var newUser = req.body;
+        newUser['roles'] = [];
+        newUser.roles.push('member');
+        newUser.type = 'project';
+
+        console.log("*************************************");
+        console.log(newUser);
+
+        projectUserModel
+            .findUserByUsername(newUser.username)
+            .then(
+                function(user){
+                    if(user) {
+                        res.json(null);
+                    } else {
+                        return projectUserModel.createUser(newUser);
+                    }
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            )
+            .then(
+                function(user){
+                    if(user){
+                        req.login(user, function(err) {
+                            if(err) {
+                                res.status(400).send(err);
+                            } else {
+                                res.json(user);
+                            }
+                        });
+                    }
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
+    }
+
+
+    function authorized (req, res, next) {
+        if (!req.isAuthenticated()) {
+            res.send(401);
+        } else {
+            next();
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////
 
     function unfollow(req, res){
 
@@ -140,12 +274,21 @@ module.exports = function(app,projectUserModel){
 
     function createUser(req, res){
 
-        var user = req.body;
-        console.log(user);
-        var newUser = projectUserModel.createUser(user)
-            .then(function (newUser) {
-            console.log(newUser);
-            res.json (newUser);
+        console.log("dscdsacdsacadscdsacdsacdsacdsacdsacdcdsacdsacdacdsacadscdacdsacdsacdsacdsccdsacdscdsa");
+        var newUser = req.body;
+
+        if(newUser.roles && newUser.roles.length > 1) {
+            newUser.roles = newUser.roles.split(",");
+        } else {
+            newUser.roles = ["member"];
+        }
+
+
+        console.log(newUser);
+        projectUserModel.createUserForAdmin(newUser)
+            .then(function (users) {
+            console.log(users);
+            res.json (users);
         });
 
     }
@@ -155,10 +298,22 @@ module.exports = function(app,projectUserModel){
         console.log("inside updateUserById of users server service : ");
 
         var newUser = req.body;
+        console.log(newUser);
+
+        if(!isAdmin(req.user)) {
+            console.log("hahhahaaha");
+            delete newUser.roles;
+        }
+        if(typeof newUser.roles == "string") {
+            newUser.roles = newUser.roles.split(",");
+        }
+
+        console.log("888888888888888888888888888888888888888888888888888888888888888888888");
+        console.log(newUser.roles);
 
         projectUserModel.updateUserById(req.params.id, newUser)
             .then(function (users) {
-                console.log(users);
+                //console.log(users);
                 res.json (users);
             });
 
@@ -166,7 +321,7 @@ module.exports = function(app,projectUserModel){
 
     function deleteUserById(req, res){
 
-        userModel.deleteUserById(req.params.id)
+        projectUserModel.deleteUserById(req.params.id)
             .then(function (users) {
                 console.log(users);
                 res.json (users);

@@ -12,8 +12,43 @@ module.exports = function(app, commentModel){
 
     app.get("/api/project/stock/:symbol/comment",findAllCommentsForStock);
 
+    app.get("/api/project/flaggedComments",findAllFlaggedComments);
+
+    app.delete("/api/project/commentFlagged/:commentId",deleteCommentByIdForAdmin);
+
 
     ////////////////////////////////////////////////////////////////////
+
+    function deleteCommentByIdForAdmin(req,res){
+
+        console.log("inside deleteCommentByIdForAdmin of comments server service ");
+
+        var commentId = req.params.commentId;
+
+        commentModel.deleteCommentByIdForAdmin(commentId)
+            .then(function (comments) {
+                res.json(comments);
+            });
+
+
+    }
+
+
+
+    function findAllFlaggedComments(req, res){
+
+        console.log("inside findAllFlaggedComments ::::::::::********************:::::::::::::::::::::::")
+
+        commentModel.findAllFlaggedComments()
+            .then(function (comments) {
+                console.log("&**&&&*&*&**&&*&*********************************")
+                console.log(comments);
+                res.json(comments);
+            });
+
+    }
+
+
 
     function findAllCommentsForStock (req, res) {
 
@@ -23,7 +58,7 @@ module.exports = function(app, commentModel){
 
         console.log("current symbol : " + symbol);
 
-        var comments = commentModel.findAllCommentsForStock(symbol)
+        commentModel.findAllCommentsForStock(symbol)
             .then(function (comments) {
                 res.json(comments);
             });

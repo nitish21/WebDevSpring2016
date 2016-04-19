@@ -9,6 +9,7 @@ module.exports = function (db) {
         findUserByCredentials: findUserByCredentials,
         findAllUsers: findAllUsers,
         createUser: createUser,
+        createUserForAdmin: createUserForAdmin,
         deleteUserById: deleteUserById,
         updateUserById: updateUserById,
         findUserByUsername: findUserByUsername,
@@ -52,10 +53,7 @@ module.exports = function (db) {
 
         return deferred.promise;
 
-
     }
-
-
 
 
     function follow(userId, followJson) {
@@ -92,34 +90,6 @@ module.exports = function (db) {
         );
 
         return deferred.promise;
-
-
-        //
-        //var respJson = {};
-        //
-        //for (var i = 0; i < users.length; i++) {
-        //
-        //    var user = users[i];
-        //
-        //    if(user.username == whoWantsToFollow){
-        //
-        //        user.following.push(whom);
-        //
-        //        respJson['whoFollowed'] = user;
-        //
-        //    }
-        //
-        //    if(user.username == whom){
-        //
-        //        user.followers.push(whoWantsToFollow);
-        //
-        //        respJson['whom'] = user;
-        //
-        //    }
-        //
-        //}
-        //
-        //return respJson;
 
 
     }
@@ -164,6 +134,8 @@ module.exports = function (db) {
 
     function createUser(user) {
 
+        //user.roles.push('admin');
+
         var deferred = q.defer();
         User.create(user, function (err, user) {
             if (err) {
@@ -177,11 +149,11 @@ module.exports = function (db) {
                 User
                     .findOne (
                         {username: user.username},
-                        function (err, createduser) {
+                        function (err, users) {
                             if (!err) {
                                 console.log("--------------------------------------------------------------------------------------");
-                                console.log(createduser);
-                                deferred.resolve(createduser);
+                                console.log(users);
+                                deferred.resolve(users);
                             } else {
                                 deferred.reject(err);
                             }
@@ -197,6 +169,48 @@ module.exports = function (db) {
 
 
     }
+
+
+    function createUserForAdmin(user) {
+
+        //user.roles.push('admin');
+
+        var deferred = q.defer();
+        User.create(user, function (err, user) {
+            if (err) {
+                deferred.reject (err);
+            } else {
+                console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+                console.log(user.username);
+                //deferred.resolve(findUserByUsername(user.username));
+
+
+                User
+                    .find (
+                        //{username: user.username},
+                        function (err, users) {
+                            if (!err) {
+                                console.log("--------------------------------------------------------------------------------------");
+                                //console.log(users);
+                                deferred.resolve(users);
+                            } else {
+                                deferred.reject(err);
+                            }
+                        }
+                    );
+
+
+            }
+        });
+        return deferred.promise;
+
+
+    }
+
+
+
+
+
 
 
     function deleteUserById(userId) {
@@ -292,15 +306,15 @@ module.exports = function (db) {
                         console.log(stats);
                         //deferred.resolve(stats);
 
-                        User.findById(userId,
-                            function (err, currentUser) {
-                                if(err) {
-                                    deferred.reject(err);
+                        User.find (
+                            function (err, users) {
+                                if (!err) {
+                                    deferred.resolve (users);
+                                } else {
+                                    deferred.reject (err);
                                 }
-                                else {
-                                    deferred.resolve(currentUser);
-                                }
-                            });
+                            }
+                        );
 
 
                     } else {

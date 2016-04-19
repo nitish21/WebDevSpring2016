@@ -36,7 +36,7 @@
 
             APIStockService.findLivePricesOfStocks(currentUserStocks,
                 function(response){
-                    console.log(response.query.results.quote);
+                    //console.log(response.query.results.quote);
 
                     if(response.query.results.quote.length != undefined) {
 

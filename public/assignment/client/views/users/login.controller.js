@@ -34,11 +34,11 @@
                         $location.path('/login');
 
                     }
-                },function (err) {
-                    if(err.data == "Unauthorized") {
-                        vm.error = "username/password does not exist";
-                    }
-                });
+        },function (err) {
+            if(err.data == "Unauthorized") {
+                vm.error = "username/password does not exist";
+            }
+        });
 
         }
 

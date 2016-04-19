@@ -15,12 +15,31 @@
             updateUser: updateUser,
             findUserById: findUserById,
             follow : follow,
-            unfollow : unfollow
+            unfollow : unfollow,
+            login : login,
+            logout : logout,
+            register: register
 
         };
 
 
         return api;
+
+
+        function login(user) {
+            return $http.post("/api/project/login", user);
+        }
+
+        function logout() {
+            return $http.post("/api/project/logout");
+        }
+
+        function register(user){
+
+            //return $http.post("/api/assignment/user",user);
+            return $http.post("/api/project/register",user);
+        }
+
 
         function unfollow(userId,unfollowJson){
 

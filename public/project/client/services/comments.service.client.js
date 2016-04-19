@@ -12,7 +12,9 @@
             findAllStockCommentsForUser :findAllStockCommentsForUser,
             findAllCommentsForStock :findAllCommentsForStock,
             deleteCommentById : deleteCommentById,
-            updateCommentById : updateCommentById
+            updateCommentById : updateCommentById,
+            findAllAbusiveComments : findAllAbusiveComments,
+            deleteCommentByIdForAdmin : deleteCommentByIdForAdmin
 
         };
 
@@ -22,6 +24,24 @@
         /////////////////////////////////////////////////////
         // service methods
         /////////////////////////////////////////////////////
+
+        function deleteCommentByIdForAdmin(commentId){
+
+
+            return $http.delete("/api/project/commentFlagged/"+commentId);
+
+        }
+
+
+        function findAllAbusiveComments(){
+
+            console.log("/////////////////////////inside find abusive comments/////////////////////////////////////////////////////////");
+
+            return $http.get("/api/project/flaggedComments");
+
+        }
+
+
 
 
         function createStockCommentForUser(userId, symbol, comment){
