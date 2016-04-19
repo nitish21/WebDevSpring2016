@@ -382,7 +382,17 @@
 
             //updateComment(commentToBeUpdated);
 
-            CommentsService.updateCommentById(commentToBeUpdated._id, commentToBeUpdated)
+            var newComment = {};
+
+            newComment.Symbol = commentToBeUpdated.Symbol;
+            newComment.userId = commentToBeUpdated.userId;
+            newComment.username = commentToBeUpdated.username;
+            newComment.Comment = commentToBeUpdated.Comment;
+            newComment.createdDate = commentToBeUpdated.createdDate;
+            newComment.abuseFlag = commentToBeUpdated.abuseFlag;
+
+
+            CommentsService.updateCommentById(commentToBeUpdated._id, newComment)
                 .then(function(response){
                     console.log(response.data);
                     $scope.CommentsForStock[$scope.selectedIndex] = response.data;
