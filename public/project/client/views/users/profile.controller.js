@@ -47,11 +47,25 @@
 
             var loggedInUser = $rootScope.user;
 
+            var newUser = {};
+
+
+            newUser.username = userToBeUpdated.username;
+            newUser.firstName = userToBeUpdated.firstName;
+            newUser.lastName = userToBeUpdated.lastName;
+            newUser.emails = userToBeUpdated.emails;
+            newUser.username = userToBeUpdated.username;
+            newUser.following = userToBeUpdated.following;
+            newUser.followers = userToBeUpdated.followers;
+            newUser.roles = userToBeUpdated.roles;
+            newUser.type = userToBeUpdated.type;
+
+
             console.log("logged in user : " + loggedInUser);
 
             UserService.updateUser(
                 loggedInUser._id,
-                angular.copy(userToBeUpdated),
+                newUser,
                 function(response){
                     $rootScope.user=response.data;
                     console.log(response.data);

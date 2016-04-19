@@ -26,20 +26,26 @@ module.exports = function (db) {
         var whoWantsToUnFollow = unfollowJson.whoWantsToUnFollow;
         var whom = unfollowJson.whom;
 
+        var u1_id = whoWantsToUnFollow._id;
+        delete whoWantsToUnFollow['_id'];
+
+        var u2_id = whom._id;
+        delete whom['_id'];
+
 
         var deferred = q.defer();
 
         User.update(
-            {_id: whoWantsToUnFollow._id},
+            {_id: u1_id},
             {$set: whoWantsToUnFollow},
             function (err, stats) {
                 User.update(
-                    {_id: whom._id},
+                    {_id: u2_id},
                     {$set: whom},
                     function (err, stats) {
 
                         User.find(
-                            { $or : [ { _id : whoWantsToUnFollow._id }, { _id : whom._id } ] },
+                            { $or : [ { _id : u1_id }, { _id : u2_id } ] },
                             function (err, users) {
                                 if (!err) {
                                     deferred.resolve(users);
@@ -62,20 +68,25 @@ module.exports = function (db) {
         var whoWantsToFollow = followJson.whoWantsToFollow;
         var whom = followJson.whom;
 
+        var u1_id = whoWantsToFollow._id;
+        delete whoWantsToFollow['_id'];
+
+        var u2_id = whom._id;
+        delete whom['_id'];
 
         var deferred = q.defer();
 
         User.update(
-            {_id: whoWantsToFollow._id},
+            {_id: u1_id},
             {$set: whoWantsToFollow},
             function (err, stats) {
                 User.update(
-                    {_id: whom._id},
+                    {_id: u2_id},
                     {$set: whom},
                     function (err, stats) {
 
                         User.find(
-                            { $or : [ { _id : whoWantsToFollow._id }, { _id : whom._id } ] },
+                            { $or : [ { _id : u1_id }, { _id : u2_id } ] },
                             function (err, users) {
                             if (!err) {
                                 deferred.resolve(users);

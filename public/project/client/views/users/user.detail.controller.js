@@ -29,6 +29,7 @@
 
             var tempUser1 = {};
             angular.copy($rootScope.user,tempUser1);
+            //delete tempUser1["_id"];
             //tempUser1.following.push($scope.toBeDisplayedUser.username);
 
             for(var i=0;i<tempUser1.following.length;i++){
