@@ -148,7 +148,17 @@
 
             console.log("hello from update stock in portfolio controller");
 
-            PortfolioService.updateStockById(stockToBeUpdated._id, stockToBeUpdated)
+            var newStock = {};
+            newStock.Symbol = stockToBeUpdated.Symbol;
+            newStock.Name = stockToBeUpdated.Name;
+            newStock.PricePurchased = stockToBeUpdated.PricePurchased;
+            newStock.Quantity = stockToBeUpdated.Quantity;
+            newStock.userId = stockToBeUpdated.userId;
+
+
+
+
+            PortfolioService.updateStockById(stockToBeUpdated._id, newStock)
                 .then(function(response){
                     console.log(response.data);
                     $scope.stocks[$scope.selectedIndex] = response.data;

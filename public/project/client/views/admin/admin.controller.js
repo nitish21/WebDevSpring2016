@@ -50,8 +50,11 @@
 
         function update(user)
         {
+
+            var newUser = angular.copy(user);
+
             UserService
-                .updateUser(user._id, user)
+                .updateUser(user._id, newUser)
                 .then(handleSuccess, handleError);
         }
 
