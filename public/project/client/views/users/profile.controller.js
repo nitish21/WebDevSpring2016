@@ -51,7 +51,7 @@
 
             UserService.updateUser(
                 loggedInUser._id,
-                userToBeUpdated,
+                angular.copy(userToBeUpdated),
                 function(response){
                     $rootScope.user=response.data;
                     console.log(response.data);
