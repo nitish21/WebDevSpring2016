@@ -5,6 +5,8 @@ var LocalStrategy    = require('passport-local').Strategy;
 module.exports = function(app,projectUserModel){
 
 
+    var auth = authorized;
+
     passport.use('project',   new LocalStrategy(projectLocalStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
@@ -16,11 +18,11 @@ module.exports = function(app,projectUserModel){
 
     /////////////////////////////////////////////////////////////
 
-    app.get("/api/project/user", findUsers);//finding single or all users
+    app.get("/api/project/user", auth,findUsers);//finding single or all users
     app.get("/api/project/user/:id", findUserById);//get profile
-    app.post("/api/project/user",createUser);//register
-    app.put("/api/project/user/:id", updateUserById);//update profile
-    app.delete("/api/project/user/:id",deleteUserById);//delete user
+    app.post("/api/project/user",     auth, createUser);//register
+    app.put("/api/project/user/:id",     auth,  updateUserById);//update profile
+    app.delete("/api/project/user/:id",     auth, deleteUserById);//delete user
 
     app.put("/api/project/userfollow/:id",follow);//follow user
     app.put("/api/project/userUnfollow/:id",unfollow);//delete user
@@ -251,13 +253,17 @@ module.exports = function(app,projectUserModel){
 
     function findAllUsers(req, res){
 
-        projectUserModel.findAllUsers()
-            .then(function (users) {
-                    res.json (users);
-                },
-                function (err) {
-                    res.status(400).send(err);
-                });
+        if(isAdmin(req.user)) {
+            projectUserModel.findAllUsers()
+                .then(function (users) {
+                        res.json (users);
+                    },
+                    function (err) {
+                        res.status(400).send(err);
+                    });
+        } else {
+            res.status(403);
+        }
 
     }
 
@@ -321,11 +327,16 @@ module.exports = function(app,projectUserModel){
 
     function deleteUserById(req, res){
 
-        projectUserModel.deleteUserById(req.params.id)
-            .then(function (users) {
-                console.log(users);
-                res.json (users);
-            });
+        if(isAdmin(req.user)) {
+            projectUserModel.deleteUserById(req.params.id)
+                .then(function (users) {
+                    console.log(users);
+                    res.json(users);
+                });
+        }
+        else{
+            res.status(403);
+        }
     }
 
 };
