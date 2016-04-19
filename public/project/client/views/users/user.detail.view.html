@@ -14,7 +14,8 @@
 
             <ul>
                 <h2>
-                    <li ng-show="xusername!=user.username" ng-repeat="xusername in toBeDisplayedUser.following">
+                    <!--ng-show="xusername!=user.username"-->
+                    <li  ng-repeat="xusername in toBeDisplayedUser.following">
                         <a  href="#/userdetail/{{xusername}}">
                             {{xusername}}
                         </a>
@@ -30,7 +31,8 @@
 
             <ul>
                 <h2>
-                    <li ng-show="xusername!=user.username" ng-repeat="xusername in toBeDisplayedUser.followers">
+                    <!--ng-show="xusername!=user.username"-->
+                    <li  ng-repeat="xusername in toBeDisplayedUser.followers">
                         <a  href="#/userdetail/{{xusername}}">
                             {{xusername}}
                         </a>
