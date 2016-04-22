@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="StockPortfolioApp">
 <head>
-    <meta charset="UTF-8">
-    <title>hello</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Stock Portfolio Tracker</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <!--<script src="views/forms/forms.controller.js"></script>-->
+    <!--<link href="../../css/grayscale.css" rel="stylesheet">-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+    <!--<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
     <script src="https://code.highcharts.com/highcharts.js"></script>
 
     <!--importing all controllers-->
@@ -31,15 +45,15 @@
     <script src="views/watchlist/watchList.controller.js"></script>
     <script src="views/admin/admin.controller.js"></script>
     <script src="views/home/home.controller.js"></script>
-    <!--<script src="views/forms/forms.controller.js"></script>-->
 
     <link href="css/dashboard.css" rel="stylesheet">
 
 </head>
 
 <body ng-controller="MainController">
+
     <div ng-include="'views/header/header.view.html'"></div>
-    <!--<br>-->
+    <br>
     <!--<div ng-include="'views/sidebar/sidebar.view.html'"></div>-->
 
     <div ng-view></div>

@@ -41,35 +41,39 @@
 
         function refreshPortfolioTable(currentUserStocks,flag){
 
-            APIStockService.findLivePricesOfStocks(currentUserStocks,
-                function(response){
-                    console.log(response.query.results.quote);
+            //if(currentUserStocks.length > 0) {
 
-                    if(response.query.results.quote.length != undefined) {
+                APIStockService.findLivePricesOfStocks(currentUserStocks,
+                    function (response) {
+                        //console.log(response.query.results.quote);
 
-                        console.log("(((((((((((((((((((((((((((((((((((");
+                        if (response.query.results.quote.length != undefined) {
 
-                        for (var i = 0; i < response.query.results.quote.length; i++) {
-                            currentUserStocks[i]['livePrice'] = (response.query.results.quote[i].LastTradePriceOnly);
-                            currentUserStocks[i]['change'] = response.query.results.quote[i].Change;
-                            //currentUserStocks[i]['percentChange'] = response.query.results.quote[i].percentChange;
+                            console.log("(((((((((((((((((((((((((((((((((((");
+
+                            for (var i = 0; i < response.query.results.quote.length; i++) {
+                                currentUserStocks[i]['livePrice'] = (response.query.results.quote[i].LastTradePriceOnly);
+                                currentUserStocks[i]['change'] = response.query.results.quote[i].Change;
+                                //currentUserStocks[i]['percentChange'] = response.query.results.quote[i].percentChange;
+
+                            }
+                        }
+                        else {
+
+                            console.log("(((((((((((going corrrect(((((((((((((");
+
+                            currentUserStocks[0]['livePrice'] = (response.query.results.quote.LastTradePriceOnly);
+                            currentUserStocks[0]['change'] = response.query.results.quote.Change;
+                            //currentUserStocks[0]['percentChange'] = response.query.results.quote.percentChange;
 
                         }
-                    }
-                    else{
 
-                        console.log("(((((((((((going corrrect(((((((((((((");
+                        if (flag == true) {
+                            angular.copy(currentUserStocks, $scope.stocks);
+                        }
+                    });
 
-                        currentUserStocks[0]['livePrice'] = (response.query.results.quote.LastTradePriceOnly);
-                        currentUserStocks[0]['change'] = response.query.results.quote.Change;
-                        //currentUserStocks[0]['percentChange'] = response.query.results.quote.percentChange;
-
-                    }
-
-                    if(flag==true) {
-                        angular.copy(currentUserStocks, $scope.stocks);
-                    }
-                });
+            //}
 
         }
 
@@ -120,8 +124,12 @@
 
                     console.log(stocksOfUser);
 
-                    refreshPortfolioTable(stocksOfUser,true);
-
+                    if(stocksOfUser.length > 0) {
+                        refreshPortfolioTable(stocksOfUser, true);
+                    }
+                    else{
+                        $scope.stocks = stocksOfUser;
+                    }
                     //$scope.stocks = stocksOfUser;
 
 
