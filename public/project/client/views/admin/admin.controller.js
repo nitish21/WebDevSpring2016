@@ -53,6 +53,8 @@
 
             var newUser = angular.copy(user);
 
+            delete newUser['_id'];
+
             UserService
                 .updateUser(user._id, newUser)
                 .then(handleSuccess, handleError);
