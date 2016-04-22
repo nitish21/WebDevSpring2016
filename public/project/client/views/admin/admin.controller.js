@@ -73,6 +73,7 @@
         }
 
         function handleSuccess(response) {
+            console.log(response.data);
             $scope.users = response.data;
             $scope.currentUser ={};
         }
