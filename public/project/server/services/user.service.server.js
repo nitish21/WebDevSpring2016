@@ -156,13 +156,17 @@ module.exports = function(app,projectUserModel){
         console.log("unfollow json is ");
         console.log(unfollowJson);
 
+        var whoWantsToUnfollowId = unfollowJson.whoWantsToUnFollow._id;
+        var whomId = unfollowJson.whom._id;
+
+
         projectUserModel.unfollow(req.params.id, unfollowJson)
             .then(function (bothUsers) {
                 console.log("=======================================================================");
 
                 var respJson = {};
 
-                if(bothUsers[0]._id == unfollowJson.whoWantsToUnFollow._id){
+                if(bothUsers[0]._id == whoWantsToUnfollowId){
 
                     respJson["whoUnFollowed"] = bothUsers[0];
                     respJson["whom"] = bothUsers[1];
@@ -172,7 +176,7 @@ module.exports = function(app,projectUserModel){
                     respJson["whom"] = bothUsers[0];
                 }
 
-                console.log(bothUsers);
+                console.log(respJson);
 
                 res.json(respJson);
 
@@ -186,13 +190,23 @@ module.exports = function(app,projectUserModel){
         var followJson = req.body;
         console.log("follow json is ");
         console.log(followJson);
+
+        var whoWantsToFollowId = followJson.whoWantsToFollow._id;
+        var whomId = followJson.whom._id;
+
         projectUserModel.follow(req.params.id, followJson)
             .then(function (bothUsers) {
                 console.log("=======================================================================");
 
                 var respJson = {};
 
-                if(bothUsers[0]._id == followJson.whoWantsToFollow._id){
+                console.log(bothUsers[0]._id);
+                console.log(bothUsers[1]._id);
+                console.log(whoWantsToFollowId);
+
+                console.log("=========================ailaaaa==============================================");
+
+                if(bothUsers[0]._id == whoWantsToFollowId){
 
                     respJson["whoFollowed"] = bothUsers[0];
                     respJson["whom"] = bothUsers[1];
@@ -201,6 +215,8 @@ module.exports = function(app,projectUserModel){
                     respJson["whoFollowed"] = bothUsers[1];
                     respJson["whom"] = bothUsers[0];
                 }
+
+                console.log(respJson);
 
                 res.json(respJson);
 

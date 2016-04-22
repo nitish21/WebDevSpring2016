@@ -128,9 +128,18 @@
 
                     <tr ng-repeat="watchUsername in watchUsernames">
                         <td>
-                            <a  href="#/userdetail/{{watchUsername.username}}">
+
+                            <a ng-show="user.username == watchUsername.username" href="#/profile">
                                 {{watchUsername.username}}
                             </a>
+
+                            <a ng-show="user.username != watchUsername.username" href="#/userdetail/{{watchUsername.username}}">
+                                {{watchUsername.username}}
+                            </a>
+
+
+
+
                         </td>
                     </tr>
                 </tbody>

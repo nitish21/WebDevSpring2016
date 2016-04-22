@@ -6,7 +6,7 @@ module.exports = function () {
         password: String,
         firstName: String,
         lastName: String,
-        emails: String,
+        email: String,
         following : [String],
         followers : [String],
         roles: [String],

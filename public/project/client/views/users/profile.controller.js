@@ -53,7 +53,7 @@
             newUser.username = userToBeUpdated.username;
             newUser.firstName = userToBeUpdated.firstName;
             newUser.lastName = userToBeUpdated.lastName;
-            newUser.emails = userToBeUpdated.emails;
+            newUser.email = userToBeUpdated.email;
             newUser.username = userToBeUpdated.username;
             newUser.following = userToBeUpdated.following;
             newUser.followers = userToBeUpdated.followers;

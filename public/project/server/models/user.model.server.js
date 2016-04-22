@@ -184,7 +184,7 @@ module.exports = function (db) {
 
     function createUserForAdmin(user) {
 
-        //user.roles.push('admin');
+        user.roles.push('admin');
 
         var deferred = q.defer();
         User.create(user, function (err, user) {
