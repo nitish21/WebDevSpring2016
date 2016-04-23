@@ -23,6 +23,10 @@
                         </td>
 
                         <td>
+                            <b>Password</b>
+                        </td>
+
+                        <td>
                             <b>First Name</b>
                         </td>
 
@@ -45,7 +49,7 @@
                     <tr>
                         <!--<td>UserId</td>-->
                         <td><input ng-model="currentUser.username" class="form-control" placeholder="username"/></td>
-                        <!--<td><input ng-model="currentUser.password" class="form-control" type="password" placeholder="password"/></td>-->
+                        <td><input ng-model="currentUser.password" class="form-control" type="password" placeholder="password"/></td>
                         <td><input ng-model="currentUser.firstName" class="form-control" placeholder="first"/></td>
                         <td><input ng-model="currentUser.lastName" class="form-control" placeholder="last"/></td>
                         <!--<td><input ng-model="currentUser.email" class="form-control" type="email" placeholder="email"/></td>-->
@@ -67,7 +71,7 @@
                     <tr ng-repeat="cuser in users">
 
                         <td>{{cuser.username}}</td>
-
+                        <td>{{cuser.password}}</td>
                         <td>{{cuser.firstName}}</td>
                         <td>{{cuser.lastName}}</td>
 

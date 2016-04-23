@@ -44,6 +44,7 @@ module.exports = function(app,projectUserModel){
                     if (!user) {
                         return done(null, false);
                     }
+                    console.log("");
                     return done(null, user);
                 },
                 function(err) {
