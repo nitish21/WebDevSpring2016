@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e27d175-8559-4412-9d5b-cb580a6739a1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
     </list>
     <ignored path="webdev.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,10 +33,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.model.server.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="user.model.server.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/assignment/server/models/user.model.server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53532606">
+            <state vertical-scroll-proportion="0.0">
               <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
               <folding />
             </state>
@@ -48,6 +48,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="300" column="31" selection-start-line="300" selection-start-column="31" selection-end-line="300" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.2038044">
+              <caret line="61" column="28" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -116,13 +126,13 @@
         <option value="$PROJECT_DIR$/public/assignment/client/views/users/profile.controller.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/services/user.service.client.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/index.html" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/views/admin/admin.controller.js" />
         <option value="$PROJECT_DIR$/public/assignment/client/views/admin/admin.view.html" />
         <option value="$PROJECT_DIR$/public/assignment/client/config.js" />
         <option value="$PROJECT_DIR$/public/assignment/server/services/user.service.server.js" />
         <option value="$PROJECT_DIR$/public/project/server/services/user.service.server.js" />
         <option value="$PROJECT_DIR$/public/assignment/server/models/user.model.server.js" />
+        <option value="$PROJECT_DIR$/server.js" />
       </list>
     </option>
   </component>
@@ -170,7 +180,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="SearchEverywhereHistoryKey" value="usermodel&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/server/models/user.model.server.js&#10;userservice&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/server/services/user.service.server.js&#10;admincontroll&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/admin/admin.controller.js&#10;config&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/config.js&#10;adminview&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/admin/admin.view.html&#10;server&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/server.js&#10;admincon&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/admin/admin.controller.js&#10;index&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/index.html&#10;admin&#9;null&#9;null&#10;registerv&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/users/register.view.html&#10;registerview&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/users/register.view.html&#10;user&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/server/services/user.service.server.js&#10;profile&#9;null&#9;null&#10;profilecon&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/users/profile.controller.js&#10;userservic&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/services/user.service.client.js&#10;register&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/users/register.controller.js&#10;userser&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/services/user.service.client.js&#10;login&#9;null&#9;null&#10;service&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/server/services/user.service.server.js&#10;server.js&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/server.js&#10;main&#9;null&#9;null&#10;home&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/home/home.controller.js&#10;configjs&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/config.js&#10;userserv&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/server/services/user.service.server.js&#10;app.js&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/server/app.js&#10;appjs&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/server/app.js&#10;usersch&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/server/models/user.schema.server.js&#10;userschem&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/server/models/user.schema.server.js&#10;usersche&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/server/models/user.schema.server.js&#10;userclient&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/services/user.service.client.js&#10;form&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/forms/forms.controller.js&#10;adminvie&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/admin/admin.view.html&#10;portfolio&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/portfolio/portfolio.controller.js&#10;headerv&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/header/header.view.html&#10;detailview&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/Search/detail.view.html&#10;headervi&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/header/header.view.html&#10;final&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/finalIndex.html&#10;header&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/header/header.view.html&#10;watchlistvi&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/watchlist/watchList.view.html&#10;detailv&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/Search/detail.view.html&#10;profil&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/users/profile.view.html&#10;forms&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/forms/forms.view.html&#10;watc&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/watchlist/watchList.view.html&#10;watchlist&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/watchlist/watchList.controller.js&#10;userdetail&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/users/user.detail.view.html&#10;usermod&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/server/models/user.model.server.js&#10;detail&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/users/user.detail.view.html&#10;headercon&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/header/header.controller.js&#10;profilecontrol&#9;null&#9;null&#10;adminco&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/admin/admin.controller.js" />
+    <property name="SearchEverywhereHistoryKey" value="serverjs&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/server.js&#10;usermodel&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/server/models/user.model.server.js&#10;userservice&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/server/services/user.service.server.js&#10;admincontroll&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/admin/admin.controller.js&#10;config&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/config.js&#10;adminview&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/admin/admin.view.html&#10;server&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/server.js&#10;admincon&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/admin/admin.controller.js&#10;index&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/index.html&#10;admin&#9;null&#9;null&#10;registerv&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/users/register.view.html&#10;registerview&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/users/register.view.html&#10;user&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/server/services/user.service.server.js&#10;profile&#9;null&#9;null&#10;profilecon&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/users/profile.controller.js&#10;userservic&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/services/user.service.client.js&#10;register&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/users/register.controller.js&#10;userser&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/services/user.service.client.js&#10;login&#9;null&#9;null&#10;service&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/server/services/user.service.server.js&#10;server.js&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/server.js&#10;main&#9;null&#9;null&#10;home&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/home/home.controller.js&#10;configjs&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/config.js&#10;userserv&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/server/services/user.service.server.js&#10;app.js&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/server/app.js&#10;appjs&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/server/app.js&#10;usersch&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/server/models/user.schema.server.js&#10;userschem&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/server/models/user.schema.server.js&#10;usersche&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/server/models/user.schema.server.js&#10;userclient&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/services/user.service.client.js&#10;form&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/forms/forms.controller.js&#10;adminvie&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/admin/admin.view.html&#10;portfolio&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/portfolio/portfolio.controller.js&#10;headerv&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/header/header.view.html&#10;detailview&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/Search/detail.view.html&#10;headervi&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/header/header.view.html&#10;final&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/finalIndex.html&#10;header&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/header/header.view.html&#10;watchlistvi&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/watchlist/watchList.view.html&#10;detailv&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/Search/detail.view.html&#10;profil&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/users/profile.view.html&#10;forms&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/assignment/client/views/forms/forms.view.html&#10;watc&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/watchlist/watchList.view.html&#10;watchlist&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/watchlist/watchList.controller.js&#10;userdetail&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/users/user.detail.view.html&#10;usermod&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/server/models/user.model.server.js&#10;detail&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/users/user.detail.view.html&#10;headercon&#9;FILE&#9;file://C:/Users/Nitish/WebstormProjects/webdev/public/project/client/views/header/header.controller.js&#10;profilecontrol&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -623,14 +633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assignment/client/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -663,6 +665,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/assignment/server/models/user.model.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/server/services/user.service.server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -671,10 +681,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/server/models/user.model.server.js">
+    <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53532606">
-          <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+        <state vertical-scroll-proportion="1.2038044">
+          <caret line="61" column="28" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
           <folding />
         </state>
       </provider>

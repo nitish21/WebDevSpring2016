@@ -45,7 +45,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
 
-require ("./public/assignment/server/app.js")(app, db);
+//require ("./public/assignment/server/app.js")(app, db);
 
 //require("./public/assignment/server/services/user.service.server.js")(app);
 //require("./public/assignment/server/services/forms.service.server.js")(app);
@@ -57,6 +57,6 @@ require ("./public/assignment/server/app.js")(app, db);
 //require("./public/project/server/services/portfolio.service.server.js")(app);
 //require("./public/project/server/services/watchlist.service.server.js")(app);
 //require("./public/project/server/services/comment.service.server.js")(app);
-//require("./public/project/server/app.js")(app);
+require("./public/project/server/app.js")(app);
 
 app.listen(port, ipaddress);
