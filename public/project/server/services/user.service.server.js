@@ -298,6 +298,8 @@ module.exports = function(app,projectUserModel){
 
         console.log("dscdsacdsacadscdsacdsacdsacdsacdsacdcdsacdsacdacdsacadscdacdsacdsacdsacdsccdsacdscdsa");
         var newUser = req.body;
+        newUser.type = 'project';
+
 
         if(newUser.roles && newUser.roles.length > 1) {
             newUser.roles = newUser.roles.split(",");

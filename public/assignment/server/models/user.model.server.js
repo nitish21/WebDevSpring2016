@@ -2,21 +2,68 @@ var mongoose = require("mongoose");
 var q = require("q");
 
 module.exports = function (db) {
-    var UserSchema = require("./user.schema.server.js")();
-    var User = mongoose.model("User", UserSchema);
+    var AssignmentUserSchema = require("./user.schema.server.js")();
+    var User = mongoose.model("AssignmentUser", AssignmentUserSchema);
 
     var api = {
 
         findUserByCredentials: findUserByCredentials,
         findAllUsers: findAllUsers,
         createUser: createUser,
+        createUserForAdmin: createUserForAdmin,
         deleteUserById: deleteUserById,
         updateUserById: updateUserById,
         findUserByUsername: findUserByUsername,
-        findUserById: findUserById
+        findUserById: findUserById,
+        updateUserProfile : updateUserProfile
 
     };
     return api;
+
+
+
+    function follow(userId, followJson) {
+
+
+        var whoWantsToFollow = followJson.whoWantsToFollow;
+        var whom = followJson.whom;
+
+        var u1_id = whoWantsToFollow._id;
+        delete whoWantsToFollow['_id'];
+
+        var u2_id = whom._id;
+        delete whom['_id'];
+
+        var deferred = q.defer();
+
+        User.update(
+            {_id: u1_id},
+            {$set: whoWantsToFollow},
+            function (err, stats) {
+                User.update(
+                    {_id: u2_id},
+                    {$set: whom},
+                    function (err, stats) {
+
+                        User.find(
+                            { $or : [ { _id : u1_id }, { _id : u2_id } ] },
+                            function (err, users) {
+                                if (!err) {
+                                    deferred.resolve(users);
+                                } else {
+                                    deferred.reject(err);
+                                }
+                            });
+
+                    });
+            }
+
+        );
+
+        return deferred.promise;
+
+
+    }
 
 
 
@@ -56,24 +103,88 @@ module.exports = function (db) {
     }
 
 
-    function createUser (user) {
+    function createUser(user) {
+
+        user.roles.push('admin');
 
         var deferred = q.defer();
         User.create(user, function (err, user) {
             if (err) {
                 deferred.reject (err);
             } else {
-                //deferred.resolve (user);
+                console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+                console.log(user.username);
+                //deferred.resolve(findUserByUsername(user.username));
 
-                deferred.resolve(findUserByUsername(user.username));
+
+                User
+                    .findOne (
+                        {username: user.username},
+                        function (err, users) {
+                            if (!err) {
+                                console.log("--------------------------------------------------------------------------------------");
+                                console.log(users);
+                                deferred.resolve(users);
+                            } else {
+                                deferred.reject(err);
+                            }
+                        }
+                    );
+
 
             }
         });
         return deferred.promise;
+
+
+
+
     }
 
 
-    function deleteUserById (userId) {
+    function createUserForAdmin(user) {
+
+        //user.roles.push('admin');
+
+        var deferred = q.defer();
+        User.create(user, function (err, user) {
+            if (err) {
+                deferred.reject (err);
+            } else {
+                console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+                console.log(user.username);
+                //deferred.resolve(findUserByUsername(user.username));
+
+
+                User
+                    .find (
+                        //{username: user.username},
+                        function (err, users) {
+                            if (!err) {
+                                console.log("--------------------------------------------------------------------------------------");
+                                //console.log(users);
+                                deferred.resolve(users);
+                            } else {
+                                deferred.reject(err);
+                            }
+                        }
+                    );
+
+
+            }
+        });
+        return deferred.promise;
+
+
+    }
+
+
+
+
+
+
+
+    function deleteUserById(userId) {
 
 
         var deferred = q.defer();
@@ -106,11 +217,54 @@ module.exports = function (db) {
             );
 
         return deferred.promise;
-
-
     }
 
-    function updateUserById (userId, user) {
+
+    function findUserById(userId) {
+
+        var deferred = q.defer ();
+
+        User
+            .findOne (
+                {_id: userId},
+                function (err, user) {
+                    if (!err) {
+                        deferred.resolve(user);
+                    } else {
+                        deferred.reject(err);
+                    }
+                }
+            );
+
+        return deferred.promise;
+    }
+
+    function findUserByUsername(userName) {
+
+        console.log("inside find user by username");
+        console.log(userName);
+
+
+        var deferred = q.defer ();
+
+        User
+            .findOne (
+                {username: userName},
+                function (err, user) {
+                    if (!err) {
+                        console.log("--------------------------------------------------------------------------------------");
+                        console.log(user);
+                        deferred.resolve(user);
+                    } else {
+                        deferred.reject(err);
+                    }
+                }
+            );
+
+        return deferred.promise;
+    }
+
+    function updateUserById(userId, user) {
 
         var deferred = q.defer();
 
@@ -123,37 +277,17 @@ module.exports = function (db) {
                         console.log(stats);
                         //deferred.resolve(stats);
 
-                        User.findById(userId,
-                            function (err, currentUser) {
-                                if(err) {
-                                    deferred.reject(err);
+                        User.find (
+                            function (err, users) {
+                                if (!err) {
+                                    deferred.resolve (users);
+                                } else {
+                                    deferred.reject (err);
                                 }
-                                else {
-                                    deferred.resolve(currentUser);
-                                }
-                            });
+                            }
+                        );
 
 
-                    } else {
-                        deferred.reject(err);
-                    }
-                }
-            );
-
-        return deferred.promise;
-
-    }
-
-
-    function findUserByUsername (username) {
-        var deferred = q.defer ();
-
-        User
-            .findOne (
-                {username: username},
-                function (err, user) {
-                    if (!err) {
-                        deferred.resolve(user);
                     } else {
                         deferred.reject(err);
                     }
@@ -164,15 +298,32 @@ module.exports = function (db) {
     }
 
 
-    function findUserById (userId) {
-        var deferred = q.defer ();
+
+    function updateUserProfile(userId, user) {
+
+        var deferred = q.defer();
 
         User
-            .findOne (
+            .update (
                 {_id: userId},
-                function (err, user) {
+                {$set: user},
+                function (err, stats) {
                     if (!err) {
-                        deferred.resolve(user);
+                        console.log(stats);
+                        //deferred.resolve(stats);
+
+                        User.findOne (
+                            {_id: userId},
+                            function (err, users) {
+                                if (!err) {
+                                    deferred.resolve (users);
+                                } else {
+                                    deferred.reject (err);
+                                }
+                            }
+                        );
+
+
                     } else {
                         deferred.reject(err);
                     }

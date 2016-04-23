@@ -19,12 +19,14 @@
 
             UserService.register(user)
                 .then(function(response){
+                    console.log("inside response of register on client side:::::::::::::::");
                     console.log(response.data);
                     $rootScope.user=response.data;
                     console.log($rootScope.user);
+                    $location.path('/profile');
                 });
 
-            $location.path('/profile');
+
 
         }
     };

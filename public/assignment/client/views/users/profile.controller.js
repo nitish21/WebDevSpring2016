@@ -29,8 +29,9 @@
             newUser.emails = userToBeUpdated.emails;
             newUser.phones = userToBeUpdated.phones;
 
-            UserService.updateUser(loggedInUser._id, newUser)
+            UserService.updateUserProfile(loggedInUser._id, newUser)
                 .then(function(response){
+                    console.log("inside update user profile response :::::::::");
                     $rootScope.user=response.data;
                     console.log(response.data);
                 });

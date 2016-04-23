@@ -57,6 +57,6 @@ require ("./public/assignment/server/app.js")(app, db);
 //require("./public/project/server/services/portfolio.service.server.js")(app);
 //require("./public/project/server/services/watchlist.service.server.js")(app);
 //require("./public/project/server/services/comment.service.server.js")(app);
-require("./public/project/server/app.js")(app);
+//require("./public/project/server/app.js")(app);
 
 app.listen(port, ipaddress);

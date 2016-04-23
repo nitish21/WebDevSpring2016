@@ -8,7 +8,8 @@ module.exports = function () {
         lastName: String,
         emails: [String],
         phones:[String],
-        roles: [String]
+        roles: [String],
+        type : String
     }, {collection: 'user'});
     return UserSchema;
 };
