@@ -63,7 +63,7 @@
 
             console.log("logged in user : " + loggedInUser);
 
-            UserService.updateUser(
+            UserService.updateUserProfile(
                 loggedInUser._id,
                 newUser,
                 function(response){

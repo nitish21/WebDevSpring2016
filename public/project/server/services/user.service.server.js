@@ -24,6 +24,9 @@ module.exports = function(app,projectUserModel){
     app.put("/api/project/user/:id",     auth,  updateUserById);//update profile
     app.delete("/api/project/user/:id",     auth, deleteUserById);//delete user
 
+
+    app.put("/api/project/userProfile/:id", auth, updateUserProfile);//update profile
+
     app.put("/api/project/userfollow/:id",follow);//follow user
     app.put("/api/project/userUnfollow/:id",unfollow);//delete user
 
@@ -147,7 +150,38 @@ module.exports = function(app,projectUserModel){
         }
     }
 
+
     /////////////////////////////////////////////////////////////////////////////
+
+
+    function updateUserProfile(req, res){
+
+        console.log("inside updateUserById of users server service : ");
+
+        var newUser = req.body;
+        console.log(newUser);
+
+        //if(!isAdmin(req.user)) {
+        //    console.log("hahhahaaha");
+        //    delete newUser.roles;
+        //}
+        //
+        //if(typeof newUser.roles == "string") {
+        //    newUser.roles = newUser.roles.split(",");
+        //}
+
+        console.log("888888888888888888888888888888888888888888888888888888888888888888888");
+        console.log(newUser.roles);
+
+        projectUserModel.updateUserProfile(req.params.id, newUser)
+            .then(function (user) {
+                //console.log(users);
+                res.json (user);
+            });
+
+    }
+
+
 
     function unfollow(req, res){
 
@@ -204,7 +238,7 @@ module.exports = function(app,projectUserModel){
                 console.log(bothUsers[1]._id);
                 console.log(whoWantsToFollowId);
 
-                console.log("=========================ailaaaa==============================================");
+                console.log("===========================ailaaaa==============================================");
 
                 if(bothUsers[0]._id == whoWantsToFollowId){
 

@@ -15,10 +15,47 @@ module.exports = function (db) {
         findUserByUsername: findUserByUsername,
         findUserById: findUserById,
         follow : follow,
-        unfollow : unfollow
+        unfollow : unfollow,
+        updateUserProfile : updateUserProfile
     };
 
     return api;
+
+
+    function updateUserProfile(userId, user) {
+
+        var deferred = q.defer();
+
+        User
+            .update (
+                {_id: userId},
+                {$set: user},
+                function (err, stats) {
+                    if (!err) {
+                        console.log(stats);
+                        //deferred.resolve(stats);
+
+                        User.findOne (
+                            {_id: userId},
+                            function (err, users) {
+                                if (!err) {
+                                    deferred.resolve (users);
+                                } else {
+                                    deferred.reject (err);
+                                }
+                            }
+                        );
+
+
+                    } else {
+                        deferred.reject(err);
+                    }
+                }
+            );
+
+        return deferred.promise;
+    }
+
 
     function unfollow(userId, unfollowJson) {
 
