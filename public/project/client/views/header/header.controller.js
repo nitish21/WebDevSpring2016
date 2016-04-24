@@ -12,6 +12,7 @@
                 .logout()
                 .then(
                     function(response){
+                        console.log("setting rootscope user to null");
                         $rootScope.user = null;
                         $location.url("/login");
                     },

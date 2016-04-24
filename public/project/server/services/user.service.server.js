@@ -83,6 +83,9 @@ module.exports = function(app,projectUserModel){
     }
 
     function projectLogout(req, res) {
+
+
+        req.session.destroy();
         req.logout();
         res.send(200);
     }
