@@ -5,6 +5,8 @@
 
     function LoginController($scope, $rootScope ,$location, UserService) {
 
+        $rootScope.user = null;
+
         $scope.login = login;
 
         var vm = this;
