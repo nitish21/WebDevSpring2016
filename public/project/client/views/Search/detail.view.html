@@ -85,8 +85,12 @@
 
         <div id="chartSpace"> Place holder for charts </div>
 
-        <a ng-click="showOneYearChart()" class="btn btn-default">1 Year </a>
-        <a ng-click="showOneMonthChart()" class="btn btn-default">1 Month</a>
+
+        <a ng-click="showOneMonthChart()" ng-class="{'active' : OneMonthFlag}" class="btn btn-default">1 Month</a>
+        <a ng-click="showThreeMonthChart()" ng-class="{'active' : ThreeMonthflag}" class="btn btn-default">3 Months</a>
+        <a ng-click="showSixMonthChart()" ng-class="{'active' : SixMonthflag}" class="btn btn-default">6 Months</a>
+        <a ng-click="showOneYearChart()" ng-class="{'active' : OneYearflag}" class="btn btn-default">1 Year </a>
+        <a ng-click="showThreeYearChart()" ng-class="{'active' : ThreeYearflag}" class="btn btn-default">3 Years </a>
 
         <!--<h3>Actors</h3>-->
 
@@ -106,7 +110,7 @@
         <br>
         <br>
         <!--<div class="container col-lg-3">-->
-        <div ng-show="watchUsernames.length > 0" class="col-lg-6">
+        <div ng-show="user && watchUsernames.length > 0" class="col-lg-6">
 
 
             <div class="tab-content">

@@ -14,6 +14,14 @@
                     function(response){
                         console.log("setting rootscope user to null");
                         $rootScope.user = null;
+                        $rootScope.user = null;
+                        $rootScope.user = null;
+                        $rootScope.user = null;
+                        $rootScope.user = null;
+                        $rootScope.user = null;
+                        $rootScope.user = null;
+                        $rootScope.user = null;
+
                         $location.url("/login");
                     },
                     function(err) {

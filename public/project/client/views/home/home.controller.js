@@ -158,7 +158,7 @@
                 xAxis: {
                     title:'Dates',
                     type: 'datetime',
-                    categories: dates
+                    categories: dates.reverse()
                 },
                 yAxis: {
                     title: {
@@ -198,7 +198,7 @@
                 series: [{
                     type: 'area',
                     name: 'Close Price',
-                    data: quotes
+                    data: quotes.reverse()
                 }]
             });
 

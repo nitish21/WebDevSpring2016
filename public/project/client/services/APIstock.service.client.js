@@ -48,11 +48,29 @@
 
             //NumberOfDays,DataPeriod,symbol,
 
+            var currentTime = new Date();
+            var month = currentTime.getMonth() + 1;
+            var day = currentTime.getDate();
+            var year = currentTime.getFullYear();
+            var currentDate = year + '-0' + month + '-' + day;
+
+            var thirtyDaysBackTime = new Date(new Date().getTime() - 30*24*60*60*1000);
+            var month30 = thirtyDaysBackTime.getMonth() + 1;
+            var day30 = thirtyDaysBackTime.getDate();
+            var year30 = thirtyDaysBackTime.getFullYear();
+            var thirtyDaysBackDate = year30 + '-0' + month30 + '-' + day30;
+
+            console.log(currentDate);
+            console.log(thirtyDaysBackDate);
+            //startDate = ;
+
+            //console.log(new Date.today().add(-30).days());
+
             console.log("inside getHomeChartInfo()..");
 
             var BASE_URL = "http://query.yahooapis.com/v1/public/yql?q=";
 
-            var yql_query = 'select Symbol, Date, Close from yahoo.finance.historicaldata where symbol IN ("^BSESN","^NYA") and startDate = "2016-04-01" and endDate = "2016-04-16"';
+            var yql_query = 'select Symbol, Date, Close from yahoo.finance.historicaldata where symbol IN ("^BSESN","^NYA") and startDate = "' + thirtyDaysBackDate + '" and endDate = "' + currentDate + '"';
 
             var yql_query_string = encodeURI(BASE_URL+yql_query);
 

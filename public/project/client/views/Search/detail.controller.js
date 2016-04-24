@@ -7,6 +7,12 @@
 
         $scope.Symbol = $routeParams.Symbol;
         //$scope.addStock = null;
+        $scope.OneMonthFlag = true;
+        $scope.ThreeMonthflag = false;
+        $scope.SixMonthflag = false;
+        $scope.OneYearflag = false;
+        $scope.ThreeYearflag = false;
+
         $scope.CommentsForStock = [];
         $scope.watchUsernames = [];
         $scope.selectedIndex = -1;
@@ -15,8 +21,14 @@
         $scope.deleteComment = deleteComment;
         $scope.updateComment = updateComment;
         $scope.selectComment = selectComment;
-        $scope.showOneYearChart = showOneYearChart;
+
+
         $scope.showOneMonthChart = showOneMonthChart;
+        $scope.showThreeMonthChart = showThreeMonthChart;
+        $scope.showSixMonthChart = showSixMonthChart;
+        $scope.showOneYearChart = showOneYearChart;
+        $scope.showThreeYearChart = showThreeYearChart;
+
         $scope.addStockToPortfolio = addStockToPortfolio;
         $scope.addStockToWatchlist = addStockToWatchlist;
 
@@ -220,19 +232,23 @@
 
 
 
-        //function getChart(response)
+        function showThreeMonthChart(){
 
-        function showOneYearChart() {
 
-            console.log("hello from update stock in portfolio controller");
+            $scope.OneMonthFlag = false;
+            $scope.ThreeMonthflag = true;
+            $scope.SixMonthflag = false;
+            $scope.OneYearflag = false;
+            $scope.ThreeYearflag = false;
+
 
             APIStockService.getChartInfo(
-                365,
+                90,
                 'Day',
                 $scope.Symbol,
                 function(response) {
                     //$scope.stock = response;
-                    console.log("inside response of getChartInfo in showOneYearChart() in detailController : ");
+                    console.log("inside response of getChartInfo in detailController : ");
                     console.log(response);
                     console.log("above this shud be the response...");
 
@@ -240,14 +256,60 @@
 
                     console.log("above this shud be the list of stock prices...");
 
-                    Highcharts.chart('chartSpace', {
-
+                    $('#chartSpace').highcharts({
+                        chart: {
+                            zoomType: 'x'
+                        },
+                        title: {
+                            text: $scope.stock.Name
+                        },
+                        subtitle: {
+                            text: document.ontouchstart === undefined ?
+                                'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+                        },
                         xAxis: {
-                            categories: response.Dates
+                            title:'Dates',
+                            type: 'datetime',
+                            categories: convertMonthDates(response.Dates)
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Stock Price'
+                            }
+                        },
+                        legend: {
+                            enabled: false
+                        },
+                        plotOptions: {
+                            area: {
+                                fillColor: {
+                                    linearGradient: {
+                                        x1: 0,
+                                        y1: 0,
+                                        x2: 0,
+                                        y2: 1
+                                    },
+                                    stops: [
+                                        [0, Highcharts.getOptions().colors[0]],
+                                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                    ]
+                                },
+                                marker: {
+                                    radius: 2
+                                },
+                                lineWidth: 1,
+                                states: {
+                                    hover: {
+                                        lineWidth: 1
+                                    }
+                                },
+                                threshold: null
+                            }
                         },
 
                         series: [{
-                            name: $scope.Symbol + ' share price over the past year',
+                            type: 'area',
+                            name: 'Close Price',
                             data: response.Elements[0].DataSeries.close.values
                         }]
                     });
@@ -258,6 +320,273 @@
         }
 
 
+
+        function showSixMonthChart(){
+
+            $scope.OneMonthFlag = false;
+            $scope.ThreeMonthflag = false;
+            $scope.SixMonthflag = true;
+            $scope.OneYearflag = false;
+            $scope.ThreeYearflag = false;
+
+            APIStockService.getChartInfo(
+                180,
+                'Day',
+                $scope.Symbol,
+                function(response) {
+                    //$scope.stock = response;
+                    console.log("inside response of getChartInfo in detailController : ");
+                    console.log(response);
+                    console.log("above this shud be the response...");
+
+                    console.log(response.Elements[0].DataSeries.close.values);
+
+                    console.log("above this shud be the list of stock prices...");
+
+                    $('#chartSpace').highcharts({
+                        chart: {
+                            zoomType: 'x'
+                        },
+                        title: {
+                            text: $scope.stock.Name
+                        },
+                        subtitle: {
+                            text: document.ontouchstart === undefined ?
+                                'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+                        },
+                        xAxis: {
+                            title:'Dates',
+                            type: 'datetime',
+                            categories: convertMonthDates(response.Dates)
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Stock Price'
+                            }
+                        },
+                        legend: {
+                            enabled: false
+                        },
+                        plotOptions: {
+                            area: {
+                                fillColor: {
+                                    linearGradient: {
+                                        x1: 0,
+                                        y1: 0,
+                                        x2: 0,
+                                        y2: 1
+                                    },
+                                    stops: [
+                                        [0, Highcharts.getOptions().colors[0]],
+                                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                    ]
+                                },
+                                marker: {
+                                    radius: 2
+                                },
+                                lineWidth: 1,
+                                states: {
+                                    hover: {
+                                        lineWidth: 1
+                                    }
+                                },
+                                threshold: null
+                            }
+                        },
+
+                        series: [{
+                            type: 'area',
+                            name: 'Close Price',
+                            data: response.Elements[0].DataSeries.close.values
+                        }]
+                    });
+
+                }
+            );
+
+        }
+
+        //function getChart(response)
+
+        function showOneYearChart() {
+
+
+            $scope.OneMonthFlag = false;
+            $scope.ThreeMonthflag = false;
+            $scope.SixMonthflag = false;
+            $scope.OneYearflag = true;
+            $scope.ThreeYearflag = false;
+
+            console.log("hello from update stock in portfolio controller");
+
+            APIStockService.getChartInfo(
+                365,
+                'Day',
+                $scope.Symbol,
+                function(response) {
+                    //$scope.stock = response;
+                    console.log("inside response of getChartInfo in detailController : ");
+                    console.log(response);
+                    console.log("above this shud be the response...");
+
+                    console.log(response.Elements[0].DataSeries.close.values);
+
+                    console.log("above this shud be the list of stock prices...");
+
+                    $('#chartSpace').highcharts({
+                        chart: {
+                            zoomType: 'x'
+                        },
+                        title: {
+                            text: $scope.stock.Name
+                        },
+                        subtitle: {
+                            text: document.ontouchstart === undefined ?
+                                'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+                        },
+                        xAxis: {
+                            title:'Dates',
+                            type: 'datetime',
+                            categories: convertMonthDates(response.Dates)
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Stock Price'
+                            }
+                        },
+                        legend: {
+                            enabled: false
+                        },
+                        plotOptions: {
+                            area: {
+                                fillColor: {
+                                    linearGradient: {
+                                        x1: 0,
+                                        y1: 0,
+                                        x2: 0,
+                                        y2: 1
+                                    },
+                                    stops: [
+                                        [0, Highcharts.getOptions().colors[0]],
+                                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                    ]
+                                },
+                                marker: {
+                                    radius: 2
+                                },
+                                lineWidth: 1,
+                                states: {
+                                    hover: {
+                                        lineWidth: 1
+                                    }
+                                },
+                                threshold: null
+                            }
+                        },
+
+                        series: [{
+                            type: 'area',
+                            name: 'Close Price',
+                            data: response.Elements[0].DataSeries.close.values
+                        }]
+                    });
+
+                }
+            );
+
+        }
+
+
+
+
+        function showThreeYearChart() {
+
+            console.log("hello from update stock in portfolio controller");
+
+            $scope.OneMonthFlag = false;
+            $scope.ThreeMonthflag = false;
+            $scope.SixMonthflag = false;
+            $scope.OneYearflag = false;
+            $scope.ThreeYearflag = true;
+
+
+
+            APIStockService.getChartInfo(
+                1095,
+                'Day',
+                $scope.Symbol,
+                function(response) {
+                    //$scope.stock = response;
+                    console.log("inside response of getChartInfo in detailController : ");
+                    console.log(response);
+                    console.log("above this shud be the response...");
+
+                    console.log(response.Elements[0].DataSeries.close.values);
+
+                    console.log("above this shud be the list of stock prices...");
+
+                    $('#chartSpace').highcharts({
+                        chart: {
+                            zoomType: 'x'
+                        },
+                        title: {
+                            text: $scope.stock.Name
+                        },
+                        subtitle: {
+                            text: document.ontouchstart === undefined ?
+                                'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+                        },
+                        xAxis: {
+                            title:'Dates',
+                            type: 'datetime',
+                            categories: convertMonthDates(response.Dates)
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Stock Price'
+                            }
+                        },
+                        legend: {
+                            enabled: false
+                        },
+                        plotOptions: {
+                            area: {
+                                fillColor: {
+                                    linearGradient: {
+                                        x1: 0,
+                                        y1: 0,
+                                        x2: 0,
+                                        y2: 1
+                                    },
+                                    stops: [
+                                        [0, Highcharts.getOptions().colors[0]],
+                                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                    ]
+                                },
+                                marker: {
+                                    radius: 2
+                                },
+                                lineWidth: 1,
+                                states: {
+                                    hover: {
+                                        lineWidth: 1
+                                    }
+                                },
+                                threshold: null
+                            }
+                        },
+
+                        series: [{
+                            type: 'area',
+                            name: 'Close Price',
+                            data: response.Elements[0].DataSeries.close.values
+                        }]
+                    });
+
+                }
+            );
+
+        }
 
 
 
