@@ -8,6 +8,6 @@ module.exports = function () {
         Comment: String,
         createdDate: Date,
         abuseFlag: Boolean
-    }, {collection: 'project.comment'});
+    }, {collection: 'project.comment1'});
     return CommentSchema;
 };

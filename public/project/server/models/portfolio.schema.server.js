@@ -7,6 +7,6 @@ module.exports = function () {
         PricePurchased: Number,
         Quantity: Number,
         userId: String
-    }, {collection: 'project.portfolio'});
+    }, {collection: 'project.portfolio1'});
     return PortfolioSchema;
 };
