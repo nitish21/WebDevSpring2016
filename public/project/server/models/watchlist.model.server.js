@@ -56,6 +56,8 @@ module.exports = function (db) {
 
     function findAllWatchlistStocksForUserWithUsername (username) {
 
+
+
         var deferred = q.defer();
 
         Watchlist.find (
@@ -110,6 +112,30 @@ module.exports = function (db) {
 
 
     function findAllWatchlistStocksForUser (userId) {
+
+
+        //console.log("hahahahhahahahahahahhahahahhahahah");
+        //
+        //var deferred = q.defer();
+        //
+        ////Watchlist.remove (
+        ////    {},
+        ////    function (err, stats) {
+        ////        if (!err) {
+        ////            console.log("success....................");
+        ////            deferred.resolve (stats);
+        ////        } else {
+        ////            deferred.reject (err);
+        ////        }
+        ////    }
+        ////);
+        //
+        //return deferred.promise;
+
+
+
+
+
 
         var deferred = q.defer ();
 

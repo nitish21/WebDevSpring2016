@@ -6,6 +6,6 @@ module.exports = function () {
         Name: String,
         userId: String,
         username : String
-    }, {collection: 'project.watchlist'});
+    }, {collection: 'project.watchlist1'});
     return WatchlistSchema;
 };
